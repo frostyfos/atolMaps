@@ -27,18 +27,20 @@
     <?php 
         if(isset ($_SESSION['myusername'])){
             nav();
-        }   
-    ?>   
+    ?>       
 
-    <!-- footer -->
-    <div class="row">
-        <div class="navbar navbar-inverse navbar-fixed-bottom ">
-            <div class="container">
-                <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+        <!-- footer -->
+        <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-bottom ">
+                <div class="container">
+                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+                </div>
             </div>
         </div>
-    </div>
-</div> <!-- end of container -->
+    </div> <!-- end of container -->
+     <?php 
+        }   
+     ?> 
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
