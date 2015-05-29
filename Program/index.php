@@ -28,7 +28,7 @@
         if(isset ($_SESSION['myusername'])){
             nav();
         }   
-    ?>  
+    ?>   
 
     <!-- footer -->
     <div class="row">
