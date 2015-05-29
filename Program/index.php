@@ -26,8 +26,9 @@
 <div class="container">
     <?php 
         if(isset ($_SESSION['myusername'])){
-            nav();    
-    ?>
+            nav();
+    ?>       
+
         <!-- footer -->
         <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
@@ -37,9 +38,9 @@
             </div>
         </div>
     </div> <!-- end of container -->
-    <?php 
+     <?php 
         }   
-    ?> 
+     ?> 
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
