@@ -14,7 +14,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title></title>
+    <title>Peta Usaha Kabupaten Bandung Barat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -36,7 +36,10 @@
                     <!-- <a href="#"><img src="#" id="nav-logo"></a> -->
                 </div>
                 <div class="collapse navbar-collapse" id="collapse">
-                    <ul class="nav navbar-nav" id="padding_right">
+                    <ul class="nav navbar-nav navbar-right" id="padding_right">
+                        <li>
+                            <a href="#">Sign Up</a>
+                        </li>
                         <li>
                             <a href="/atolMaps/program/formLogin.php">Login</a>
                         </li>
@@ -45,7 +48,7 @@
     </nav>
 
         <div id="map-canvas">
-            
+
         </div>
         <!-- footer -->
         <div class="row">

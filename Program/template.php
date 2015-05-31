@@ -6,7 +6,7 @@
     include_once($path);
     
     if(!isset ($_SESSION['myusername'])){
-        formLogin();
+        header(("location:/atolMaps/program/formLogin.php"));
     }
     
 ?>
@@ -24,11 +24,16 @@
 
 <body>
 <div class="container">
+    <!-- header -->
     <?php 
         if(isset ($_SESSION['myusername'])){
             nav();    
     ?>
-        <!-- footer -->
+
+    <!-- disini konten  -->
+
+
+    <!-- footer -->
         <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
                 <div class="container">

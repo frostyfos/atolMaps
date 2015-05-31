@@ -68,6 +68,9 @@
                                     <li><a href="#">List Desa</a></li>
                                 </ul>
                             </li> 
+                            <li>
+                                <a href="#" data-toggle="dropdown">Laporan</a>
+                            </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/atolMaps/program/logout.php">Logout</a></li>
@@ -93,10 +96,16 @@
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">Lihat Usaha</a>
+                                <a href="#">List Usaha</a>
                             </li>
                             <li>
                                 <a href="#">Insert Usaha</a>
+                            </li>
+                            <li>
+                                <a href="#">Usaha Anda</a>
+                            </li>
+                            <li>
+                                <a href="#">Edit Profile</a>
                             </li>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/atolMaps/program/logout.php">Logout</a></li>
