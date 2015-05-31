@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2015 at 04:34 PM
+-- Generation Time: May 31, 2015 at 10:47 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -75,10 +75,34 @@ CREATE TABLE IF NOT EXISTS `kelurahan` (
 
 CREATE TABLE IF NOT EXISTS `pengusaha` (
 `id_pengusaha` int(11) NOT NULL,
+  `no_ktp` varchar(17) NOT NULL,
   `nama_pengusaha` varchar(20) NOT NULL,
+  `ttl` date NOT NULL,
+  `jenis_kelamin` varchar(10) NOT NULL,
+  `file_ktp` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `username_admin` varchar(11) NOT NULL
+  `status_akun` varchar(12) NOT NULL DEFAULT 'tidak aktif'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengusaha`
+--
+
+INSERT INTO `pengusaha` (`id_pengusaha`, `no_ktp`, `nama_pengusaha`, `ttl`, `jenis_kelamin`, `file_ktp`, `email`, `password`, `status_akun`) VALUES
+(1, '123456789', 'taryo', '0000-00-00', '', '', 'taryo@gmail.com', 'taryo', ''),
+(2, '1', '1', '2015-05-05', 'L', 'gambar/1.jpg', '1', '1', 'tidak aktif');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reqpass`
+--
+
+CREATE TABLE IF NOT EXISTS `reqpass` (
+  `no_ktp` varchar(17) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -127,7 +151,8 @@ CREATE TABLE IF NOT EXISTS `usaha` (
   `gambar2` varchar(40) DEFAULT NULL,
   `gambar3` varchar(40) DEFAULT NULL,
   `gambar4` varchar(40) DEFAULT NULL,
-  `gambar5` varchar(40) DEFAULT NULL
+  `gambar5` varchar(40) DEFAULT NULL,
+  `status_usaha` varchar(12) NOT NULL DEFAULT 'tidak aktif'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -156,7 +181,13 @@ ALTER TABLE `kelurahan`
 -- Indexes for table `pengusaha`
 --
 ALTER TABLE `pengusaha`
- ADD PRIMARY KEY (`id_pengusaha`), ADD KEY `username_admin` (`username_admin`);
+ ADD PRIMARY KEY (`id_pengusaha`);
+
+--
+-- Indexes for table `reqpass`
+--
+ALTER TABLE `reqpass`
+ ADD PRIMARY KEY (`no_ktp`);
 
 --
 -- Indexes for table `sektor_usaha`
@@ -194,7 +225,7 @@ MODIFY `id_kelurahan` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `pengusaha`
 --
 ALTER TABLE `pengusaha`
-MODIFY `id_pengusaha` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_pengusaha` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `usaha`
 --
@@ -209,12 +240,6 @@ MODIFY `id_usaha` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `kelurahan`
 ADD CONSTRAINT `kelurahan_ibfk_1` FOREIGN KEY (`id_kecamatan`) REFERENCES `kecamatan` (`id_kecamatan`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `pengusaha`
---
-ALTER TABLE `pengusaha`
-ADD CONSTRAINT `pengusaha_ibfk_1` FOREIGN KEY (`username_admin`) REFERENCES `admin` (`username_admin`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `usaha`
