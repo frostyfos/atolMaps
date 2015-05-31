@@ -18,7 +18,7 @@
         exit;
      }
 
-     $sql = "INSERT INTO reqPass(nama,no_ktp,email) VALUES('$nama','$noKtp','$email')";
+     $sql = "INSERT INTO reqPass(no_ktp,nama,email) VALUES('$noKtp','$nama','$email')";
 
      //eksekusi statement insert
 		if(!mysql_query($sql))

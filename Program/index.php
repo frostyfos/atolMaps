@@ -46,7 +46,6 @@
                     </ul>
                 </div>  
     </nav>
-
         <div id="map-canvas">
 
         </div>

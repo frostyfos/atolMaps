@@ -4,17 +4,12 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
-    
-    if(!isset ($_SESSION['myusername'])){
-        header(("location:/atolMaps/program/formLogin.php"));
-    }
-    
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
-    <title></title>
+    <title>Lupa Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
