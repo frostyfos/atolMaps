@@ -26,8 +26,7 @@
 <div class="container">
     <!-- header -->
     <?php 
-        if(isset ($_SESSION['myusername'])){
-            nav();    
+        nav();    
     ?>
 
     <!-- disini konten  -->
@@ -42,9 +41,6 @@
             </div>
         </div>
     </div> <!-- end of container -->
-    <?php 
-        }   
-    ?> 
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>

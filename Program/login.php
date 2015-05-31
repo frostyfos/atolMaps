@@ -7,7 +7,7 @@
     //conncet to database
     connect();
 
-    //ambil username dan password dari DB
+    //deklarasi variabel
     $username = $_POST['myusername'];
     $password = $_POST['mypassword'];
     $jabatan = $_POST['myjabatan'];
