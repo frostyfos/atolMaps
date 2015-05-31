@@ -92,7 +92,10 @@
                         <label for="ttl" class="col-sm-4 control-label">TTL</label>
                         <div class="col-sm-5">
                         <div class="input-group date">
-                            <input type="date" name="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
+                            <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-th"></i>
+                            </span>
                         </div>
                         </div>
                     </div>
@@ -118,5 +121,10 @@
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
+
+    <script>
+            $('.input-group.date #ttl').datepicker({});
+    </script>
 </body>
 </html>
