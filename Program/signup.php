@@ -24,10 +24,6 @@
 <body>
 <div class="container">
     <!-- header -->
-    
-
-	<p>asadada</p>
-
 <!-- disini konten  -->
     <!-- footer -->
         <div class="row">

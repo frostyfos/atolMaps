@@ -21,7 +21,7 @@
 	
 
 		echo "<pre>";
-		print_r($_FILES['userfile']);
+		//print_r($_FILES['userfile']);
 		echo "</pre>";
 		if($_FILES['userfile']['error']==0){
 			$namafilebaru="gambar/".$_FILES['userfile']['name'];

@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="collapse">
                     <ul class="nav navbar-nav navbar-right" id="padding_right">
                         <li>
-                            <a href="/atolMaps/program/passRequest/formRequest.php">Sign Up</a>
+                            <a href="/atolMaps/program/signup.php">Sign Up</a>
                         </li>
                         <li>
                             <a href="/atolMaps/program/formLogin.php">Login</a>
