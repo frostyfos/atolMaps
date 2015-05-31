@@ -28,20 +28,24 @@
     if($jabatan === "admin"){
         $sql="SELECT * FROM admin WHERE BINARY username_admin='$username' and BINARY password_admin='$password'";
     }elseif($jabatan === "pengusaha"){
-        $sql="SELECT noKtp,password FROM pengusaha WHERE BINARY noKtp='$username' and BINARY password='$password'";
+        $sql="SELECT no_ktp,password FROM pengusaha WHERE BINARY no_ktp='$username' and BINARY password='$password'";
     }
 
     $valid=mysql_query($sql);
     // cek validasi *tapi masih make script lama
     $count=mysql_num_rows($valid);
 
-    if($count==1){
+    if($count==1 && $jabatan == "admin"){
         $_SESSION['myusername'] = $username;
         $_SESSION['mypassword'] = $password;
         $_SESSION['myjabatan'] = $jabatan;
-        header("location:/atolMaps/program/index.php");
-    }
-    else {
+        header("location:/atolMaps/program/admin/admin.php");
+    }else if($count==1 && $jabatan == "pengusaha"){
+        $_SESSION['myusername'] = $username;
+        $_SESSION['mypassword'] = $password;
+        $_SESSION['myjabatan'] = $jabatan;
+        header("location:/atolMaps/program/pengusaha/pengusaha.php");
+    }else {
         print "<script>alert('isi username dan password salah!');
         javascript:history.go(-1);</script>";
         exit;

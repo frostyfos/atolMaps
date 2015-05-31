@@ -1,0 +1,19 @@
+#map-canvas { 
+	height: 450px; 
+	width : 1000px; 
+	margin: 100px; 
+	padding: 0;
+	background-color: black;
+}
+
+.pad{
+	margin-top: 10px;
+	margin-left:10px;
+}
+
+#nav-logo{
+	margin-top: 3px;
+	margin-right: 20px; 
+	height: 50px;
+	width: 100px;
+}
