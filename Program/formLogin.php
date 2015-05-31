@@ -34,7 +34,7 @@
 	                <div class="col-sm-4">
 	                    <select class="form-control" name="myjabatan" id="myjabatan">
 	                        <option value="admin">Admin</option>
-	                        <option value="pengusaha">Pengusaha</option>
+	                        <option value="pengusaha">Pemilik Usaha</option>
 	                    </select>
 	                </div>
 	            </div>
