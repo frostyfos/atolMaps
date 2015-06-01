@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2015 at 10:47 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: May 31, 2015 at 10:00 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,9 +28,11 @@ USE `bdgmaps`;
 -- Table structure for table `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(20) NOT NULL,
-  `password_admin` varchar(16) NOT NULL
+  `password_admin` varchar(16) NOT NULL,
+  PRIMARY KEY (`username_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,12 +48,14 @@ INSERT INTO `admin` (`username_admin`, `password_admin`) VALUES
 -- Table structure for table `kecamatan`
 --
 
+DROP TABLE IF EXISTS `kecamatan`;
 CREATE TABLE IF NOT EXISTS `kecamatan` (
-`id_kecamatan` int(11) NOT NULL,
+  `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kecamatan` varchar(20) NOT NULL,
   `lat` varchar(25) NOT NULL,
-  `long` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `long` varchar(25) NOT NULL,
+  PRIMARY KEY (`id_kecamatan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,13 +63,22 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
 -- Table structure for table `kelurahan`
 --
 
+DROP TABLE IF EXISTS `kelurahan`;
 CREATE TABLE IF NOT EXISTS `kelurahan` (
-`id_kelurahan` int(11) NOT NULL,
+  `id_kelurahan` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kelurahan` varchar(20) NOT NULL,
   `id_kecamatan` int(11) NOT NULL,
   `lat` varchar(25) NOT NULL,
-  `long` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `long` varchar(25) NOT NULL,
+  PRIMARY KEY (`id_kelurahan`),
+  KEY `id_kecamatan` (`id_kecamatan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- RELATIONS FOR TABLE `kelurahan`:
+--   `id_kecamatan`
+--       `kecamatan` -> `id_kecamatan`
+--
 
 -- --------------------------------------------------------
 
@@ -73,25 +86,27 @@ CREATE TABLE IF NOT EXISTS `kelurahan` (
 -- Table structure for table `pengusaha`
 --
 
+DROP TABLE IF EXISTS `pengusaha`;
 CREATE TABLE IF NOT EXISTS `pengusaha` (
-`id_pengusaha` int(11) NOT NULL,
+  `id_pengusaha` int(11) NOT NULL AUTO_INCREMENT,
   `no_ktp` varchar(17) NOT NULL,
   `nama_pengusaha` varchar(20) NOT NULL,
+  `alamat` varchar(40) NOT NULL,
   `ttl` date NOT NULL,
   `jenis_kelamin` varchar(10) NOT NULL,
   `file_ktp` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `status_akun` varchar(12) NOT NULL DEFAULT 'tidak aktif'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `status_akun` varchar(12) NOT NULL DEFAULT 'tidak aktif',
+  PRIMARY KEY (`id_pengusaha`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `pengusaha`
 --
 
-INSERT INTO `pengusaha` (`id_pengusaha`, `no_ktp`, `nama_pengusaha`, `ttl`, `jenis_kelamin`, `file_ktp`, `email`, `password`, `status_akun`) VALUES
-(1, '123456789', 'taryo', '0000-00-00', '', '', 'taryo@gmail.com', 'taryo', ''),
-(2, '1', '1', '2015-05-05', 'L', 'gambar/1.jpg', '1', '1', 'tidak aktif');
+INSERT INTO `pengusaha` (`id_pengusaha`, `no_ktp`, `nama_pengusaha`, `alamat`, `ttl`, `jenis_kelamin`, `file_ktp`, `email`, `password`, `status_akun`) VALUES
+(4, '123456789', 'Taryo Nugroho', 'Bandung', '2015-06-30', 'L', 'gambar/231.jpg', 'taryo@gmail.com', 'taryo', 'tidak aktif');
 
 -- --------------------------------------------------------
 
@@ -99,10 +114,13 @@ INSERT INTO `pengusaha` (`id_pengusaha`, `no_ktp`, `nama_pengusaha`, `ttl`, `jen
 -- Table structure for table `reqpass`
 --
 
+DROP TABLE IF EXISTS `reqpass`;
 CREATE TABLE IF NOT EXISTS `reqpass` (
   `no_ktp` varchar(17) NOT NULL,
   `nama` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `status` varchar(6) NOT NULL DEFAULT 'Belum',
+  PRIMARY KEY (`no_ktp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -111,9 +129,11 @@ CREATE TABLE IF NOT EXISTS `reqpass` (
 -- Table structure for table `sektor_usaha`
 --
 
+DROP TABLE IF EXISTS `sektor_usaha`;
 CREATE TABLE IF NOT EXISTS `sektor_usaha` (
   `id_sektor` int(11) NOT NULL,
-  `sektor` varchar(30) NOT NULL
+  `sektor` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_sektor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -122,9 +142,11 @@ CREATE TABLE IF NOT EXISTS `sektor_usaha` (
 -- Table structure for table `skala_usaha`
 --
 
+DROP TABLE IF EXISTS `skala_usaha`;
 CREATE TABLE IF NOT EXISTS `skala_usaha` (
   `id_skala` int(11) NOT NULL,
-  `skala` enum('Mikro','Kecil','Menengah') NOT NULL
+  `skala` enum('Mikro','Kecil','Menengah') NOT NULL,
+  PRIMARY KEY (`id_skala`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -133,8 +155,9 @@ CREATE TABLE IF NOT EXISTS `skala_usaha` (
 -- Table structure for table `usaha`
 --
 
+DROP TABLE IF EXISTS `usaha`;
 CREATE TABLE IF NOT EXISTS `usaha` (
-`id_usaha` int(11) NOT NULL,
+  `id_usaha` int(11) NOT NULL AUTO_INCREMENT,
   `nama_usaha` varchar(30) NOT NULL,
   `id_pengusaha` int(11) NOT NULL,
   `produk_utama` varchar(30) NOT NULL,
@@ -152,85 +175,28 @@ CREATE TABLE IF NOT EXISTS `usaha` (
   `gambar3` varchar(40) DEFAULT NULL,
   `gambar4` varchar(40) DEFAULT NULL,
   `gambar5` varchar(40) DEFAULT NULL,
-  `status_usaha` varchar(12) NOT NULL DEFAULT 'tidak aktif'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status_usaha` varchar(12) NOT NULL DEFAULT 'tidak aktif',
+  PRIMARY KEY (`id_usaha`),
+  KEY `kecamatan` (`id_kecamatan`),
+  KEY `kecamatan_2` (`id_kecamatan`),
+  KEY `id_pengusaha` (`id_pengusaha`),
+  KEY `id_desa` (`id_kelurahan`),
+  KEY `id_skala` (`id_skala`),
+  KEY `id_sektor` (`id_sektor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Indexes for dumped tables
+-- RELATIONS FOR TABLE `usaha`:
+--   `id_pengusaha`
+--       `pengusaha` -> `id_pengusaha`
+--   `id_skala`
+--       `skala_usaha` -> `id_skala`
+--   `id_sektor`
+--       `sektor_usaha` -> `id_sektor`
+--   `id_kelurahan`
+--       `kelurahan` -> `id_kelurahan`
 --
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`username_admin`);
-
---
--- Indexes for table `kecamatan`
---
-ALTER TABLE `kecamatan`
- ADD PRIMARY KEY (`id_kecamatan`);
-
---
--- Indexes for table `kelurahan`
---
-ALTER TABLE `kelurahan`
- ADD PRIMARY KEY (`id_kelurahan`), ADD KEY `id_kecamatan` (`id_kecamatan`);
-
---
--- Indexes for table `pengusaha`
---
-ALTER TABLE `pengusaha`
- ADD PRIMARY KEY (`id_pengusaha`);
-
---
--- Indexes for table `reqpass`
---
-ALTER TABLE `reqpass`
- ADD PRIMARY KEY (`no_ktp`);
-
---
--- Indexes for table `sektor_usaha`
---
-ALTER TABLE `sektor_usaha`
- ADD PRIMARY KEY (`id_sektor`);
-
---
--- Indexes for table `skala_usaha`
---
-ALTER TABLE `skala_usaha`
- ADD PRIMARY KEY (`id_skala`);
-
---
--- Indexes for table `usaha`
---
-ALTER TABLE `usaha`
- ADD PRIMARY KEY (`id_usaha`), ADD KEY `kecamatan` (`id_kecamatan`), ADD KEY `kecamatan_2` (`id_kecamatan`), ADD KEY `id_pengusaha` (`id_pengusaha`), ADD KEY `id_desa` (`id_kelurahan`), ADD KEY `id_skala` (`id_skala`), ADD KEY `id_sektor` (`id_sektor`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `kecamatan`
---
-ALTER TABLE `kecamatan`
-MODIFY `id_kecamatan` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `kelurahan`
---
-ALTER TABLE `kelurahan`
-MODIFY `id_kelurahan` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `pengusaha`
---
-ALTER TABLE `pengusaha`
-MODIFY `id_pengusaha` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `usaha`
---
-ALTER TABLE `usaha`
-MODIFY `id_usaha` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -239,16 +205,16 @@ MODIFY `id_usaha` int(11) NOT NULL AUTO_INCREMENT;
 -- Constraints for table `kelurahan`
 --
 ALTER TABLE `kelurahan`
-ADD CONSTRAINT `kelurahan_ibfk_1` FOREIGN KEY (`id_kecamatan`) REFERENCES `kecamatan` (`id_kecamatan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `kelurahan_ibfk_1` FOREIGN KEY (`id_kecamatan`) REFERENCES `kecamatan` (`id_kecamatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `usaha`
 --
 ALTER TABLE `usaha`
-ADD CONSTRAINT `usaha_ibfk_1` FOREIGN KEY (`id_pengusaha`) REFERENCES `pengusaha` (`id_pengusaha`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `usaha_ibfk_4` FOREIGN KEY (`id_skala`) REFERENCES `skala_usaha` (`id_skala`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `usaha_ibfk_5` FOREIGN KEY (`id_sektor`) REFERENCES `sektor_usaha` (`id_sektor`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `usaha_ibfk_6` FOREIGN KEY (`id_kelurahan`) REFERENCES `kelurahan` (`id_kelurahan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usaha_ibfk_1` FOREIGN KEY (`id_pengusaha`) REFERENCES `pengusaha` (`id_pengusaha`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usaha_ibfk_4` FOREIGN KEY (`id_skala`) REFERENCES `skala_usaha` (`id_skala`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usaha_ibfk_5` FOREIGN KEY (`id_sektor`) REFERENCES `sektor_usaha` (`id_sektor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usaha_ibfk_6` FOREIGN KEY (`id_kelurahan`) REFERENCES `kelurahan` (`id_kelurahan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
