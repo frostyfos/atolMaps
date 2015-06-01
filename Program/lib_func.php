@@ -34,7 +34,7 @@
                         <ul class="nav navbar-nav">
                              <li class="dropdown"><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">List Pengusaha</a></li>
+                                    <li><a href="/atolMaps/program/admin/listUser.php">List Pengusaha</a></li>
                                     <li><a href="#">Insert Usaha</a></li>
                                 </ul>
                             </li>

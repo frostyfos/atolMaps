@@ -12,7 +12,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title></title>
+    <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -89,7 +89,7 @@
 
                     <div class="form-group">
                     
-                        <label for="ttl" class="col-sm-4 control-label">TTL</label>
+                        <label for="ttl" class="col-sm-4 control-label">Tanggal Lahir</label>
                         <div class="col-sm-5">
                         <div class="input-group date">
                             <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
