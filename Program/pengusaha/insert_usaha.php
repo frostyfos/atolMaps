@@ -12,7 +12,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Sign Up</title>
+    <title>Insert Data Usaha Baru</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -30,6 +30,7 @@
     <?php 
         if(isset ($_SESSION['myusername'])){
             nav();
+			connect();
     
         echo '<div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
@@ -41,76 +42,145 @@
     </div> <!-- end of container -->
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h2 class="text-center">Masukan Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/proses_signup.php" enctype="multipart/form-data" method="post">
+                <h2 class="text-center">Masukan Data Usaha</h2><hr/>
+                <form class="form-horizontal" action="/atolmaps/program/pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">
 
 					
                     <div class="form-group">
-                        <label for="email" class="col-sm-4 control-label">Email</label>
+                        <label for="nama" class="col-sm-4 control-label">Nama Usaha</label>
                         <div class="col-sm-5">
-                            <input type="text" name="email" class="form-control" placeholder="Email pengusaha"/>
+                            <input type="text" name="nama" class="form-control" placeholder="Nama usaha"/>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">Username/KTP</label>
+                        <label for="produk" class="col-sm-4 control-label">Produk Utama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" placeholder="username pengusaha"/>
+                            <input type="text" name="produk" class="form-control" placeholder="Produk Utama"/>
                         </div>
                     </div>
 
 					<div class="form-group">
-                        <label for="password" class="col-sm-4 control-label">Password</label>
-                        <div class="col-sm-5">
-                            <input type="password" name="password" class="form-control" placeholder="password pengusaha"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nama" class="col-sm-4 control-label">Nama</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="nama pengusaha"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="alamat" class="col-sm-4 control-label">Alamat</label>
                         <div class="col-sm-5">
-                            <input type="text" name="alamat" class="form-control" placeholder="alamat pengusaha"/>
+                            <input type="text" name="alamat" class="form-control" placeholder="alamat usaha"/>
                         </div>
                     </div>
+					
+					<div class="form-group row" >
+                <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="kecamatan" id="kecamatan">';
+                        $sql = "SELECT  * from kecamatan ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['id_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
+                        }
+echo              '</select>
+                </div>
+				</div>
+
+                    <div class="form-group row" >
+                <label for="kelurahan" class="col-sm-4 control-label">Kelurahan</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="kelurahan" id="kelurahan">';
+                        $sql = "SELECT  * from kelurahan ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['id_kelurahan'].'">'.$row['nama_kelurahan'].'</option>';
+                        }
+echo              '</select>
+                </div>
+				</div>
 
                     <div class="form-group">
-                        <label for="jk" class="col-sm-4 control-label">Jenis Kelamin</label>
+                        <label for="telp" class="col-sm-4 control-label">No Telepon</label>
                         <div class="col-sm-5">
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="L" />Laki-laki
-                           </label>
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="P" />Perempuan
-                           </label>
+                            <input type="text" name="telepon" class="form-control" placeholder="Nomor kuntak usaha"/>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                    
-                        <label for="ttl" class="col-sm-4 control-label">Tanggal Lahir</label>
+					
+					<div class="form-group">
+                        <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
-                        <div class="input-group date">
-                            <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-th"></i>
-                            </span>
-                        </div>
+                            <input type="text" name="lat" class="form-control" placeholder="Koordinat latitude"/>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="filektp" class="col-sm-4 control-label">Foto KTP</label>
+		
+					<div class="form-group">
+                        <label for="long" class="col-sm-4 control-label">Longitude</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="long" class="form-control" placeholder="Koordinat longitude"/>
+                        </div>
+                    </div>
+				
+					<div class="form-group">
+                        <label for="peta" class="col-sm-4 control-label">Peta Usaha</label>
+                        <div class="col-sm-5">
+                            <input type="text" name="peta" class="form-control" placeholder="Peta Usaha"/>
+                        </div>
+                    </div>
+					
+					<div class="form-group row" >
+                <label for="skala" class="col-sm-4 control-label">Skala Usaha</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="skala" id="skala">';
+                        $sql = "SELECT  * from skala_usaha ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['id_skala'].'">'.$row['skala'].'</option>';
+                        }
+echo              '</select>
+                </div>
+				</div>
+				
+				<div class="form-group row" >
+                <label for="sektor" class="col-sm-4 control-label">Sektor Usaha</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="sektor" id="sektor">';
+                        $sql = "SELECT  * from sektor_usaha ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['id_sektor'].'">'.$row['sektor'].'</option>';
+                        }
+echo              '</select>
+                </div>
+				</div>
+				
+				<div class="form-group">
+                        <label for="gambar1" class="col-sm-4 control-label">Gambar Usaha</label>
                         <div class="col-sm-5">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
                         </div>
                     </div>
+					
+				
+				<div class="form-group">
+                        <label for="gambar2" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <div class="col-sm-5">
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gambar3" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <div class="col-sm-5">
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label for="gambar4" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <div class="col-sm-5">
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label for="gambar5" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <div class="col-sm-5">
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                        </div>
+                    </div>
+                    
+                    
 
 
                     <div class="form-group">
@@ -134,6 +204,8 @@
 
     <script>
             $('.input-group.date #ttl').datepicker({});
+			
+			
     </script>
 </body>
 </html>

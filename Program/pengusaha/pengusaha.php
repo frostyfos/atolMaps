@@ -14,7 +14,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title></title>
+    <title>Halaman Pengusaha</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -29,9 +29,9 @@
             nav();
     
 	connect();
-	$sql_bahan = "SELECT * FROM usaha,pengusaha WHERE pengusaha.no_ktp like '".$_SESSION['myusername']."'";
+	$sql_usaha = "SELECT * FROM usaha,pengusaha WHERE pengusaha.no_ktp like '".$_SESSION['myusername']."'";
         //eksekusi query
-        $query = mysql_query($sql_bahan);
+        $query = mysql_query($sql_usaha);
         if(!$query)
         {
             print(mysql_error());
