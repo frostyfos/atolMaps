@@ -8,3 +8,13 @@ progress tugas selesai
 - Template (versi 1)
 - Database (cek lagi baru di upload, tambah no ktp)
 
+TO DO LIST
+- Buat Bagian Pengusaha ()
+  - Signup (udah)
+  - submit lupa password (udah)
+- Admin
+  - insert pengusaha (tinggal ambil dari signup)
+  - tampil pengusaha (udah)
+  - cari pengusaha (belum)
+  - edit hapus pengusaha + edit status akun disatuin (belum)
+  - kirim lupa password (belum)
