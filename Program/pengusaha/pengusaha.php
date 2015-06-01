@@ -29,7 +29,7 @@
             nav();
     
 	connect();
-	$sql_bahan = "SELECT * FROM usaha";
+	$sql_bahan = "SELECT * FROM usaha,pengusaha WHERE pengusaha.no_ktp like '".$_SESSION['myusername']."'";
         //eksekusi query
         $query = mysql_query($sql_bahan);
         if(!$query)

@@ -99,7 +99,7 @@
                                 <a href="#">List Usaha</a>
                             </li>
                             <li>
-                                <a href="#">Insert Usaha</a>
+                                <a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a>
                             </li>
                             <li>
                                 <a href="#">Usaha Anda</a>
