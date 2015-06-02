@@ -17,11 +17,12 @@
 	$alamat = $_POST['alamat'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
+	$status = $_POST['status'];
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
 	
 		if($_FILES['userfile']['error']==0){
-			$namafilebaru="gambar/".$_FILES['userfile']['name'];
+			$namafilebaru="/atolMaps/program/gambar/".$_FILES['userfile']['name'];
 		
 		if(move_uploaded_file($_FILES['userfile']['tmp_name'],
 			$namafilebaru)==true){
@@ -35,7 +36,7 @@
 		
 		$filektp = "gambar/".$_FILES['userfile']['name'];
 		
-			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password')";
+			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password','$status')";
 		
 		//eksekusi statement insert data
 		if(!mysql_query($sql))
@@ -43,14 +44,14 @@
 			echo '<script type="text/javascript">';
 			echo 'alert("Tambah Data Pengusaha Gagal")';
 			echo '</script>';
-			header( "refresh:0; url=index.php" );
+			header( "refresh:0; url=/atolMaps/program/admin/insertPengusaha.php" );
 		}
 		else
 		{
 			echo '<script type="text/javascript">';
 			echo 'alert("Tambah Data Pengusaha Berhasil")';
 			echo "</script>";
-			header( "refresh:0; url=index.php" );
+			header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
 		}
 	
 ?>

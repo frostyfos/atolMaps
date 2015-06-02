@@ -86,7 +86,7 @@ echo              '</select>
                 </div>
 				</div>
 
-                <div class="form-group row" >
+                    <div class="form-group row" >
                 <label for="kelurahan" class="col-sm-4 control-label">Kelurahan</label>
                 <div class="col-sm-2">          
                     <select class="form-control" name="kelurahan" id="kelurahan">';

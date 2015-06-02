@@ -35,25 +35,25 @@
                              <li class="dropdown"><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/atolMaps/program/admin/listUser.php">List Pengusaha</a></li>
-                                    <li><a href="#">Insert Usaha</a></li>
+                                    <li><a href="/atolMaps/program/admin/InsertPengusaha.php">Insert Pemilik Usaha</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Pengusaha<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/broto/pelayan/meja.php">List Usaha</a></li>
-                                    <li><a href="/broto/pelayan/pesanan.php">Inert Usaha</a></li>
+                                    <li><a href="#">List Usaha</a></li>
+                                    <li><a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Sektor<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">List Sektor</a></li>
-                                    <li><a href="#">Insert Sektor</a></li>
+                                    <li><a href="/atolMaps/program/admin/listSektor.php">List Sektor</a></li>
+                                    <li><a href="/atolMaps/program/admin/insertSektor.php">Insert Sektor</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Skala<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">List Skala</a></li>
-                                    <li><a href="#">Insert Skala</a></li>
+                                    <li><a href="/atolMaps/program/admin/listSkala.php">List Skala</a></li>
+                                    <li><a href="/atolMaps/program/admin/insertSkala.php">Insert Skala</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kecamatan<span class="caret"></span></a>

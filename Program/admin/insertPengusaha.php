@@ -11,7 +11,7 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
@@ -24,22 +24,17 @@
 <body>
 <div class="container">
     <!-- header -->
-<!-- disini konten  -->
-    <!-- footer -->
-        <div class="row">
-            <div class="navbar navbar-inverse navbar-fixed-bottom ">
-                <div class="container">
-                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end of container -->
+    <?php 
+        nav();
+    ?>
+    <!-- disini konten  -->
+    
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/proses_signup.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="/atolmaps/program/admin/prosesInsertPengusaha.php" enctype="multipart/form-data" method="post">
 
-                    
+					
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-5">
@@ -54,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+					<div class="form-group">
                         <label for="password" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-5">
                             <input type="password" name="password" class="form-control" placeholder="password pengusaha"/>
@@ -107,20 +102,39 @@
                         </div>
                     </div>
 
+                    <div class="form-group row" >
+                        <label for="status" class="col-sm-4 control-label">Status Akun</label>
+                        <div class="col-sm-2">          
+                            <select class="form-control" name="status" id="status">
+                                <option value="aktif">Aktif</option>
+                                <option value="tidak aktif">Tidak Aktif</option>
+                            </select>
+                        </div>
+                </div>
+
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
                            <button type="submit" class="btn btn-primary">Submit</button>
-                           <!-- <button type="clear" class="btn btn-default">Clear</button> -->
+                           <button type="reset" class="btn btn-default">Clear</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div> 
      </div>';
-    <!-- javascript -->
+     <!-- footer -->
+        <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-bottom ">
+                <div class="container">
+                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end of container -->
+	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-    <script src="/atolMaps/program/js/bootstrap.js"></script>
+	<script src="/atolMaps/program/js/bootstrap.js"></script>
     <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
 
     <script>

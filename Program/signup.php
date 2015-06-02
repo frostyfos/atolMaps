@@ -23,17 +23,19 @@
 
 <body>
 <div class="container">
-    <!-- header -->
-<!-- disini konten  -->
-    <!-- footer -->
-        <div class="row">
-            <div class="navbar navbar-inverse navbar-fixed-bottom ">
+<!-- header -->
+<div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-top ">
                 <div class="container">
-                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/atolMaps/program/index.php" class="text-center">HOME</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div> <!-- end of container -->
+<!-- disini konten  -->
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Pengusaha</h2><hr/>
@@ -111,13 +113,21 @@
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
                            <button type="submit" class="btn btn-primary">Submit</button>
-                           <!-- <button type="clear" class="btn btn-default">Clear</button> -->
+                           <button type="reset" class="btn btn-default">Clear</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div> 
      </div>';
+     <!-- footer -->
+        <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-bottom ">
+                <div class="container">
+                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+                </div>
+            </div>
+        </div>
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
