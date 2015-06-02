@@ -50,7 +50,7 @@
             </div>
             </form><br>';//search
         //tampil data  
-		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Seluruh Bandung Barat</center>';             
+		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Anda</center>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
         echo '<th>NO</th>';

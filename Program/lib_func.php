@@ -102,10 +102,10 @@
                                 <a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a>
                             </li>
                             <li>
-                                <a href="#">Usaha Anda</a>
+                                <a href="/atolMaps/program/pengusaha/pengusaha.php">Usaha Anda</a>
                             </li>
                             <li>
-                                <a href="#">Edit Profile</a>
+                                <a href="/atolMaps/program/pengusaha/profil.php">Profile</a>
                             </li>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/atolMaps/program/logout.php">Logout</a></li>
