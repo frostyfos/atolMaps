@@ -24,7 +24,7 @@
 <body>
 <div class="container">
 <!-- header -->
-<div class="row">
+    <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-top ">
                 <div class="container">
                     <ul class="nav navbar-nav">

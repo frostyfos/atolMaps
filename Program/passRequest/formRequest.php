@@ -19,6 +19,17 @@
 
 <body>
 <div class="container">
+    <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-top ">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/atolMaps/program/index.php" class="text-center">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </div>
     <!-- disini konten  -->
     <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
