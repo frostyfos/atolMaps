@@ -46,14 +46,14 @@
 			echo 'alert("Edit Data Pengusaha Gagal")';
 			
 			echo '</script>';
-			header( "refresh:0; url=pengusaha.php" );
+			header( "refresh:0; url=/atolMaps/program/pengusaha/editProfil.php" );
 		}
 		else
 		{
 			echo '<script type="text/javascript">';
 			echo 'alert("Edit Data Pengusaha Berhasil")';
 			echo "</script>";
-			header( "refresh:0; url=pengusaha.php" );
+			header( "refresh:0; url=/atolMaps/program/pengusaha/profil.php" );
 		}
 	
 ?>

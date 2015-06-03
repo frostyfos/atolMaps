@@ -52,7 +52,7 @@
 		  echo'  <div class="col-md-7 col-md-push-3">
                     <table class="table">
                         <tr>
-                            <th colspan = "2" class="text-center info"> PROFILE PENGUSAHA</th>
+                            <th colspan = "2" class="text-center info"> INFORMASI PEMILIK USAHA</th>
                         </tr>
                         <tr>
                             <th>ID Pengusaha</th>
