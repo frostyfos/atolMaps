@@ -49,25 +49,47 @@
           <?php
 		  while($row = mysql_fetch_array($query))
                     {
-		  echo'  <div class="form-group">
-                        <label for="id" class=" control-label">ID pengusaha : '.$row['id_pengusaha'].'</label><br>
-						<label for="username" class=" control-label">Username/no KTP pengusaha : '.$row['no_ktp'].'</label><br>
-						<label for="nama" class=" control-label">Nama pengusaha : '.$row['nama_pengusaha'].'</label><br>
-						<label for="alamat" class=" control-label">Alamat : '.$row['alamat'].'</label><br>
-						<label for="ttl" class=" control-label">Tempat Tanggal Lahir : '.$row['ttl'].'</label><br>
-						<label for="jk" class=" control-label">Jenis Kelamin : '.$row['jenis_kelamin'].'</label><br>
-						<label for="email" class=" control-label">Email : '.$row['email'].'</label><br>
-                        <label for="status" class=" control-label">Status Akun : '.$row['status_akun'].'</label><br>
-						<label for="status" class=" control-label"></label>
-                    
-					
-					</div>';
-		echo '  <div class="form-group">
-                        <label for="id" class=" control-label">Foto KTP : </label><br>
-				<img src="/atolmaps/program/'.$row['file_ktp'].'" alt="Smiley face height="42" width="100""/></div>
-		';			
+		  echo'  <div class="col-md-7 col-md-push-3">
+                    <table class="table">
+                        <tr>
+                            <th colspan = "2" class="text-center info"> INFORMASI PEMILIK USAHA</th>
+                        </tr>
+                        <tr>
+                            <th>ID Pengusaha</th>
+                            <td>'.$row['id_pengusaha'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Usernama(No KTP)</th>
+                            <td>'.$row['no_ktp'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Nama </td>
+                            <td>'.$row['nama_pengusaha'].'</th>
+                        </tr>
+                        <tr>
+                            <th>Alamat Pengusaha</th>
+                            <td>'.$row['alamat'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal Lahir</th>
+                            <td>'.$row['ttl'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Jenis Kelamin</th>
+                            <td>'.$row['jenis_kelamin'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Status Akun</th>
+                            <td>'.$row['status_akun'].'</td>
+                        </tr>
+                        <tr>
+                            <th>Foto KTP</th>
+                            <td><img src="/atolmaps/program/'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/></td>
+                        </tr>              
+					</table">
+				</div>';			
 					}
-					?>
+		?>
     <!-- footer -->
         <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
