@@ -5,7 +5,9 @@
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
     connect();
-  
+  if(!isset ($_SESSION['myusername'])){
+        header(("location:/atolMaps/program/formLogin.php"));
+    }
     
 ?>
 
