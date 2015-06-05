@@ -3,19 +3,9 @@
     session_start(); 
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/atolMaps/program/lib_func.php";
-<<<<<<< HEAD
-
-    include_once($path); 
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
     include_once($path);
     
   
-    
-<<<<<<< HEAD
-
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
 ?>
 
 <html>
@@ -27,10 +17,6 @@
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
     <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
-<<<<<<< HEAD
-
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
     <link href="/broto/css/datepicker.css" rel="stylesheet">
 </head>
 
@@ -45,94 +31,33 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Kecamatan</h2><hr/>
-<<<<<<< HEAD
-
                 <form class="form-horizontal" action="/atolMaps/Program/admin/prosesInsertKecamatan.php" method="post">
-
-                    <div class="form-group">
-                        <label for="nama" class="col-sm-4 control-label">Nama Kecamatan</label>
-=======
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-                <form class="form-horizontal" action="/atolmaps/program/admin/prosesInsertKecamatan.php" enctype="multipart/form-data" method="post">
 
                     
                     <div class="form-group">
-                        <label for="id" class="col-sm-4 control-label">ID Kecamatan</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="id" class="form-control" placeholder="ID Kecamatan"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
-<<<<<<< HEAD
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
                         <div class="col-sm-5">
                             <input type="text" name="nama" class="form-control" placeholder="nama kecamatan"/>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                      <div class="form-group">
                         <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
                             <input type="text" name="lat" class="form-control" placeholder="latitude kecamatan"/>
-=======
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-                    <div class="form-group">
-                        <label for="alamat" class="col-sm-4 control-label">Alamat</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="alamat" class="form-control" placeholder="alamat kecamatan"/>
-                        </div>
-                    </div>
 
-                     <div class="form-group">
-                        <label for="latitude" class="col-sm-4 control-label">Latitude</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="latitude" class="form-control" placeholder="latitude kecamatan"/>
-<<<<<<< HEAD
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
                         </div>
                     </div>
 
 					<div class="form-group">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <label for="long" class="col-sm-4 control-label">Longitude</label>
+
+						<label for="long" class="col-sm-4 control-label">Longitude</label>
                         <div class="col-sm-5">
                             <input type="text" name="long" class="form-control" placeholder="longitude kecamatan"/>
                         </div>
                     </div>
-				                  
-=======
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-                        <label for="longitude" class="col-sm-4 control-label">Longitude</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="longitude" class="form-control" placeholder="longitude kecamatan"/>
-                        </div>
-                    </div>
 					
-                    <div class="form-group">
-                        <label for="fotocamat" class="col-sm-4 control-label">Foto Kecamatan</label>
-                        <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
-                        </div>
-                    </div>
 
-
-
-<<<<<<< HEAD
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
                            <button type="submit" class="btn btn-primary">Submit</button>
@@ -155,19 +80,7 @@
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
 
-    <script>
-            $('.input-group.date #ttl').datepicker({});
-    </script>
-<<<<<<< HEAD
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
-=======
->>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
+
 </body>
 </html>
