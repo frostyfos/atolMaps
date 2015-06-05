@@ -32,7 +32,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
-                             <li class="dropdown"><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
+                             <li class="dropdown "><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/atolMaps/program/admin/listUser.php">List Pengusaha</a></li>
                                     <li><a href="/atolMaps/program/admin/InsertPengusaha.php">Insert Pemilik Usaha</a></li>

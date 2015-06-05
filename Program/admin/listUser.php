@@ -82,7 +82,8 @@
                     while($row = mysql_fetch_array($query))
                     {
                         echo "<tr>";
-                            echo '<form method = "post" action = "edit_hapus_admin.php">';
+                            echo '<form method = "post" action = "editHapusUser.php">';
+                                
                                 echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
                                 echo '<td>' . $row['no_ktp'] . '<input type = "hidden" name = "noKtp" value = "'. $row['no_ktp'] .'"></td>';
                                 echo '<td>' . $row['nama_pengusaha'] . '<input type = "hidden" name = "nama" value = "'. $row['nama_pengusaha'] .'"></td>';
@@ -140,7 +141,7 @@
                     while($row = mysql_fetch_array($query))
                     {
                         echo "<tr>";
-                            echo '<form method = "post" action = "edit_hapus_admin.php">';
+                            echo '<form method = "post" action = "editHapusUser.php">';
                                 echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
                                 echo '<td>' . $row['no_ktp'] . '<input type = "hidden" name = "noKtp" value = "'. $row['no_ktp'] .'"></td>';
                                 echo '<td>' . $row['nama_pengusaha'] . '<input type = "hidden" name = "nama" value = "'. $row['nama_pengusaha'] .'"></td>';
