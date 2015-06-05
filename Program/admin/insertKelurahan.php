@@ -6,13 +6,12 @@
     include_once($path);
     
   
-    
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Sign Up</title>
+    <title>Form Kecamatan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -26,92 +25,53 @@
     <!-- header -->
     <?php 
         nav();
+        connect();
     ?>
     <!-- disini konten  -->
     
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h2 class="text-center">Masukan Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/admin/prosesInsertPengusaha.php" enctype="multipart/form-data" method="post">
+                <h2 class="text-center">Masukan Data Kelurahan</h2><hr/>
+                <form class="form-horizontal" action="/atolMaps/Program/admin/prosesInsertKelurahan.php" method="post">
 
-					
+                    <div class="form-group row" >
+                <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="kecamatan" id="kecamatan">';
+                        <?php
+                        $sql = "SELECT  id_kecamatan,nama_kecamatan from kecamatan ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['nama_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
+                        }
+                        ?>
+echo              '</select>
+                </div>
+                </div>
+
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama Kelurahan</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="Nama Kelurahan"/>
+                            <input type="text" name="nama" class="form-control" placeholder="nama kelurahaan"/>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">Username/KTP</label>
+
+                     <div class="form-group">
+                        <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" placeholder="username pengusaha"/>
+                            <input type="text" name="lat" class="form-control" placeholder="latitude kelurahan"/>
+
                         </div>
                     </div>
 
 					<div class="form-group">
-                        <label for="password" class="col-sm-4 control-label">Password</label>
+
+						<label for="long" class="col-sm-4 control-label">Longitude</label>
                         <div class="col-sm-5">
-                            <input type="password" name="password" class="form-control" placeholder="password pengusaha"/>
+                            <input type="text" name="long" class="form-control" placeholder="longitude kelurahan"/>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="nama" class="col-sm-4 control-label">Nama</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="nama pengusaha"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="alamat" class="col-sm-4 control-label">Alamat</label>
-                        <div class="col-sm-5">
-                            <input type="text" name="alamat" class="form-control" placeholder="alamat pengusaha"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jk" class="col-sm-4 control-label">Jenis Kelamin</label>
-                        <div class="col-sm-5">
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="L" />Laki-laki
-                           </label>
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="P" />Perempuan
-                           </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                    
-                        <label for="ttl" class="col-sm-4 control-label">Tanggal Lahir</label>
-                        <div class="col-sm-5">
-                        <div class="input-group date">
-                            <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-th"></i>
-                            </span>
-                        </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="filektp" class="col-sm-4 control-label">Foto KTP</label>
-                        <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row" >
-                        <label for="status" class="col-sm-4 control-label">Status Akun</label>
-                        <div class="col-sm-2">          
-                            <select class="form-control" name="status" id="status">
-                                <option value="aktif">Aktif</option>
-                                <option value="tidak aktif">Tidak Aktif</option>
-                            </select>
-                        </div>
-                </div>
-
+					
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
@@ -135,10 +95,7 @@
 	<!-- javascript -->
     <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
 	<script src="/atolMaps/program/js/bootstrap.js"></script>
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
 
-    <script>
-            $('.input-group.date #ttl').datepicker({});
-    </script>
+
 </body>
 </html>
