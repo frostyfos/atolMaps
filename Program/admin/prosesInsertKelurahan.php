@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+<title></title>
+<?php
+=======
 <title>Proses SignUp</title>
 <?php
 
 
+>>>>>>> 123657fbea84b1a6d0955cf36b51800943ab3484
 	session_start();
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/atolMaps/program/lib_func.php";
@@ -13,6 +18,29 @@
 	$nama = $_POST['nama'];
 	$lat = $_POST['lat'];
 	$long = $_POST['long'];
+<<<<<<< HEAD
+	$kecamatan = $_POST['nama_kecamatan'];
+
+	$sql = "INSERT INTO kelurahan VALUES(NULL,'$nama',(SELECT id_kecamatan FROM kecamatan WHERE nama_kecamatan LIKE '$kecamatan'),'$lat','$long')";
+		
+	//eksekusi statement insert data
+	if(!mysql_query($sql))
+	{
+		print mysql_error();
+		echo '<script type="text/javascript">';
+		echo 'alert("Tambah Data Kelurahan Gagal")';
+		echo '</script>';
+		header( "refresh:0; url=/atolMaps/program/admin/insertKelurahan.php" );
+	}
+	else
+	{
+		echo '<script type="text/javascript">';
+		echo 'alert("Tambah Data Kelurahan Berhasil")';
+		echo "</script>";
+		header( "refresh:0; url=/atolMaps/program//admin/admin.php" );
+	}
+	
+=======
 	$username = $_POST['username'];
 	$alamat = $_POST['alamat'];
 	$password = $_POST['password'];
@@ -58,5 +86,6 @@
 			echo "</script>";
 			header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
 		}
+>>>>>>> 123657fbea84b1a6d0955cf36b51800943ab3484
 	
 ?>
