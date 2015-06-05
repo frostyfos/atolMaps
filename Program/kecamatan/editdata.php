@@ -5,16 +5,14 @@
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
     connect();
-  if(!isset ($_SESSION['myusername'])){
-        header(("location:/atolMaps/program/formLogin.php"));
-    }
+  
     
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Edit Profile Pengusaha</title>
+    <title>Edit Data Kecamatan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -26,7 +24,7 @@
 <body>
 
 <?php 
-            $sqlProfil = "SELECT * FROM pengusaha where no_ktp like ".$_SESSION['myusername']."";
+            $sqlProfil = "SELECT * FROM pengusaha where id like ".$_SESSION['myusername']."";
             //eksekusi query
             $query = mysql_query($sqlProfil);
             if(!$query)
@@ -54,10 +52,10 @@
                     {
 	 echo '<div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h2 class="text-center">Edit Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/pengusaha/proses_edit_profil.php" enctype="multipart/form-data" method="post">
+                <h2 class="text-center">Edit Data Kecamatan</h2><hr/>
+                <form class="form-horizontal" action="/atolmaps/program/kecamatan/proses_edit_kecamatan.php" enctype="multipart/form-data" method="post">
 
-					<input type="hidden" name="id_pengusaha" class="form-control" value="'.$row['id_pengusaha'].'"/>
+					<input type="hidden" name="id_kecamatan" class="form-control" value="'.$row['id_kecamatan'].'"/>
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-5">
@@ -66,23 +64,16 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">Username/KTP</label>
+                        <label for="id" class="col-sm-4 control-label">ID Kecamatan</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" value="'.$row['no_ktp'].'"/>
-                        </div>
-                    </div>
-
-					<div class="form-group">
-                        <label for="password" class="col-sm-4 control-label">Password</label>
-                        <div class="col-sm-5">
-                            <input type="password" name="password" class="form-control" value="'.$row['password'].'"/>
+                            <input type="text" name="id" class="form-control" value="'.$row['id'].'"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" value="'.$row['nama_pengusaha'].'"/>
+                            <input type="text" name="nama" class="form-control" value="'.$row['nama_kecamatan'].'"/>
                         </div>
                     </div>
 
@@ -90,18 +81,6 @@
                         <label for="alamat" class="col-sm-4 control-label">Alamat</label>
                         <div class="col-sm-5">
                             <input type="text" name="alamat" class="form-control" value="'.$row['alamat'].'"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jk" class="col-sm-4 control-label">Jenis Kelamin</label>
-                        <div class="col-sm-5">
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="L" />Laki-laki
-                           </label>
-                           <label class="radio-inline">
-                                <input type="radio" name="jk" value="P" />Perempuan
-                           </label>
                         </div>
                     </div>
 
@@ -119,7 +98,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="filektp" class="col-sm-4 control-label">Foto KTP</label>
+                        <label for="fotocamat" class="col-sm-4 control-label">Foto Kecamatan</label>
                         <div class="col-sm-5">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
                         </div>

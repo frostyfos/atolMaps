@@ -5,7 +5,7 @@
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
     
-    /if(!isset ($_SESSION['myusername'])){
+    if(!isset ($_SESSION['myusername'])){
         formLogin();
     }
     
@@ -14,7 +14,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Halaman Pengusaha</title>
+    <title>List Usaha di Bandung</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
@@ -29,13 +29,12 @@
             nav();
     
 	connect();
-	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala, peng.*
+	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala
 				 FROM usaha u join kelurahan kel on u.id_kelurahan=kel.id_kelurahan
 										join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
 										join skala_usaha ska on u.id_skala=ska.id_skala
 										join sektor_usaha sek on u.id_sektor=sek.id_sektor
-										join pengusaha peng on u.id_pengusaha=peng.id_pengusaha
-										WHERE peng.no_ktp like '".$_SESSION['myusername']."'"; 
+										";
         //eksekusi query
         $query = mysql_query($sql_usaha);
         if(!$query)
@@ -56,18 +55,24 @@
             </div>
             </form><br>';//search
         //tampil data  
-		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Anda</center>';             
+		echo '<span class="glyphicon" ></span><hr><center>Data Usaha di Kabupaten Bandung</center>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
         echo '<th>NO</th>';
-        echo '<th>Usaha</th>';
-        echo '<th>Status</th>';
+        echo '<th>Nama Usaha</th>';
+        echo '<th>Produk Utama</th>';
+		echo '<th>Sektor Usaha</th>';
+		echo '<th>Skala Usaha</th>';
+		echo '<th>Alamat</th>';
+		echo '<th>Kelurahan</th>';
+		echo '<th>Kecamatan</th>';
+		echo '<th>Gambar</th>';
         echo '</tr>';
         //tampil data transaksi
         while($row = mysql_fetch_array($query))
         {
             echo "<tr>";
-            echo '<form method = "post" action = "edit_hapus_meja.php">';
+            echo '<form method = "post" action = "tampilPetaUsaha.php">';
             echo '<td>' . $row['id_usaha'] . '<input type = "hidden" name = "id_usaha" value = "'. $row['id_usaha'] .'"></td>';
             echo '<td>' . $row['nama_usaha'] . '<input type = "hidden" name = "nama_usaha" value = "'. $row['nama_usaha'] .'"></td>';
 			echo '<td>' . $row['produk_utama'] . '<input type = "hidden" name = "produk_utama" value = "'. $row['produk_utama'] .'"></td>';
@@ -76,18 +81,12 @@
 			echo '<td>' . $row['alamat_usaha'] . '<input type = "hidden" name = "alamat_usaha" value = "'. $row['alamat_usaha'] .'"></td>';
 			echo '<td>' . $row['nama_kelurahan'] . '<input type = "hidden" name = "kelurahan" value = "'. $row['nama_kelurahan'] .'"></td>';
 			echo '<td>' . $row['nama_kecamatan'] . '<input type = "hidden" name = "kecamatan" value = "'. $row['nama_kecamatan'] .'"></td>';
-            echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';
+			
             echo '<td><img src="../gambar/'.$row['gambar1'].' " height="50" width="50" data-toggle="modal" data-target="#myModal"/>
 			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">
 			  Lihat Gambar
 			</button>
 			</td>';
-
-			
-			echo '<td><input type = "submit" name = "update" value = "Update" class="btn btn-default"></td>';
-            echo '<td><input type = "submit" name = "delete" value = "delete" class="btn btn-default"></td>';
-            echo '</form>';
-            echo "</tr>";
 			
 			echo '<!-- Button trigger modal -->
 			
@@ -101,11 +100,10 @@
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-				  
-					<img src="../gambar/'.$row['gambar1'].'" height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar2'].'" height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar3'].'" height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar4'].'" height="200" width="200"/>
+					<img src="../gambar/11.jpg " height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar2'].' " height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar3'].' " height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar4'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar5'].' " height="200" width="200"/>
 				  </div>
 				  <div class="modal-footer">
@@ -117,11 +115,12 @@
 			</div>';
 			
 			
+            echo '</form>';
+            echo "</tr>";
          }
          echo "</table>";
     echo '</div>'; //end of tab admin
 echo '</div>'; //end of tab content
-
 
 
 

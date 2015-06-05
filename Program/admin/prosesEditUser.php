@@ -1,4 +1,4 @@
-<title>Proses SignUp</title>
+<title>Proses Edit User</title>
 <?php
 
 
@@ -10,6 +10,7 @@
     connect();
 
 	//deklarasi variabel
+	$id_pengusaha= $_POST['id_pengusaha'];
 	$nama = $_POST['nama'];
 	$alamat = $_POST['alamat'];
 	$jk = $_POST['jk'];
@@ -17,10 +18,9 @@
 	$alamat = $_POST['alamat'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
-	$status = $_POST['status'];
+	$status_akun = $_POST['status_akun'];
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
-	
 		if($_FILES['userfile']['error']==4){
 			$FileUpload = "default.jpg";
 		}
@@ -41,22 +41,24 @@
 		
 		$filektp = "gambar/".$FileUpload;
 		
-			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password','$status')";
+			$sql = "UPDATE pengusaha SET no_ktp = '$username', nama_pengusaha = '$nama', alamat = '$alamat', ttl = '$ttl', jenis_kelamin = '$jk', file_ktp = '$filektp', email='$email', password='$password', status_akun = '$status_akun' WHERE id_pengusaha = '$id_pengusaha'";
 		
 		//eksekusi statement insert data
 		if(!mysql_query($sql))
 		{
+			print(mysql_error());
 			echo '<script type="text/javascript">';
-			echo 'alert("Tambah Data Pengusaha Gagal")';
+			echo 'alert("Edit Data Pengusaha Gagal")';
+			
 			echo '</script>';
-			header( "refresh:0; url=/atolMaps/program/admin/insertPengusaha.php" );
+			header( "refresh:0; url=/atolMaps/program/admin/editHapusUser.php" );
 		}
 		else
 		{
 			echo '<script type="text/javascript">';
-			echo 'alert("Tambah Data Pengusaha Berhasil")';
+			echo 'alert("Edit Data Pengusaha Berhasil")';
 			echo "</script>";
-			header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
+			header( "refresh:0; url=/atolMaps/program/admin/listUser.php" );
 		}
 	
 ?>

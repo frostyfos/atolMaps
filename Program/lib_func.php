@@ -32,7 +32,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
-                             <li class="dropdown"><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
+                             <li class="dropdown "><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/atolMaps/program/admin/listUser.php">List Pengusaha</a></li>
                                     <li><a href="/atolMaps/program/admin/InsertPengusaha.php">Insert Pemilik Usaha</a></li>
@@ -58,8 +58,10 @@
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kecamatan<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+
                                     <li><a href="">List Kecamatan</a></li>
                                     <li><a href="/atolMaps/Program/admin/insertKecamatan.php">Insert Kecamatan</a></li>
+
                                 </ul>
                             </li>  
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kelurahan<span class="caret"></span></a>
@@ -96,7 +98,7 @@
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">List Usaha</a>
+                                <a href="/atolMaps/program/pengusaha/tampilUsahaBandung.php">List Usaha</a>
                             </li>
                             <li>
                                 <a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a>
