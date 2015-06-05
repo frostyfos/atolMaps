@@ -7,6 +7,7 @@
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
 <<<<<<< HEAD
+<<<<<<< HEAD
     //connect to database
     connect();
 
@@ -17,6 +18,8 @@
 		
 		$sql = "INSERT INTO kecamatan VALUES(NULL,'$nama','$latitude','$longitude')";
 =======
+=======
+>>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
     //conncet to database
     connect();
 
@@ -46,6 +49,9 @@
 		$fotocamat = "gambar/".$_FILES['userfile']['name'];
 		
 			$sql = "INSERT INTO kecamatan(id_kecamatan,nama_kecamatan,alamat_kecamatan,latitude,longitude) VALUES('$id','$nama','$alamat','$ttl','$latitude','$longitude','$fotocamat')";
+<<<<<<< HEAD
+>>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
+=======
 >>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
 		
 		//eksekusi statement insert data
@@ -55,7 +61,11 @@
 			echo 'alert("Tambah Data Kecamatan Gagal")';
 			echo '</script>';
 <<<<<<< HEAD
+<<<<<<< HEAD
 			header( "refresh:0; url=/atolMaps/Program/admin/insertKecamatan.php" );
+=======
+			header( "refresh:0; url=/atolMaps/program/admin/insertKecamatan.php" );
+>>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
 =======
 			header( "refresh:0; url=/atolMaps/program/admin/insertKecamatan.php" );
 >>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
@@ -66,7 +76,11 @@
 			echo 'alert("Tambah Data Kecamatan Berhasil")';
 			echo "</script>";
 <<<<<<< HEAD
+<<<<<<< HEAD
 			header( "refresh:0; url=/atolMaps/Program/admin/admin.php" );
+=======
+			header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
+>>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
 =======
 			header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
 >>>>>>> 53ff51b57580231bb570d7f953867a7088cf979f
