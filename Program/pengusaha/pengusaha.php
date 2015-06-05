@@ -88,12 +88,8 @@
             echo '<td><input type = "submit" name = "delete" value = "delete" class="btn btn-default"></td>';
             echo '</form>';
             echo "</tr>";
-         }
-         echo "</table>";
-    echo '</div>'; //end of tab admin
-echo '</div>'; //end of tab content
-
-echo '<!-- Button trigger modal -->
+			
+			echo '<!-- Button trigger modal -->
 			
 			
 			<!-- Modal -->
@@ -105,10 +101,11 @@ echo '<!-- Button trigger modal -->
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-					<img src="../gambar/'.$row['gambar1'].' " height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar2'].' " height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar3'].' " height="200" width="200"/>
-					<img src="../gambar/'.$row['gambar4'].' " height="200" width="200"/>
+				  
+					<img src="../gambar/'.$row['gambar1'].'" height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar2'].'" height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar3'].'" height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar4'].'" height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar5'].' " height="200" width="200"/>
 				  </div>
 				  <div class="modal-footer">
@@ -118,6 +115,14 @@ echo '<!-- Button trigger modal -->
 				</div>
 			  </div>
 			</div>';
+			
+			
+         }
+         echo "</table>";
+    echo '</div>'; //end of tab admin
+echo '</div>'; //end of tab content
+
+
 
 
 }else{

@@ -55,7 +55,7 @@
             </div>
             </form><br>';//search
         //tampil data  
-		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Anda</center>';             
+		echo '<span class="glyphicon" ></span><hr><center>Data Usaha di Kabupaten Bandung</center>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
         echo '<th>NO</th>';
@@ -100,7 +100,7 @@
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-					<img src="../gambar/'.$row['gambar1'].' " height="200" width="200"/>
+					<img src="../gambar/11.jpg " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar2'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar3'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar4'].' " height="200" width="200"/>
