@@ -4,9 +4,6 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
-    
-  
-    
 ?>
 
 <html>
@@ -24,7 +21,7 @@
 <body>
 <div class="container">
     <!-- header -->
-<!-- disini konten  -->
+    <!-- disini konten  -->
     <!-- footer -->
         <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
@@ -43,6 +40,7 @@
 
     <script>
             $('.input-group.date #ttl').datepicker({});
+
     </script>
 </body>
 </html>

@@ -58,7 +58,6 @@
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kecamatan<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="">List Kecamatan</a></li>
                                     <li><a href="/atolMaps/Program/admin/insertKecamatan.php">Insert Kecamatan</a></li>
                                     <li><a href="/atolMaps/program/kecamatan/editdata.php">List Kecamatan</a></li>
                                 </ul>
