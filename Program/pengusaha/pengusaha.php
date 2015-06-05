@@ -5,7 +5,7 @@
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
     
-    if(!isset ($_SESSION['myusername'])){
+    /if(!isset ($_SESSION['myusername'])){
         formLogin();
     }
     
