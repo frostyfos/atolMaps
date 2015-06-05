@@ -96,7 +96,7 @@
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">List Usaha</a>
+                                <a href="/atolMaps/program/pengusaha/tampilUsahaBandung.php">List Usaha</a>
                             </li>
                             <li>
                                 <a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a>
