@@ -21,20 +21,25 @@
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
 	
-		if($_FILES['userfile']['error']==0){
-			$namafilebaru="/atolMaps/program/gambar/".$_FILES['userfile']['name'];
-		
-		if(move_uploaded_file($_FILES['userfile']['tmp_name'],
-			$namafilebaru)==true){
-		echo "File telah tersimpan.";
+		if($_FILES['userfile']['error']==4){
+			$FileUpload = "default.jpg";
 		}
-		else
-		echo "Gagal menyimpan file upload";
+		if($_FILES['userfile']['error']==0){
+			$namafilebaru="../gambar/".$_FILES['userfile']['name'];
+		
+			if(move_uploaded_file($_FILES['userfile']['tmp_name'],
+				$namafilebaru)==true){
+				$FileUpload = $_FILES['userfile']['name'];
+				echo "File telah tersimpan.";
+			}
+				else{
+					echo "Gagal menyimpan file upload";
+				}
 		}
 		else
 		echo "Gagal Upload";
 		
-		$filektp = "gambar/".$_FILES['userfile']['name'];
+		$filektp = "gambar/".$FileUpload;
 		
 			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password','$status')";
 		
