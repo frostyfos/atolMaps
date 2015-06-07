@@ -14,8 +14,6 @@
 	$longitude = $_POST['long'];
 		
 		$sql = "INSERT INTO kecamatan VALUES(NULL,'$nama','$latitude','$longitude')";
-    //conncet to database
-    connect();
 
 	//deklarasi variabel
 	$nama = $_POST['nama'];

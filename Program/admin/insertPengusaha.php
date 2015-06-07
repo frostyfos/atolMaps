@@ -109,7 +109,7 @@
                                 <option value="tidak aktif">Tidak Aktif</option>
                             </select>
                         </div>
-                </div>
+                    </div>
 
 
                     <div class="form-group">

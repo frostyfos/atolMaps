@@ -40,7 +40,7 @@
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Pengusaha<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">List Usaha</a></li>
+                                    <li><a href="tampilUsahaBandung.php">List Usaha</a></li>
                                     <li><a href="insert_usaha.php">Insert Usaha</a></li>
                                 </ul>
                             </li>

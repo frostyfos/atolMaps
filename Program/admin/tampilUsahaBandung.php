@@ -40,22 +40,26 @@
         {
             print(mysql_error());
         }
-   
+    echo '<a href="insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
 	
-    echo '
-	<form method="POST" action="tampilPencarianUsaha.php">
-	<div class="row">
+    echo '<div class="row">
 	  
-	  <div class="col-lg-4 pull-right">
+	  <div class="col-lg-6 pull-right">
 		<div class="input-group">
-		  <input type="text" class="form-control" aria-label="..." placeholder="Cari nama usaha..." name="query_cari">
-		  <span class="input-group-btn">
-        	<button class="btn btn-default" type="submit">Cari</button>
-
+		  <input type="text" class="form-control" aria-label="..." placeholder="Cari data...">
+		  <div class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari Berdasarkan... <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			  <li><a href="#">Nama Usaha</a></li>
+			  <li><a href="#">Sektor</a></li>
+			  <li><a href="#">Skala Usaha</a></li>
+			  <li class="divider"></li>
+			  <li><a href="#">Separated link</a></li>
+			</ul>
+		  </div><!-- /btn-group -->
 		</div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->
-	</form>';
+	</div><!-- /.row -->';
         //tampil data  
 		echo '<span class="glyphicon" ></span><hr><center>Data Usaha di Kabupaten Bandung</center>';             
         echo '<br><br><table class="table table-striped">';
@@ -69,6 +73,7 @@
 		echo '<th>Alamat</th>';
 		echo '<th>Kelurahan</th>';
 		echo '<th>Kecamatan</th>';
+		echo '<th>Status Usaha</th>';
 		echo '<th>Gambar</th>';
         echo '</tr>';
         //tampil data transaksi
@@ -78,14 +83,15 @@
             echo '<form method = "post" action = "tampilPetaUsaha.php">';
             echo '<td>' . $row['id_usaha'] . '<input type = "hidden" name = "id_usaha" value = "'. $row['id_usaha'] .'"></td>';
             echo '<td>' . $row['nama_usaha'] . '<input type = "hidden" name = "nama_usaha" value = "'. $row['nama_usaha'] .'"></td>';
-            echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
+			echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
 			echo '<td>' . $row['produk_utama'] . '<input type = "hidden" name = "produk_utama" value = "'. $row['produk_utama'] .'"></td>';
 			echo '<td>' . $row['skala'] . '<input type = "hidden" name = "Skala" value = "'. $row['skala'] .'"></td>';
 			echo '<td>' . $row['sektor'] . '<input type = "hidden" name = "sektor" value = "'. $row['sektor'] .'"></td>';
 			echo '<td>' . $row['alamat_usaha'] . '<input type = "hidden" name = "alamat_usaha" value = "'. $row['alamat_usaha'] .'"></td>';
 			echo '<td>' . $row['nama_kelurahan'] . '<input type = "hidden" name = "kelurahan" value = "'. $row['nama_kelurahan'] .'"></td>';
 			echo '<td>' . $row['nama_kecamatan'] . '<input type = "hidden" name = "kecamatan" value = "'. $row['nama_kecamatan'] .'"></td>';
-			echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';	
+			echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';
+			
             echo '<td><img src="../'.$row['gambar1'].' " height="50" width="50" data-toggle="modal" data-target="#myModal"/>
 			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">
 			  Lihat Gambar
