@@ -44,30 +44,45 @@
         }
     echo '<a href="/atolmaps/program/pengusaha/insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
 	
-    echo '<form action = "#.php" method = "post">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
-            <div class="input-group">
-
-              <input type="text" name="cari_usaha" class="form-control" placeholder="Cari data usaha...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
-                </span>
-            </div>
-            </div>
-            </form><br>';//search
+		echo '<div class="row">
+	  
+	  <div class="col-lg-6 pull-right">
+		<div class="input-group">
+		  <input type="text" class="form-control" aria-label="..." placeholder="Cari data...">
+		  <div class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari Berdasarkan... <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			  <li><a href="#">Nama Usaha</a></li>
+			  <li><a href="#">Sektor</a></li>
+			  <li><a href="#">Skala Usaha</a></li>
+			  <li class="divider"></li>
+			  <li><a href="#">Separated link</a></li>
+			</ul>
+		  </div><!-- /btn-group -->
+		</div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->';
+	
         //tampil data  
 		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Anda</center>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
-        echo '<th>NO</th>';
-        echo '<th>Usaha</th>';
-        echo '<th>Status</th>';
+         echo '<th>NO</th>';
+        echo '<th>Nama Usaha</th>';
+        echo '<th>Produk Utama</th>';
+		echo '<th>Sektor Usaha</th>';
+		echo '<th>Skala Usaha</th>';
+		echo '<th>Alamat</th>';
+		echo '<th>Kelurahan</th>';
+		echo '<th>Kecamatan</th>';
+		echo '<th>Status Akun</th>';
+		echo '<th>Gambar</th>';
         echo '</tr>';
         //tampil data transaksi
         while($row = mysql_fetch_array($query))
         {
             echo "<tr>";
-            echo '<form method = "post" action = "edit_hapus_meja.php">';
+            echo '<form method = "post" action = "edit_hapus_usaha.php">';
             echo '<td>' . $row['id_usaha'] . '<input type = "hidden" name = "id_usaha" value = "'. $row['id_usaha'] .'"></td>';
             echo '<td>' . $row['nama_usaha'] . '<input type = "hidden" name = "nama_usaha" value = "'. $row['nama_usaha'] .'"></td>';
 			echo '<td>' . $row['produk_utama'] . '<input type = "hidden" name = "produk_utama" value = "'. $row['produk_utama'] .'"></td>';
