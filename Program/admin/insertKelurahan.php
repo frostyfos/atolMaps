@@ -25,26 +25,41 @@
     <!-- header -->
     <?php 
         nav();
+        connect();
     ?>
     <!-- disini konten  -->
     
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <h2 class="text-center">Masukan Data Kecamatan</h2><hr/>
-                <form class="form-horizontal" action="/atolMaps/Program/admin/prosesInsertKecamatan.php" method="post">
+                <h2 class="text-center">Masukan Data Kelurahan</h2><hr/>
+                <form class="form-horizontal" action="/atolMaps/Program/admin/prosesInsertKelurahan.php" method="post">
 
-                    
+                    <div class="form-group row" >
+                <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
+                <div class="col-sm-2">          
+                    <select class="form-control" name="kecamatan" id="kecamatan">';
+                        <?php
+                        $sql = "SELECT  id_kecamatan,nama_kecamatan from kecamatan ";
+                        $hasil = mysql_query($sql);  
+                        while($row=mysql_fetch_array($hasil)){
+                            echo' <option value="'.$row['nama_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
+                        }
+                        ?>
+echo              '</select>
+                </div>
+                </div>
+
                     <div class="form-group">
-                        <label for="nama" class="col-sm-4 control-label">Nama</label>
+                        <label for="nama" class="col-sm-4 control-label">Nama Kelurahan</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="nama kecamatan"/>
+                            <input type="text" name="nama" class="form-control" placeholder="nama kelurahaan"/>
                         </div>
                     </div>
 
                      <div class="form-group">
                         <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="lat" class="form-control" placeholder="latitude kecamatan"/>
+                            <input type="text" name="lat" class="form-control" placeholder="latitude kelurahan"/>
 
                         </div>
                     </div>
@@ -53,7 +68,7 @@
 
 						<label for="long" class="col-sm-4 control-label">Longitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="long" class="form-control" placeholder="longitude kecamatan"/>
+                            <input type="text" name="long" class="form-control" placeholder="longitude kelurahan"/>
                         </div>
                     </div>
 					
