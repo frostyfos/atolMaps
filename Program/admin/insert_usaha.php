@@ -31,13 +31,9 @@
         nav();    
     ?>
 <!-- disini konten  -->
-    <!-- footer -->
     
-    <?php 
-        if(isset ($_SESSION['myusername'])){
-            nav();
-    
-        echo '<div class="row">
+
+    <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
                 <div class="container">
                     <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
@@ -45,12 +41,11 @@
             </div>
         </div>
     </div> <!-- end of container -->
+
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Usaha</h2><hr/>
-                <form class="form-horizontal" action="../pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">
-
-					
+                <form class="form-horizontal" action="../pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">	
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama Usaha</label>
                         <div class="col-sm-5">
@@ -75,26 +70,39 @@
 					<div class="form-group row" >
                 <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="kecamatan" id="kecamatan">';
-                        $sql = "SELECT  * from kecamatan ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
-                        }
-echo              '</select>
+                    <select class="form-control" name="kecamatan" id="kecamatan">
+                        <?php 
+                            $sql = "SELECT  * from kecamatan ";
+                            $hasil = mysql_query($sql);  
+                            while($row=mysql_fetch_array($hasil)){
+                        ?>
+                            <option value="<?php echo $row['id_kecamatan']; ?>">
+                                <?php  echo $row['nama_kecamatan']; ?>
+                            </option>';
+                        <?php
+                            }
+                        ?>
+                        
+                    </select>
                 </div>
 				</div>
 
                     <div class="form-group row" >
                 <label for="kelurahan" class="col-sm-4 control-label">Kelurahan</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="kelurahan" id="kelurahan">';
-                        $sql = "SELECT  * from kelurahan ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_kelurahan'].'">'.$row['nama_kelurahan'].'</option>';
-                        }
-echo              '</select>
+                    <select class="form-control" name="kelurahan" id="kelurahan">
+                        <?php 
+                            $sql = "SELECT * FROM kelurahan INNER JOIN kecamatan ON kelurahan.id_kecamatan = kecamatan.id_kecamatan ORDER BY nama_kelurahan";
+                            $hasil = mysql_query($sql);  
+                            while($row=mysql_fetch_array($hasil)){
+                        ?>
+                            <option value="<?php echo $row['id_kelurahan']; ?>" class="<?php echo $row['id_kecamatan']; ?>">
+                                <?php  echo $row['nama_kelurahan']; ?>
+                            </option>';
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
 				</div>
 
@@ -129,26 +137,38 @@ echo              '</select>
 					<div class="form-group row" >
                 <label for="skala" class="col-sm-4 control-label">Skala Usaha</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="skala" id="skala">';
-                        $sql = "SELECT  * from skala_usaha ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_skala'].'">'.$row['skala'].'</option>';
-                        }
-echo              '</select>
+                    <select class="form-control" name="skala" id="skala">
+                        <?php 
+                            $sql = "SELECT  * from skala_usaha ";
+                            $hasil = mysql_query($sql);  
+                            while($row=mysql_fetch_array($hasil)){
+                        ?>
+                            <option value="<?php echo $row['id_skala']; ?>">
+                                <?php  echo $row['skala'];?>
+                            </option>
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
 				</div>
 				
 				<div class="form-group row" >
                 <label for="sektor" class="col-sm-4 control-label">Sektor Usaha</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="sektor" id="sektor">';
-                        $sql = "SELECT  * from sektor_usaha ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_sektor'].'">'.$row['sektor'].'</option>';
-                        }
-echo              '</select>
+                    <select class="form-control" name="sektor" id="sektor">
+                        <?php 
+                            $sql = "SELECT  * from sektor_usaha ";
+                            $hasil = mysql_query($sql);  
+                            while($row=mysql_fetch_array($hasil)){
+                        ?>
+                            <option value="<?php echo $row['id_sektor']; ?>">
+                                <?php  echo $row['sektor'];?>
+                            </option>';
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
 				</div>
 				
@@ -184,9 +204,6 @@ echo              '</select>
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
                         </div>
                     </div>
-                    
-                    
-
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
@@ -197,18 +214,16 @@ echo              '</select>
                 </form>
             </div>
         </div> 
-     </div>';
-		}else{
-    echo '<div class="alert alert-warning text-center" role="alert"><p>Anda tidak mempunyai hak akses</p></div>';
-}
-	 ?>
+     </div>
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+    <script src="../js/jquery.chained.min.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
 
     <script>
-            $('.input-group.date #ttl').datepicker({});		
+            $('.input-group.date #ttl').datepicker({});	
+            $("#kelurahan").chained("#kecamatan");	
     </script>
 </body>
 </html>
