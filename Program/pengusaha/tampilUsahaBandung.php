@@ -42,17 +42,24 @@
         }
     echo '<a href="insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
 	
-    echo '<form action = "#.php" method = "post">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
-            <div class="input-group">
-
-              <input type="text" name="cari_usaha" class="form-control" placeholder="Cari data usaha...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
-                </span>
-            </div>
-            </div>
-            </form><br>';//search
+    echo '<div class="row">
+	  
+	  <div class="col-lg-6 pull-right">
+		<div class="input-group">
+		  <input type="text" class="form-control" aria-label="..." placeholder="Cari data...">
+		  <div class="input-group-btn">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari Berdasarkan... <span class="caret"></span></button>
+			<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			  <li><a href="#">Nama Usaha</a></li>
+			  <li><a href="#">Sektor</a></li>
+			  <li><a href="#">Skala Usaha</a></li>
+			  <li class="divider"></li>
+			  <li><a href="#">Separated link</a></li>
+			</ul>
+		  </div><!-- /btn-group -->
+		</div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->';
         //tampil data  
 		echo '<span class="glyphicon" ></span><hr><center>Data Usaha di Kabupaten Bandung</center>';             
         echo '<br><br><table class="table table-striped">';
@@ -99,7 +106,7 @@
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-					<img src="../gambar/11.jpg " height="200" width="200"/>
+					<img src="../gambar/'.$row['gambar1'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar2'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar3'].' " height="200" width="200"/>
 					<img src="../gambar/'.$row['gambar4'].' " height="200" width="200"/>
