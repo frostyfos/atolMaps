@@ -41,26 +41,20 @@
         {
             print(mysql_error());
         }
-    echo '<a href="insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
-	
-		echo '<div class="row">
+    echo '
+	<form method="POST" action="tampilPencarianUsaha.php">
+	<div class="row">
 	  
-	  <div class="col-lg-6 pull-right">
+	  <div class="col-lg-4 pull-right">
 		<div class="input-group">
-		  <input type="text" class="form-control" aria-label="..." placeholder="Cari data...">
-		  <div class="input-group-btn">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari Berdasarkan... <span class="caret"></span></button>
-			<ul class="dropdown-menu dropdown-menu-right" role="menu">
-			  <li><a href="#">Nama Usaha</a></li>
-			  <li><a href="#">Sektor</a></li>
-			  <li><a href="#">Skala Usaha</a></li>
-			  <li class="divider"></li>
-			  <li><a href="#">Separated link</a></li>
-			</ul>
-		  </div><!-- /btn-group -->
+		  <input type="text" class="form-control" aria-label="..." placeholder="Cari nama usaha..." name="query_cari">
+		  <span class="input-group-btn">
+        	<button class="btn btn-default" type="submit">Cari</button>
+
 		</div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->';
+	</div><!-- /.row -->
+	</form>';
 	
         //tampil data  
 		echo '<span class="glyphicon" ></span><hr><center>Data Usaha Anda</center>';             

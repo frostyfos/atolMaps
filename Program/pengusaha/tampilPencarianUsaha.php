@@ -27,21 +27,30 @@
         if(isset ($_SESSION['myusername'])){
             nav();
     
+	$query=$_POST['query_cari'];
+		echo $query;
+		
 	connect();
 	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala
 				 FROM usaha u join kelurahan kel on u.id_kelurahan=kel.id_kelurahan
 										join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
 										join skala_usaha ska on u.id_skala=ska.id_skala
 										join sektor_usaha sek on u.id_sektor=sek.id_sektor
+										WHERE u.nama_usaha like '%".$query."%'
 										";
+	
+	
+	
+	
+	
         //eksekusi query
         $query = mysql_query($sql_usaha);
         if(!$query)
         {
             print(mysql_error());
         }
-   
-	
+		
+		
     echo '
 	<form method="POST" action="tampilPencarianUsaha.php">
 	<div class="row">
