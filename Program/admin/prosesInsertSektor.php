@@ -3,8 +3,7 @@
 
 
 	session_start();
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "/lib_func.php";
     include_once($path);
     //conncet to database
     connect();
@@ -20,14 +19,14 @@
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Pengusaha Gagal")';
 		echo '</script>';
-		header( "refresh:0; url=/atolMaps/program/admin/insertSektor.php" );
+		header( "refresh:0; url=insertSektor.php" );
 	}
 	else
 	{
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Pengusaha Berhasil")';
 		echo "</script>";
-		header( "refresh:0; url=/atolMaps/program//admin/admin.php" );
+		header( "refresh:0; url=admin.php" );
 	}
 	
 ?>

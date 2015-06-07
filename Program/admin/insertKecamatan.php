@@ -1,8 +1,7 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
   
@@ -14,10 +13,10 @@
     <title>Form Kecamatan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
-    <link href="/broto/css/datepicker.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="../css/datepicker.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +30,7 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Kecamatan</h2><hr/>
-                <form class="form-horizontal" action="/atolMaps/Program/admin/prosesInsertKecamatan.php" method="post">
+                <form class="form-horizontal" action="prosesInsertKecamatan.php" method="post">
 
                     
                     <div class="form-group">
@@ -78,8 +77,8 @@
         </div>
     </div> <!-- end of container -->
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 
 
 </body>

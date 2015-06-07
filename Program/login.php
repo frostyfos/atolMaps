@@ -1,8 +1,7 @@
 <?php 
 
     session_start();
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "lib_func.php";
     include_once($path);
     //conncet to database
     connect();
@@ -39,16 +38,16 @@
         $_SESSION['myusername'] = $username;
         $_SESSION['mypassword'] = $password;
         $_SESSION['myjabatan'] = $jabatan;
-        header("location:/atolMaps/program/admin/admin.php");
+        header("location:admin/admin.php");
     }else if($count==1 && $jabatan == "pengusaha"){
         $_SESSION['myusername'] = $username;
         $_SESSION['mypassword'] = $password;
         $_SESSION['myjabatan'] = $jabatan;
-        header("location:/atolMaps/program/pengusaha/pengusaha.php");
+        header("location:pengusaha/pengusaha.php");
     }else {
         print "<script>alert('isi username dan password salah!');
         javascript:history.go(-1);</script>";
         exit;
-        header("location:/atolMaps/program/login.php");
+        header("location:login.php");
     }
  ?>

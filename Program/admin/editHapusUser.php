@@ -1,8 +1,7 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
     connect();
@@ -22,9 +21,9 @@
     <title>Olah data User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
     <link href="/broto/css/datepicker.css" rel="stylesheet">
 </head>
 
@@ -41,7 +40,7 @@
             echo '<div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Edit Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/admin/prosesEditUser.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="prosesEditUser.php" enctype="multipart/form-data" method="post">
 
                     <input type="hidden" name="id_pengusaha" class="form-control" value="'.$row['id_pengusaha'].'"/>
                     <div class="form-group">
@@ -119,7 +118,7 @@
                         <label for="filektp" class="col-sm-4 control-label">Foto KTP</label>
                         <div class="col-sm-5">
                             <input type = "hidden" name = "fotoLama" value = "'. $row['file_ktp'] .'">
-                            <img src="/atolmaps/program/'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/>
+                            <img src="../'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/>
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
                         </div>
                     </div>
@@ -181,7 +180,7 @@
                             </tr>
                             <tr>
                                 <th>Foto KTP</th>
-                                <td><img src="/atolmaps/program/'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/></td>
+                                <td><img src="../'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/></td>
                             </tr> 
                             <tr>
                                 <td colspan="2">
@@ -211,12 +210,7 @@
      
      </div>';
     <!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-    <script src="/atolMaps/program/js/bootstrap.js"></script>
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
-
-    <script>
-            $('.input-group.date #ttl').datepicker({});
-    </script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
 </body>
 </html>

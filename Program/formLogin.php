@@ -4,16 +4,27 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
+		<div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-top ">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.php" class="text-center">HOME</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 	     <div class="row">
-	      <!--   <img src="/broto/img/logo.png" class="col-xs-offset-2 col-sm-offset-5 col-md-offset-4 col-lg-offset-5" id="login-logo"> -->
+	      
 	        <h1 class="text-center">LOGIN</h1>
-	        <form class="form-horizontal" action="/atolMaps/program/login.php" method="post">
+	        <form class="form-horizontal" action="login.php" method="post">
 
 	            <div class="form-group">
 	                <label for="myusername" class="col-sm-4 control-label">Username</label>
@@ -49,7 +60,7 @@
 	    </div>
 	</div>
 <!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>

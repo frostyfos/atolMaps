@@ -1,12 +1,11 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
-    if(!isset ($_SESSION['myusername'])){
-        formLogin();
+   if(!isset ($_SESSION['myusername'])){
+        header(("location:../formLogin.php"));
     }
     
 ?>
@@ -17,9 +16,9 @@
     <title>List Usaha di Bandung</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,7 +40,7 @@
         {
             print(mysql_error());
         }
-    echo '<a href="/atolmaps/program/pengusaha/insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
+    echo '<a href="insert_usaha.php"><span class="glyphicon glyphicon-plus"></span>Tambah data usaha</a>';
 	
     echo '<form action = "#.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
@@ -144,7 +143,7 @@ echo '</div>'; //end of tab content
           
     ?> 
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 </body>
 </html>

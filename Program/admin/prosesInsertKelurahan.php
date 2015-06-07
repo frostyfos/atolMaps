@@ -3,8 +3,7 @@
 
 
 	session_start();
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     //conncet to database
     connect();
@@ -24,14 +23,14 @@
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data kelurahan Gagal")';
 		echo '</script>';
-		header( "refresh:0; url=/atolMaps/program/admin/insertKelurahan.php" );
+		header( "refresh:0; url=insertKelurahan.php" );
 	}
 	else
 	{
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Kelurahan Berhasil")';
 		echo "</script>";
-		header( "refresh:0; url=/atolMaps/program/admin/admin.php" );
+		header( "refresh:0; url=admin.php" );
 	}
 	
 ?>

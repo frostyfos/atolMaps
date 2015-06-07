@@ -1,14 +1,13 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
     connect();
 
     if(!isset ($_SESSION['myusername'])){
-        header(("location:/atolMaps/program/formLogin.php"));
+        header(("location:../formLogin.php"));
     }
     
 ?>
@@ -49,7 +48,7 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Usaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="proses_insert_usaha.php" enctype="multipart/form-data" id="chSelect" method="post">
 
 					
                     <div class="form-group">
@@ -77,11 +76,7 @@
                 <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
                 <div class="col-sm-2">          
                     <select class="form-control" name="kecamatan" id="kecamatan">';
-                        $sql = "SELECT  * from kecamatan ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
-                        }
+
 echo              '</select>
                 </div>
 				</div>
@@ -89,12 +84,8 @@ echo              '</select>
                 <div class="form-group row" >
                 <label for="kelurahan" class="col-sm-4 control-label">Kelurahan</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="kelurahan" id="kelurahan">';
-                        $sql = "SELECT  * from kelurahan ";
-                        $hasil = mysql_query($sql);  
-                        while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['id_kelurahan'].'">'.$row['nama_kelurahan'].'</option>';
-                        }
+                    <select class="form-control" name="kelurahan" id="kelurahan">
+                      <option value="0">pilih . . . . . </option>';
 echo              '</select>
                 </div>
 				</div>
@@ -204,14 +195,12 @@ echo              '</select>
 }
 	 ?>
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
 
     <script>
             $('.input-group.date #ttl').datepicker({});
-			
-			
     </script>
 </body>
 </html>

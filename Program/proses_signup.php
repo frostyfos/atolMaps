@@ -3,8 +3,7 @@
 
 
 	session_start();
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "lib_func.php";
     include_once($path);
     //conncet to database
     connect();

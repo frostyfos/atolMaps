@@ -1,8 +1,7 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "lib_func.php";
     include_once($path);
     
     // if(!isset ($_SESSION['myusername'])){
@@ -17,9 +16,9 @@
     <title>Peta Usaha Kabupaten Bandung Barat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,10 +37,10 @@
                 <div class="collapse navbar-collapse" id="collapse">
                     <ul class="nav navbar-nav navbar-right" id="padding_right">
                         <li>
-                            <a href="/atolMaps/program/signup.php">Sign Up</a>
+                            <a href="signup.php">Sign Up</a>
                         </li>
                         <li>
-                            <a href="/atolMaps/program/formLogin.php">Login</a>
+                            <a href="formLogin.php">Login</a>
                         </li>
                     </ul>
                 </div>  
@@ -59,8 +58,8 @@
         </div>
     </div> <!-- end of container -->
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.js"></script>
     // <script type="text/javascript"
     //     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw">
     // </script>

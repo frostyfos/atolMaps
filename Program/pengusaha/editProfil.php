@@ -1,12 +1,11 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     connect();
   if(!isset ($_SESSION['myusername'])){
-        header(("location:/atolMaps/program/formLogin.php"));
+        header(("location:../formLogin.php"));
     }
     
 ?>
@@ -55,7 +54,7 @@
 	 echo '<div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Edit Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/pengusaha/proses_edit_profil.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="proses_edit_profil.php" enctype="multipart/form-data" method="post">
 
 					<input type="hidden" name="id_pengusaha" class="form-control" value="'.$row['id_pengusaha'].'"/>
                     <div class="form-group">
@@ -148,9 +147,9 @@
             </div>
         </div>
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
 
     <script>
             $('.input-group.date #ttl').datepicker({});

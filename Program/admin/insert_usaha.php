@@ -1,14 +1,13 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
     connect();
 
     if(!isset ($_SESSION['myusername'])){
-        header(("location:/atolMaps/program/formLogin.php"));
+        header(("location:../formLogin.php"));
     }
     
 ?>
@@ -19,9 +18,9 @@
     <title>Insert Data Usaha Baru</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
     <link href="/broto/css/datepicker.css" rel="stylesheet">
 </head>
 
@@ -49,7 +48,7 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Usaha</h2><hr/>
-                <form class="form-horizontal" action="/atolmaps/program/pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="../pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">
 
 					
                     <div class="form-group">
@@ -204,14 +203,12 @@ echo              '</select>
 }
 	 ?>
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
-    <script src="/atolMaps/program/js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
 
     <script>
-            $('.input-group.date #ttl').datepicker({});
-			
-			
+            $('.input-group.date #ttl').datepicker({});		
     </script>
 </body>
 </html>

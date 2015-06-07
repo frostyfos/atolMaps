@@ -34,32 +34,32 @@
                         <ul class="nav navbar-nav">
                              <li class="dropdown "><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/atolMaps/program/admin/listUser.php">List Pengusaha</a></li>
-                                    <li><a href="/atolMaps/program/admin/InsertPengusaha.php">Insert Pemilik Usaha</a></li>
+                                    <li><a href="listUser.php">List Pengusaha</a></li>
+                                    <li><a href="InsertPengusaha.php">Insert Pemilik Usaha</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Pengusaha<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">List Usaha</a></li>
-                                    <li><a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a></li>
+                                    <li><a href="insert_usaha.php">Insert Usaha</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Sektor<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/atolMaps/program/admin/listSektor.php">List Sektor</a></li>
-                                    <li><a href="/atolMaps/program/admin/insertSektor.php">Insert Sektor</a></li>
+                                    <li><a href="listSektor.php">List Sektor</a></li>
+                                    <li><a href="insertSektor.php">Insert Sektor</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Skala<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/atolMaps/program/admin/listSkala.php">List Skala</a></li>
-                                    <li><a href="/atolMaps/program/admin/insertSkala.php">Insert Skala</a></li>
+                                    <li><a href="listSkala.php">List Skala</a></li>
+                                    <li><a href="insertSkala.php">Insert Skala</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kecamatan<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/atolMaps/Program/admin/insertKecamatan.php">Insert Kecamatan</a></li>
-                                    <li><a href="/atolMaps/program/kecamatan/editdata.php">List Kecamatan</a></li>
+                                    <li><a href="insertKecamatan.php">Insert Kecamatan</a></li>
+                                    <li><a href="editdata.php">List Kecamatan</a></li>
                                 </ul>
                             </li>  
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kelurahan<span class="caret"></span></a>
@@ -73,7 +73,7 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/atolMaps/program/logout.php">Logout</a></li>
+                            <li><a href="../logout.php">Logout</a></li>
                         </ul>
                     </div>  
                 </nav>
@@ -96,19 +96,19 @@
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="/atolMaps/program/pengusaha/tampilUsahaBandung.php">List Usaha</a>
+                                <a href="tampilUsahaBandung.php">List Usaha</a>
                             </li>
                             <li>
-                                <a href="/atolMaps/program/pengusaha/insert_usaha.php">Insert Usaha</a>
+                                <a href="insert_usaha.php">Insert Usaha</a>
                             </li>
                             <li>
-                                <a href="/atolMaps/program/pengusaha/pengusaha.php">Usaha Anda</a>
+                                <a href="pengusaha.php">Usaha Anda</a>
                             </li>
                             <li>
-                                <a href="/atolMaps/program/pengusaha/profil.php">Profile</a>
+                                <a href="profil.php">Profile</a>
                             </li>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/atolMaps/program/logout.php">Logout</a></li>
+                            <li><a href="../logout.php">Logout</a></li>
                         </ul>
                     </div>  
                 </nav>

@@ -3,8 +3,7 @@
 
 
 	session_start();
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     //conncet to database
     connect();
@@ -51,14 +50,14 @@
 			echo 'alert("Edit Data Pengusaha Gagal")';
 			
 			echo '</script>';
-			header( "refresh:0; url=/atolMaps/program/admin/editHapusUser.php" );
+			header( "refresh:0; url=editHapusUser.php" );
 		}
 		else
 		{
 			echo '<script type="text/javascript">';
 			echo 'alert("Edit Data Pengusaha Berhasil")';
 			echo "</script>";
-			header( "refresh:0; url=/atolMaps/program/admin/listUser.php" );
+			header( "refresh:0; url=listUser.php" );
 		}
 	
 ?>
