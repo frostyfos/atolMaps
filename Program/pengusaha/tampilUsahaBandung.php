@@ -66,6 +66,7 @@
         echo '<tr>';
         echo '<th>NO</th>';
         echo '<th>Nama Usaha</th>';
+        echo '<th>Id Pemilik Usaha</th>';
         echo '<th>Produk Utama</th>';
 		echo '<th>Sektor Usaha</th>';
 		echo '<th>Skala Usaha</th>';
@@ -81,6 +82,7 @@
             echo '<form method = "post" action = "tampilPetaUsaha.php">';
             echo '<td>' . $row['id_usaha'] . '<input type = "hidden" name = "id_usaha" value = "'. $row['id_usaha'] .'"></td>';
             echo '<td>' . $row['nama_usaha'] . '<input type = "hidden" name = "nama_usaha" value = "'. $row['nama_usaha'] .'"></td>';
+            echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
 			echo '<td>' . $row['produk_utama'] . '<input type = "hidden" name = "produk_utama" value = "'. $row['produk_utama'] .'"></td>';
 			echo '<td>' . $row['skala'] . '<input type = "hidden" name = "Skala" value = "'. $row['skala'] .'"></td>';
 			echo '<td>' . $row['sektor'] . '<input type = "hidden" name = "sektor" value = "'. $row['sektor'] .'"></td>';
