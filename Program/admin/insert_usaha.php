@@ -45,14 +45,33 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Usaha</h2><hr/>
-                <form class="form-horizontal" action="../pengusaha/proses_insert_usaha.php" enctype="multipart/form-data" method="post">	
+                <form class="form-horizontal" action="prosesInsertUsaha.php" enctype="multipart/form-data" method="post">	
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama Usaha</label>
                         <div class="col-sm-5">
                             <input type="text" name="nama" class="form-control" placeholder="Nama usaha"/>
                         </div>
                     </div>
-                    
+
+                    <div class="form-group">
+                        <label for="id_pengusaha" class="col-sm-4 control-label">Nama Pengusaha</label>
+                        <div class="col-sm-2">          
+                            <select class="form-control" name="id_pengusaha" id="id_pengusaha">
+                                <?php 
+                                    $sql = "SELECT  * from pengusaha ";
+                                    $hasil = mysql_query($sql);  
+                                    while($row=mysql_fetch_array($hasil)){
+                                ?>
+                                    <option value="<?php echo $row['id_pengusaha']; ?>">
+                                        <?php  echo $row['nama_pengusaha'];?>
+                                    </option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="produk" class="col-sm-4 control-label">Produk Utama</label>
                         <div class="col-sm-5">
@@ -109,7 +128,7 @@
                     <div class="form-group">
                         <label for="telp" class="col-sm-4 control-label">No Telepon</label>
                         <div class="col-sm-5">
-                            <input type="text" name="telepon" class="form-control" placeholder="Nomor kuntak usaha"/>
+                            <input type="text" name="telp" class="form-control" placeholder="Nomor kuntak usaha"/>
                         </div>
                     </div>
 					
@@ -173,35 +192,45 @@
 				</div>
 				
 				<div class="form-group">
-                        <label for="gambar1" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <label for="gambar1" class="col-sm-4 control-label">Gambar Usaha 1</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar1" type="file" />
                         </div>
                     </div>
 					
 				
 				<div class="form-group">
-                        <label for="gambar2" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <label for="gambar2" class="col-sm-4 control-label">Gambar Usaha 2</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar2" type="file" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="gambar3" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <label for="gambar3" class="col-sm-4 control-label">Gambar Usaha 3</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar3" type="file" />
                         </div>
                     </div>
 					<div class="form-group">
-                        <label for="gambar4" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <label for="gambar4" class="col-sm-4 control-label">Gambar Usaha 4</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar4" type="file" />
                         </div>
                     </div>
 					<div class="form-group">
-                        <label for="gambar5" class="col-sm-4 control-label">Gambar Usaha</label>
+                        <label for="gambar5" class="col-sm-4 control-label">Gambar Usaha 5</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar5" type="file" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row" >
+                        <label for="status" class="col-sm-4 control-label">Status Usaha</label>
+                        <div class="col-sm-2">          
+                            <select class="form-control" name="status" id="status">
+                                <option value="aktif">Aktif</option>
+                                <option value="tidak aktif">Tidak Aktif</option>
+                            </select>
                         </div>
                     </div>
 

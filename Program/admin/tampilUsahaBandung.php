@@ -72,6 +72,7 @@
 		echo '<th>Alamat</th>';
 		echo '<th>Kelurahan</th>';
 		echo '<th>Kecamatan</th>';
+		echo '<th>Status Usaha</th>';
 		echo '<th>Gambar</th>';
         echo '</tr>';
         //tampil data transaksi
@@ -87,7 +88,8 @@
 			echo '<td>' . $row['alamat_usaha'] . '<input type = "hidden" name = "alamat_usaha" value = "'. $row['alamat_usaha'] .'"></td>';
 			echo '<td>' . $row['nama_kelurahan'] . '<input type = "hidden" name = "kelurahan" value = "'. $row['nama_kelurahan'] .'"></td>';
 			echo '<td>' . $row['nama_kecamatan'] . '<input type = "hidden" name = "kecamatan" value = "'. $row['nama_kecamatan'] .'"></td>';
-			echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';	
+			echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';
+			
             echo '<td><img src="../'.$row['gambar1'].' " height="50" width="50" data-toggle="modal" data-target="#myModal"/>
 			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">
 			  Lihat Gambar
