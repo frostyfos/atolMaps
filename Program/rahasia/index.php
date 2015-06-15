@@ -4,9 +4,9 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -15,7 +15,7 @@
                 <div class="container">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="index.php" class="text-center">HOME</a>
+                            <a href="../index.php" class="text-center">HOME</a>
                         </li>
                     </ul>
                 </div>
@@ -24,8 +24,8 @@
 	     <div class="row">
 	      
 	        <h1 class="text-center">LOGIN</h1>
-	        <form class="form-horizontal" action="login.php" method="post">
-	        	<input type="hidden" name="myjabatan" value="pengusaha">
+	        <form class="form-horizontal" action="../login.php" method="post">
+	        	<input type="hidden" name="myjabatan" value="admin">
 	        	
 	            <div class="form-group">
 	                <label for="myusername" class="col-sm-4 control-label">Username</label>
@@ -52,7 +52,7 @@
 	    </div>
 	</div>
 <!-- javascript -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 </body>
 </html>

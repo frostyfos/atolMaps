@@ -17,7 +17,7 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
     <link href="../css/custom.css" rel="stylesheet">
-    <link href="/broto/css/datepicker.css" rel="stylesheet">
+    <link href="../css/datepicker.css" rel="stylesheet">
 </head>
 
 <body>

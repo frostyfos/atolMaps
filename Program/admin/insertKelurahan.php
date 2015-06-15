@@ -33,7 +33,7 @@
                 <h2 class="text-center">Masukan Data Kelurahan</h2><hr/>
                 <form class="form-horizontal" action="prosesInsertKelurahan.php" method="post">
 
-                    <div class="form-group row" >
+                <div class="form-group row" >
                 <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
                 <div class="col-sm-2">          
                     <select class="form-control" name="kecamatan" id="kecamatan">';
@@ -44,7 +44,7 @@
                             echo' <option value="'.$row['nama_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
                         }
                         ?>
-echo              '</select>
+                    </select>
                 </div>
                 </div>
 
