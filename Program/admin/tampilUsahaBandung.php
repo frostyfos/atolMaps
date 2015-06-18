@@ -76,34 +76,35 @@
 		echo '<th>Status Usaha</th>';
 		echo '<th>Gambar</th>';
         echo '</tr>';
-        //tampil data transaksi
+        //tampil data transaksi'; '; '; '; '; '; '; '; '; '; '; '; 
+        $i = 1;
         while($row = mysql_fetch_array($query))
         {
-            echo "<tr>";
-            echo '<form method = "post" action = "tampilPetaUsaha.php">';
-            echo '<td>' . $row['id_usaha'] . '<input type = "hidden" name = "id_usaha" value = "'. $row['id_usaha'] .'"></td>';
-            echo '<td>' . $row['nama_usaha'] . '<input type = "hidden" name = "nama_usaha" value = "'. $row['nama_usaha'] .'"></td>';
-			echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
-			echo '<td>' . $row['produk_utama'] . '<input type = "hidden" name = "produk_utama" value = "'. $row['produk_utama'] .'"></td>';
-			echo '<td>' . $row['skala'] . '<input type = "hidden" name = "Skala" value = "'. $row['skala'] .'"></td>';
-			echo '<td>' . $row['sektor'] . '<input type = "hidden" name = "sektor" value = "'. $row['sektor'] .'"></td>';
-			echo '<td>' . $row['alamat_usaha'] . '<input type = "hidden" name = "alamat_usaha" value = "'. $row['alamat_usaha'] .'"></td>';
-			echo '<td>' . $row['nama_kelurahan'] . '<input type = "hidden" name = "kelurahan" value = "'. $row['nama_kelurahan'] .'"></td>';
-			echo '<td>' . $row['nama_kecamatan'] . '<input type = "hidden" name = "kecamatan" value = "'. $row['nama_kecamatan'] .'"></td>';
-			echo '<td>' . $row['status_usaha'] . '<input type = "hidden" name = "status" value = "'. $row['status_usaha'] .'"></td>';
+        ?>
+             <tr>
+             <form method = "post" action = "tampilPetaUsaha.php">
+             <td> <?=$row['id_usaha']?><input type = "hidden" name = "id_usaha" value = "<?=$row['id_usaha']?>"></td>
+             <td> <?=$row['nama_usaha']?><input type = "hidden" name = "nama_usaha" value = "<?=$row['nama_usaha']?>"></td>
+			 <td> <?=$row['id_pengusaha']?><input type = "hidden" name = "id_pengusaha" value = "<?=$row['id_pengusaha']?>"></td>
+			 <td> <?=$row['produk_utama']?><input type = "hidden" name = "produk_utama" value = "<?=$row['produk_utama']?>"></td>
+			 <td> <?=$row['skala']?><input type = "hidden" name = "Skala" value = "<?=$row['skala']?>"></td>
+			 <td> <?=$row['sektor']?><input type = "hidden" name = "sektor" value = "<?=$row['sektor']?>"></td>
+			 <td> <?=$row['alamat_usaha']?><input type = "hidden" name = "alamat_usaha" value = "<?=$row['alamat_usaha']?>"></td>
+			 <td> <?=$row['nama_kelurahan']?><input type = "hidden" name = "kelurahan" value = "<?=$row['nama_kelurahan']?>"></td>
+			 <td> <?=$row['nama_kecamatan']?><input type = "hidden" name = "kecamatan" value = "<?=$row['nama_kecamatan']?>"></td>
+			 <td> <?=$row['status_usaha']?><input type = "hidden" name = "status" value = "<?=$row['status_usaha']?>"></td>
 			
-            echo '<td><img src="../'.$row['gambar1'].' " height="50" width="50" data-toggle="modal" data-target="#myModal"/>
-			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal">
+            <td><img src="../<?=$row['gambar1']?>" height="50" width="50"/>
+			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal<?=$i?>">
 			  Lihat Gambar
 			</button>
-			</td>';
+			</td>
 
-			
-			echo '<!-- Button trigger modal -->
+			<!-- Button trigger modal -->
 			
 			
 			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="myModal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 				<div class="modal-content">
 				  <div class="modal-header">
@@ -111,11 +112,11 @@
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-					<img src="../'.$row['gambar1'].' " height="200" width="200"/>
-					<img src="../'.$row['gambar2'].' " height="200" width="200"/>
-					<img src="../'.$row['gambar3'].' " height="200" width="200"/>
-					<img src="../'.$row['gambar4'].' " height="200" width="200"/>
-					<img src="../'.$row['gambar5'].' " height="200" width="200"/>
+					<img src="../<?=$row['gambar1']?>" height="200" width="200"/>
+					<img src="../<?=$row['gambar2']?>" height="200" width="200"/>
+					<img src="../<?=$row['gambar3']?>" height="200" width="200"/>
+					<img src="../<?=$row['gambar4']?>" height="200" width="200"/>
+					<img src="../<?=$row['gambar5']?>" height="200" width="200"/>
 				  </div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -123,18 +124,15 @@
 				  </div>
 				</div>
 			  </div>
-			</div>';
-			
-			
-            echo '</form>';
-            echo "</tr>";
+			</div>
+	</form>
+    </tr>
+    <?php
+            $i++;
          }
          echo "</table>";
     echo '</div>'; //end of tab admin
 echo '</div>'; //end of tab content
-
-
-
 }else{
     echo '<div class="alert alert-warning text-center" role="alert"><p>Anda tidak mempunyai hak akses</p></div>';
 }
