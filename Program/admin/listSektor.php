@@ -132,14 +132,6 @@
             </div>
         </div>
     </div> <!-- end of container -->
-    <?php 
-    }else{
-        print "<script>alert('Data yang anda cari tidak ditemukan');
-        javascript:history.go(-1);</script>";
-        exit;
-        header("location:listSektor.php");
-    }
-    ?>
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
