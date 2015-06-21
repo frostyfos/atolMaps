@@ -1,7 +1,5 @@
 <title>Proses insert Usaha</title>
 <?php
-
-
 	session_start();
     $path = "../lib_func.php";
     include_once($path);

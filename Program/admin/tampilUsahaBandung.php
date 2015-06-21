@@ -5,7 +5,7 @@
     include_once($path);
     
    if(!isset ($_SESSION['myusername'])){
-        header(("location:../formLogin.php"));
+        header(("location:../index.php.php"));
     }
     
 ?>
@@ -75,6 +75,7 @@
 		echo '<th>Kecamatan</th>';
 		echo '<th>Status Usaha</th>';
 		echo '<th>Gambar</th>';
+		echo '<th colspan = "2">Aksi</th>';
         echo '</tr>';
         //tampil data transaksi'; '; '; '; '; '; '; '; '; '; '; '; 
         $i = 1;
@@ -92,13 +93,14 @@
 			 <td> <?=$row['alamat_usaha']?><input type = "hidden" name = "alamat_usaha" value = "<?=$row['alamat_usaha']?>"></td>
 			 <td> <?=$row['nama_kelurahan']?><input type = "hidden" name = "kelurahan" value = "<?=$row['nama_kelurahan']?>"></td>
 			 <td> <?=$row['nama_kecamatan']?><input type = "hidden" name = "kecamatan" value = "<?=$row['nama_kecamatan']?>"></td>
-			 <td> <?=$row['status_usaha']?><input type = "hidden" name = "status" value = "<?=$row['status_usaha']?>"></td>
-			
+			 <td> <?=$row['status_usaha']?><input type = "hidden" name = "status" value = "<?=$row['status_usaha']?>"></td>		
             <td><img src="../<?=$row['gambar1']?>" height="50" width="50"/>
 			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal<?=$i?>">
 			  Lihat Gambar
 			</button>
 			</td>
+			<td><input type = "submit" name = "update" value = "Update" class="btn btn-default"></td>
+			 <td><input type = "submit" name = "delete" value = "delete" class="btn btn-default"></td>
 
 			<!-- Button trigger modal -->
 			

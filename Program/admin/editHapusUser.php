@@ -5,7 +5,10 @@
     include_once($path);
     
     connect();
-
+    if(!isset ($_SESSION['myusername'])){
+        header(("location:../index.php.php"));
+    }
+    
     $sqlProfil = "SELECT * FROM pengusaha where id_pengusaha like ".$_POST['id_pengusaha']."";
             //eksekusi query
             $query = mysql_query($sqlProfil);

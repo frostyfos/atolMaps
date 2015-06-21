@@ -4,6 +4,10 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/atolMaps/program/lib_func.php";
     include_once($path);
+
+    if(!isset ($_SESSION['myusername'])){
+        header(("location:../index.php.php"));
+    }
 ?>
 
 <html>

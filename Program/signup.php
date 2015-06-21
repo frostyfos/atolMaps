@@ -2,10 +2,7 @@
 <?php 
     session_start(); 
     $path = "lib_func.php";
-    include_once($path);
-    
-  
-    
+    include_once($path);  
 ?>
 
 <html>

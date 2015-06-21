@@ -1,16 +1,19 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = "/lib_func.php";
+    $path = "../lib_func.php";
     include_once($path);
     
+    if(!isset ($_SESSION['myusername'])){
+        header(("location:../index.php.php"));
+    }
   
 ?>
 
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Form Kecamatan</title>
+    <title>Form Kelurahan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -41,7 +44,7 @@
                         $sql = "SELECT  id_kecamatan,nama_kecamatan from kecamatan ";
                         $hasil = mysql_query($sql);  
                         while($row=mysql_fetch_array($hasil)){
-                            echo' <option value="'.$row['nama_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
+                            echo' <option value="'.$row['id_kecamatan'].'">'.$row['nama_kecamatan'].'</option>';
                         }
                         ?>
                     </select>
@@ -59,7 +62,6 @@
                         <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
                             <input type="text" name="lat" class="form-control" placeholder="latitude kelurahan"/>
-
                         </div>
                     </div>
 

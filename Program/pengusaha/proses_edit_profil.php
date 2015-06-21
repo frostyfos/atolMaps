@@ -1,12 +1,10 @@
 <title>Proses SignUp</title>
 <?php
-
-
 	session_start();
     $path = "../lib_func.php";
     include_once($path);
 	if(!isset ($_SESSION['myusername'])){
-        header(("location:../formLogin.php"));
+        header(("location:../index.php.php"));
     }
 	
     //conncet to database

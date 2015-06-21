@@ -5,7 +5,7 @@
     include_once($path);
     
    if(!isset ($_SESSION['myusername'])){
-        header(("location:../formLogin.php"));
+        header(("location:../index.php.php"));
     }
     
 ?>

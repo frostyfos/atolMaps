@@ -4,10 +4,10 @@
     $path = "../lib_func.php";
     include_once($path);
     connect();
-  if(!isset ($_SESSION['myusername'])){
-        header(("location:../formLogin.php"));
+
+    if(!isset ($_SESSION['myusername'])){
+        header(("location:../index.php.php"));
     }
-    
 ?>
 
 <html>

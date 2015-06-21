@@ -6,7 +6,7 @@
     connect();
     $no_ktp = $_SESSION['myusername'];
     if(!isset ($_SESSION['myusername'])){
-        header(("location:../formLogin.php"));
+        header(("location:../index.php.php"));
     }
     
 ?>
@@ -246,7 +246,7 @@
         $("#geocomplete").geocomplete({
           map: ".map_canvas",
           details: "form",
-          types: ["geocode", "establishment"],
+          types: ["geocode"],
           country: 'ID'
         });
 

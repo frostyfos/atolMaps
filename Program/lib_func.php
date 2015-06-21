@@ -58,14 +58,14 @@
                             </li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kecamatan<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+                                    <li><a href="listKecamatan.php">List Kecamatan</a></li>
                                     <li><a href="insertKecamatan.php">Insert Kecamatan</a></li>
-                                    <li><a href="editdata.php">List Kecamatan</a></li>
                                 </ul>
                             </li>  
                             <li class="dropdown"><a href="#" data-toggle="dropdown">Kelurahan<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">List Kelurahan</a></li>
-                                    <li><a href="#">List Desa</a></li>
+                                    <li><a href="listKelurahan.php">List Kelurahan</a></li>
+                                    <li><a href="insertKelurahan.php">Insert Kelurahan</a></li>
                                 </ul>
                             </li> 
                             <li>

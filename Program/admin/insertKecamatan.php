@@ -4,7 +4,9 @@
     $path = "../lib_func.php";
     include_once($path);
     
-  
+    if(!isset ($_SESSION['myusername'])){
+        header(("location:../index.php.php"));
+    }
 ?>
 
 <html>
@@ -31,8 +33,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Kecamatan</h2><hr/>
                 <form class="form-horizontal" action="prosesInsertKecamatan.php" method="post">
-
-                    
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">

@@ -31,17 +31,22 @@
     ?>
 
     <!-- disini konten  -->
-    <h2 class="text-center">List Sektor Usaha</h2><hr/><br>
+    
     <!-- USER AKTIF -->
         <?php 
-            $sqlSektor = "SELECT * FROM sektor_usaha";
+            $dataCari = $_POST['dataCari'];
+            $sqlSektor = "SELECT * FROM sektor_usaha WHERE sektor LIKE '%$dataCari%'";
             //eksekusi query
             $query = mysql_query($sqlSektor);
             if(!$query)
             {
                 print(mysql_error());
             }
+            $count=mysql_num_rows($query);
+
+            if ($count == 1){
         ?>
+            <h2 class="text-center">Hasil Pencarian Sektor Usaha</h2><hr/><br>
             <form action = "hasilCariSektor.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
             <div class="input-group">

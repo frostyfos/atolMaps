@@ -31,17 +31,22 @@
     ?>
 
     <!-- disini konten  -->
-    <h2 class="text-center">List Skala Usaha</h2><hr/><br>
+    
     <!-- USER AKTIF -->
         <?php 
-            $sqlSkala = "SELECT * FROM skala_usaha";
+            $dataCari = $_POST['dataCari'];
+            $sqlSkala = "SELECT * FROM skala_usaha WHERE skala LIKE '%$dataCari%'";
             //eksekusi query
             $query = mysql_query($sqlSkala);
             if(!$query)
             {
                 print(mysql_error());
             }
+            $count=mysql_num_rows($query);
+
+            if ($count == 1){
         ?>
+            <h2 class="text-center">Hasil Pencarian Skala Usaha</h2><hr/><br>
             <!-- tampil data -->   
             <form action = "hasilCariSkala.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
@@ -130,6 +135,14 @@
             </div>
         </div>
     </div> <!-- end of container -->
+    <?php 
+    }else{
+        print "<script>alert('Data yang anda cari tidak ditemukan');
+        javascript:history.go(-1);</script>";
+        exit;
+        header("location:listSkala.php");
+    }
+    ?>
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>

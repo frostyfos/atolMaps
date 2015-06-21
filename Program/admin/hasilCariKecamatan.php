@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Daftar Skala Usaha</title>
+    <title>Daftar Kecamatan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -31,33 +31,40 @@
     ?>
 
     <!-- disini konten  -->
-    <h2 class="text-center">List Skala Usaha</h2><hr/><br>
+    
     <!-- USER AKTIF -->
         <?php 
-            $sqlSkala = "SELECT * FROM skala_usaha";
+            $dataCari = $_POST['dataCari'];
+            $sqlSkala = "SELECT * FROM kecamatan WHERE nama_kecamatan LIKE '%$dataCari%'";
             //eksekusi query
             $query = mysql_query($sqlSkala);
             if(!$query)
             {
                 print(mysql_error());
             }
+            $count=mysql_num_rows($query);
+
+            if ($count == 1){
         ?>
-            <!-- tampil data -->   
-            <form action = "hasilCariSkala.php" method = "post">
+            <h2 class="text-center">Hasil Pencarian Data Kecamatan</h2><hr/><br>
+            <form action = "hasilCariKecamatan.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
             <div class="input-group">
-              <input type="text" name="dataCari" class="form-control" placeholder="Cari data Skala...">
+              <input type="text" name="dataCari" class="form-control" placeholder="Cari Nama Kecamatan...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Search</button>
                 </span>
             </div>
             </div>
-            </form><br>            
+            </form><br> 
+            <!-- tampil data -->               
             <br><br>
             <table class="table table-striped">
                 <tr>
                     <th>ID</th>
-                    <th>Skala Usaha</th>
+                    <th>Nama Kecamatan</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
                     <th colspan="2">Aksi</th>
                 </tr>
                 <?php 
@@ -65,12 +72,14 @@
                     while($row = mysql_fetch_array($query))
                     {
                 ?>
-                    <tr>
-                        <td><?=$row['id_skala'] ?><input type = "hidden" name = "id_skala" value = "<?=$row['id_skala']?>"></td>
-                        <td><?=$row['skala'] ?><input type = "hidden" name = "skala" value = "<?=$row['skala']?>"></td>
-                        <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
-                        <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
-                    </tr>
+                        <tr>
+                            <td><?=$row['id_kecamatan']?><input type = "hidden" name = "id_kecamatan" value = "<?=$row['id_kecamatan']?>"></td>
+                            <td><?=$row['nama_kecamatan']?><input type = "hidden" name = "nama_kecamatan" value = "<?=$row['nama_kecamatan']?>"></td>
+                            <td><?=$row['lat']?><input type = "hidden" name = "lat" value = "'. $row['lat'] .'"></td>
+                            <td><?=$row['lng']?><input type = "hidden" name = "long" value = "'. $row['lng'] .'"></td>
+                            <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
+                            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
+                        </tr>
 
                     <!-- Modal Update-->
                     <div class="modal fade" id="Update<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -78,15 +87,26 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Edit Data Skala Usaha</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Edit Data Kecamatan</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal" action="prosesEditSkala.php" method="post">
-                                        <input type="hidden" name="id_skala" class="form-control" value="<?=$row['id_skala']?>"/>
+                                    <form class="form-horizontal" action="prosesEditKecamatan.php" method="post">
+                                        <input type="hidden" name="id_kecamatan" class="form-control" value="<?=$row['id_kecamatan']?>"/>
                                         <div class="form-group">
-                                            <label for="skala" class="control-label">Skala</label>                                           
-                                            <input type="text" name="skala" class="form-control" value="<?=$row['skala']?>"/>                                           
+                                            <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
+                                            <input type="text" name="nama_kecamatan" class="form-control" value="<?=$row['nama_kecamatan']?>"/>
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="lat" class="control-label">Latitude</label>
+                                            <input type="text" name="lat" class="form-control" value="<?=$row['lat']?>"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="long" class="control-label">Longitude</label>
+                                            <input type="text" name="long" class="form-control" value="<?=$row['lng']?>"/>                                       
+                                        </div>
+
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Ubah</button>
                                             <button type="reset" class="btn btn-default">Reset</button>
@@ -106,8 +126,8 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
                                 </div>
-                                <form method="POST" action="prosesHapusSkala.php">
-                                    <input type="hidden" name="id_skala" value="<?=$row['id_skala']?>">
+                                <form method="POST" action="prosesHapusKecamatan.php">
+                                    <input type="hidden" name="id_kecamatan" value="<?=$row['id_kecamatan']?>">
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Hapus</button>
                                         <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
@@ -130,6 +150,14 @@
             </div>
         </div>
     </div> <!-- end of container -->
+    <?php 
+    }else{
+        print "<script>alert('Data yang anda cari tidak ditemukan');
+        javascript:history.go(-1);</script>";
+        exit;
+        header("location:listKecamatan.php");
+    }
+    ?>
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
