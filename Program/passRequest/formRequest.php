@@ -2,7 +2,7 @@
 <?php 
     session_start(); 
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "/atolMaps/program/lib_func.php";
+    $path .= "../lib_func.php";
     include_once($path);
 ?>
 
@@ -12,9 +12,9 @@
     <title>Lupa Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
-    <link href="/atolMaps/program/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
-    <link href="/atolMaps/program/css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                 <div class="container">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/atolMaps/program/index.php" class="text-center">HOME</a>
+                            <a href="../index.php" class="text-center">HOME</a>
                         </li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
     <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Untuk Meminta Password Baru</h2><hr/>
-                <form class="form-horizontal" action="/atolMaps/program/passRequest/reqPass.php" method="post">
+                <form class="form-horizontal" action="reqPass.php" method="post">
 
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
@@ -78,7 +78,7 @@
         </div>
     </div> <!-- end of container -->
 	<!-- javascript -->
-    <script src="/atolMaps/program/js/jquery-1.11.3.min.js"></script>
-	<script src="/atolMaps/program/js/bootstrap.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 </body>
 </html>

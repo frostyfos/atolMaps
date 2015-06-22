@@ -73,11 +73,11 @@
                     {
                 ?>
                         <tr>
-                            <td><?=$row['id_kelurahan']?><input type = "hidden" name = "id_kelurahan" value = "<?=$row['id_kelurahan'] ?>"></td>
-                            <td><?=$row['nama_kecamatan']?><input type = "hidden" name = "id_kecamatan" value = "<?=$row['id_kecamatan'] ?>"></td>
-                            <td><?=$row['nama_kelurahan']?><input type = "hidden" name = "nama_kelurahan" value = "<?=$row['nama_kelurahan'] ?>"></td>
-                            <td><?=$row['lat']?><input type = "hidden" name = "lat" value = "<?=$row['lat'] ?>"></td>
-                            <td><?=$row['lng']?><input type = "hidden" name = "long" value = "<?=$row['lng'] ?>"></td>
+                            <td><?=$row['id_kelurahan']?></td>
+                            <td><?=$row['nama_kecamatan']?></td>
+                            <td><?=$row['nama_kelurahan']?></td>
+                            <td><?=$row['lat']?></td>
+                            <td><?=$row['lng']?></td>
                             <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
                             <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
                         </tr>
@@ -106,7 +106,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama_kelurahan" class="control-label">Nama Kecamatan</label>
+                                                <label for="nama_kelurahan" class="control-label">Nama Kelurahan</label>
                                                 <input type="text" name="nama_kelurahan" class="form-control" value="<?=$row['nama_kelurahan']?>"/>
                                             </div>
                                             

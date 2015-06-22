@@ -21,6 +21,7 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
     <link href="../css/custom.css" rel="stylesheet">
+    <link href="../css/datepicker.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 
     <!-- USER AKTIF -->
         <?php 
-            $sqlUserAktif = "SELECT id_pengusaha,no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,email,password,status_akun FROM pengusaha WHERE status_akun = 'aktif'";
+            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'aktif'";
             //eksekusi query
             $query = mysql_query($sqlUserAktif);
             if(!$query)
@@ -78,31 +79,156 @@
                     <th>Status Akun</th>
                 </tr>
                 <?php 
+                    $i = 1;
                     while($row = mysql_fetch_array($query))
                     {
-                        echo "<tr>";
-                            echo '<form method = "post" action = "editHapusUser.php">';
-                                
-                                echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
-                                echo '<td>' . $row['no_ktp'] . '<input type = "hidden" name = "noKtp" value = "'. $row['no_ktp'] .'"></td>';
-                                echo '<td>' . $row['nama_pengusaha'] . '<input type = "hidden" name = "nama" value = "'. $row['nama_pengusaha'] .'"></td>';
-                                echo '<td>' . $row['alamat'] . '<input type = "hidden" name = "alamat" value = "'. $row['alamat'] .'"></td>';
-                                echo '<td>' . $row['ttl'] . '<input type = "hidden" name = "ttl" value = "'. $row['ttl'] .'"></td>';
-                                echo '<td>' . $row['jenis_kelamin'] . '<input type = "hidden" name = "jk" value = "'. $row['jenis_kelamin'] .'"></td>';
-                                echo '<td>' . $row['email'] . '<input type = "hidden" name = "email" value = "'. $row['email'] .'"></td>';
-                                echo '<td>' . $row['password'] . '<input type = "hidden" name = "password" value = "'. $row['password'] .'"></td>';
-                                echo '<td>' . $row['status_akun'] . '<input type = "hidden" name = "status_akun" value = "'. $row['status_akun'] .'"></td>';
-                                echo '<td><input type = "submit" name = "update" value = "Update" class="btn btn-default"></td>';
-                                echo '<td><input type = "submit" name = "delete" value = "delete" class="btn btn-default"></td>';
-                            echo '</form>';
-                        echo "</tr>";
+                ?>
+                        <tr>
+                            <!-- <form method = "post" action = "editHapusUser.php">    -->             
+                                <td><?=$row['id_pengusaha']?></td>
+                                <td><?=$row['no_ktp']?></td>
+                                <td><?=$row['nama_pengusaha']?></td>
+                                <td><?=$row['alamat']?></td>
+                                <td><?=$row['ttl']?><!-- <input type = "hidden" name = "ttl" value = "<?=$row['ttl']?>"> --></td>
+                                <td><?=$row['jenis_kelamin']?></td>
+                                <td><?=$row['email']?></td>
+                                <td><?=$row['password']?></td>
+                                <td><?=$row['status_akun']?></td>
+                                <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#UpdateAktif<?=$i?>"></button></td>
+                                <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#DeleteAktif<?=$i?>"></button></td>
+                                <td><button class='btn btn-warning' type="button" data-toggle="modal" data-target="#Deaktifasi<?=$i?>">Deaktifasi</button></td>
+                            <!-- </form> -->
+                        </tr>
+
+                        <!-- Modal Update-->
+                        <div class="modal fade" id="UpdateAktif<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit Data Pemilik Usaha</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" action="prosesEditUser.php" enctype="multipart/form-data" method="post">
+                                            <input type="hidden" name="id_pengusaha" class="form-control" value="<?=$row['id_pengusaha']?>"/>
+                                            <div class="form-group">
+                                                <label for="username" class="control-label">Username (No KTP)</label>
+                                                <input type="text" name="username" class="form-control" value="<?=$row['no_ktp']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_pengusaha" class="control-label">Nama Pemilik Usaha</label>
+                                                <input type="text" name="nama_pengusaha" class="form-control" value="<?=$row['nama_pengusaha']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat" class="control-label">Alamat</label>
+                                                <input type="text" name="alamat" class="form-control" value="<?=$row['alamat']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ttl" class="control-label">Tanggal Lahir</label>
+                                                <div class="input-group date">
+                                                    <input type="text" name="ttl" id ="ttl" class="form-control" value="<?=$row['ttl']?>"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-th"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="jenis_kelamin" class="col-sm-4 control-label">Jenis Kelamin</label>
+                                                <div class="col-sm-6">
+                                                   <label class="radio-inline">
+                                                        <input type="radio" name="jenis_kelamin" value="L" />Laki-laki
+                                                   </label>
+                                                   <label class="radio-inline">
+                                                        <input type="radio" name="jenis_kelamin" value="P" />Perempuan
+                                                   </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="control-label">E - Mail</label>
+                                                <input type="text" name="email" class="form-control" value="<?=$row['email']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="control-label">Password</label>
+                                                <input type="password" name="password" class="form-control" value="<?=$row['password']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gambarKtp" class="control-label">Foto KTP</label>
+                                                    <input type="hidden" name="fotoLama" class="form-control" value="<?=$row['file_ktp']?>"/>
+                                                    <img src="<?=$row['file_ktp']?>" height="100" width="100"/>
+                                                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                                                    <input name="gambarKtp" type="file" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status_akun" class="control-label">Status Akun</label>     
+                                                    <select class="form-control" name="status_akun" id="status_akun">
+                                                    <option value="aktif">Aktif</option>
+                                                    <option value="tidak aktif">Tidak Aktif</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                                <button type="reset" class="btn btn-default">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>  
+                                    <div class="modal-footer"></div>
+                                </div>
+                            </div>
+                        </div><!-- end of modal update -->
+
+                        <!-- Modal Hapus -->
+                        <div class="modal fade" id="DeleteAktif<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
+                                    </div>
+                                    <form method="POST" action="prosesHapusUser.php">
+                                        <input type="hidden" name="id_pengusaha" value="<?=$row['id_pengusaha']?>">
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                            <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                                        </div>
+                                    </form>
+                                </div>                          
+                            </div>
+                        </div><!--  End of Modal Hapus -->
+
+                        <!-- Modal Deaktifasi -->
+                        <div class="modal fade" id="Deaktifasi<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Deaktifasi User?</h4>
+                                    </div>
+                                    <form method="POST" action="aktifDeaktifUser.php">
+                                        <input type="hidden" name="id_pengusaha" value="<?=$row['id_pengusaha']?>">
+                                        <div class="modal-footer">
+                                            <button type="submit" name="deaktifasi" class="btn btn-danger">Deaktifasi</button>
+                                            <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                                        </div>
+                                    </form>
+                                </div>                          
+                            </div>
+                        </div><!--  End of Modal Deaktifasi -->
+                <?php
+                    $i++;
                      }
                 ?>
             </table>
         </div> <!-- end div user aktif -->
+
+
+
+
+
+
+
     <!-- USER AKTIF TIDAK AKTIF-->
         <?php 
-            $sqlUserAktif = "SELECT id_pengusaha,no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,email,password,status_akun FROM pengusaha WHERE status_akun = 'tidak aktif'";
+            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'tidak aktif'";
             //eksekusi query
             $query = mysql_query($sqlUserAktif);
             if(!$query)
@@ -137,24 +263,142 @@
                     <th>Status Akun</th>
                 </tr>
                 <?php 
+                    $i = 1;
                     while($row = mysql_fetch_array($query))
                     {
-                        echo "<tr>";
-                            echo '<form method = "post" action = "editHapusUser.php">';
-                                echo '<td>' . $row['id_pengusaha'] . '<input type = "hidden" name = "id_pengusaha" value = "'. $row['id_pengusaha'] .'"></td>';
-                                echo '<td>' . $row['no_ktp'] . '<input type = "hidden" name = "noKtp" value = "'. $row['no_ktp'] .'"></td>';
-                                echo '<td>' . $row['nama_pengusaha'] . '<input type = "hidden" name = "nama" value = "'. $row['nama_pengusaha'] .'"></td>';
-                                echo '<td>' . $row['alamat'] . '<input type = "hidden" name = "alamat" value = "'. $row['alamat'] .'"></td>';
-                                echo '<td>' . $row['ttl'] . '<input type = "hidden" name = "ttl" value = "'. $row['ttl'] .'"></td>';
-                                echo '<td>' . $row['jenis_kelamin'] . '<input type = "hidden" name = "jk" value = "'. $row['jenis_kelamin'] .'"></td>';
-                                echo '<td>' . $row['email'] . '<input type = "hidden" name = "email" value = "'. $row['email'] .'"></td>';
-                                echo '<td>' . $row['password'] . '<input type = "hidden" name = "password" value = "'. $row['password'] .'"></td>';
-                                echo '<td>' . $row['status_akun'] . '<input type = "hidden" name = "status_akun" value = "'. $row['status_akun'] .'"></td>';
-                                echo '<td><input type = "submit" name = "update" value = "Update" class="btn btn-default"></td>';
-                                echo '<td><input type = "submit" name = "delete" value = "delete" class="btn btn-default"></td>';
-                            echo '</form>';
-                        echo "</tr>";
-                     }
+                ?>
+                        <tr>
+                            <!-- <form method = "post" action = "editHapusUser.php">    -->             
+                                <td><?=$row['id_pengusaha']?></td>
+                                <td><?=$row['no_ktp']?></td>
+                                <td><?=$row['nama_pengusaha']?></td>
+                                <td><?=$row['alamat']?></td>
+                                <td><?=$row['ttl']?><!-- <input type = "hidden" name = "ttl" value = "<?=$row['ttl']?>"> --></td>
+                                <td><?=$row['jenis_kelamin']?></td>
+                                <td><?=$row['email']?></td>
+                                <td><?=$row['password']?></td>
+                                <td><?=$row['status_akun']?></td>
+                                <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#UpdateNonAktif<?=$i?>"></button></td>
+                                <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#DeleteNonAktif<?=$i?>"></button></td>
+                                <td><button class='btn btn-warning' type="button" data-toggle="modal" data-target="#Aktifasi<?=$i?>">Aktifasi</button></td>
+                            <!-- </form> -->
+                        </tr>
+
+                         <!-- Modal Update-->
+                        <div class="modal fade" id="UpdateNonAktif<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit Data Pemilik Usaha</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" action="prosesEditUser.php" enctype="multipart/form-data" method="post">
+                                            <input type="hidden" name="id_pengusaha" class="form-control" value="<?=$row['id_pengusaha']?>"/>
+                                            <div class="form-group">
+                                                <label for="username" class="control-label">Username (No KTP)</label>
+                                                <input type="text" name="username" class="form-control" value="<?=$row['no_ktp']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_pengusaha" class="control-label">Nama Pemilik Usaha</label>
+                                                <input type="text" name="nama_pengusaha" class="form-control" value="<?=$row['nama_pengusaha']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat" class="control-label">Alamat</label>
+                                                <input type="text" name="alamat" class="form-control" value="<?=$row['alamat']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ttl" class="control-label">Tanggal Lahir</label>
+                                                <div class="input-group date">
+                                                    <input type="text" name="ttl" id ="ttl" class="form-control" value="<?=$row['ttl']?>"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-th"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="jenis_kelamin" class="col-sm-4 control-label">Jenis Kelamin</label>
+                                                <div class="col-sm-6">
+                                                   <label class="radio-inline">
+                                                        <input type="radio" name="jenis_kelamin" value="L" />Laki-laki
+                                                   </label>
+                                                   <label class="radio-inline">
+                                                        <input type="radio" name="jenis_kelamin" value="P" />Perempuan
+                                                   </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="control-label">E - Mail</label>
+                                                <input type="text" name="email" class="form-control" value="<?=$row['email']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="control-label">Password</label>
+                                                <input type="password" name="password" class="form-control" value="<?=$row['password']?>"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gambarKtp" class="control-label">Foto KTP</label>
+                                                    <img src="<?=$row['file_ktp']?>" height="100" width="100"/>
+                                                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                                                    <input name="gambarKtp" type="file" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status_akun" class="control-label">Status Akun</label>     
+                                                    <select class="form-control" name="status_akun" id="status_akun">
+                                                    <option value="aktif">Aktif</option>
+                                                    <option value="tidak aktif">Tidak Aktif</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                                <button type="reset" class="btn btn-default">Reset</button>
+                                            </div>
+                                        </form>
+                                    </div>  
+                                    <div class="modal-footer"></div>
+                                </div>
+                            </div>
+                        </div><!-- end of modal update -->
+
+                        <!-- Modal Hapus -->
+                        <div class="modal fade" id="DeleteNonAktif<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
+                                    </div>
+                                    <form method="POST" action="prosesHapusUser.php">
+                                        <input type="hidden" name="id_pengusaha" value="<?=$row['id_pengusaha']?>">
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                            <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                                        </div>
+                                    </form>
+                                </div>                          
+                            </div>
+                        </div><!--  End of Modal Hapus -->
+
+                        <!-- Modal Aktifasi -->
+                        <div class="modal fade" id="Aktifasi<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Aktifasi User?</h4>
+                                    </div>
+                                    <form method="POST" action="aktifDeaktifUser.php">
+                                        <input type="hidden" name="id_pengusaha" value="<?=$row['id_pengusaha']?>">
+                                        <div class="modal-footer">
+                                            <button type="submit" name="aktifasi" class="btn btn-success">Aktifasi</button>
+                                            <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                                        </div>
+                                    </form>
+                                </div>                          
+                            </div>
+                        </div><!--  End of Modal Aktifasi -->
+                <?php
+                    $i++;
+                    }
                 ?>
             </table>
         </div>
@@ -170,5 +414,9 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script>
+            $('.input-group.date #ttl').datepicker({});
+    </script>
 </body>
 </html>

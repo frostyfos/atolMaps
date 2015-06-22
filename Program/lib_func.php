@@ -17,7 +17,7 @@
     // navigation
     function nav(){
         if ($_SESSION['myjabatan'] == "admin"){
-  ?>
+  ?>             
             <div class="row">
                 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <div class="navbar-header">
@@ -28,7 +28,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <!-- image / logo here -->
-                        <!-- <a href="/broto/index.php"><img src="#" id="nav-logo"></a> -->
+                        <a href="admin.php"><img src="/broto/img/logo.png" id="nav-logo"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
@@ -68,6 +68,9 @@
                                     <li><a href="insertKelurahan.php">Insert Kelurahan</a></li>
                                 </ul>
                             </li> 
+                            <li>
+                                <a href="#" data-toggle="dropdown">Request Password</a>
+                            </li>
                             <li>
                                 <a href="#" data-toggle="dropdown">Laporan</a>
                             </li>

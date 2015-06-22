@@ -5,17 +5,23 @@
     include_once($path);
     
     connect();
-
     if(!isset ($_SESSION['myusername'])){
         header(("location:../index.php.php"));
     }
     
+    $sql = "SELECT * FROM usaha where id_usaha like ".$_POST['id_usaha']."";
+    //eksekusi query
+    $query = mysql_query($sql);
+    if(!$query)
+    {
+        print(mysql_error());
+    }
 ?>
 
 <html>
 <head>
-	<meta charset="utf-8">
-    <title>Insert Data Usaha Baru</title>
+    <meta charset="utf-8">
+    <title>Olah data Usaha</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -29,29 +35,20 @@
 <body>
 <div class="container">
     <!-- header -->
+    <?php nav(); ?>
+    <!-- disini konten  -->
     <?php 
-        nav();    
+            while($row = mysql_fetch_array($query))
+            {
     ?>
-<!-- disini konten  -->
-    
-
     <div class="row">
-            <div class="navbar navbar-inverse navbar-fixed-bottom ">
-                <div class="container">
-                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
-                </div>
-            </div>
-        </div>
-    </div> <!-- end of container -->
-
-     <div class="row">
-        <h2 class="text-center">Masukan Data Usaha</h2><hr/>
-            <div class="col-xs-7 col-xs-offset-1 col-sm-6 col-md-5 col-lg-5">
-                <form class="form-horizontal" action="prosesInsertUsaha.php" enctype="multipart/form-data" method="post">	
-                    <div class="form-group">
+    	<h2 class="text-center">Edit Data Usaha</h2><hr/>
+            <div class="col-xs-7 col-xs-offset-1 col-sm-6 col-md-5 col-lg-5">  
+            <form class="form-horizontal" id="formUpdate" action="prosesEditUsaha.php" method="post">
+                <div class="form-group">
                         <label for="nama" class="col-sm-3 control-label">Nama Usaha</label>
                         <div class="col-sm-7">
-                            <input type="text" name="nama" class="form-control" placeholder="Nama usaha"/>
+                            <input type="text" name="nama" class="form-control" value="<?=$row['nama_usaha']?>"/>
                         </div>
                     </div>
 
@@ -62,10 +59,10 @@
                                 <?php 
                                     $sql = "SELECT  * from pengusaha ";
                                     $hasil = mysql_query($sql);  
-                                    while($row=mysql_fetch_array($hasil)){
+                                    while($pengusaha=mysql_fetch_array($hasil)){
                                 ?>
-                                    <option value="<?php echo $row['id_pengusaha']; ?>">
-                                        <?php  echo $row['nama_pengusaha'];?>
+                                    <option value="<?php echo $pengusaha['id_pengusaha']; ?>">
+                                        <?php  echo $pengusaha['nama_pengusaha'];?>
                                     </option>
                                 <?php
                                     }
@@ -73,18 +70,23 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-group">
+	                    <label for="telp" class="col-sm-3 control-label">No Telepon</label>
+	                    <div class="col-sm-7">
+	                        <input type="text" name="telp" class="form-control" value="<?=$row['telp']?>"/>
+	                    </div>
+	                </div>
                     <div class="form-group">
                         <label for="produk" class="col-sm-3 control-label">Produk Utama</label>
                         <div class="col-sm-7">
-                            <input type="text" name="produk" class="form-control" placeholder="Produk Utama"/>
+                            <input type="text" name="produk" class="form-control" value="<?=$row['produk_utama']?>"/>
                         </div>
                     </div>
 
 					<div class="form-group row">
                         <label for="alamat" class="col-sm-3 control-label">Alamat</label> 
                         <div class="col-sm-7">
-                                <input type="text" name="alamat" id="geocomplete" class="form-control" placeholder="alamat usaha"/>  
+                        <input type="text" name="alamat" id="geocomplete" class="form-control" value="<?=$row['alamat_usaha']?>"/> 
                         </div>
                     </div>
                     <div class="form-group row">
@@ -108,10 +110,10 @@
                         <?php 
                             $sql = "SELECT  * from kecamatan ";
                             $hasil = mysql_query($sql);  
-                            while($row=mysql_fetch_array($hasil)){
+                            while($kecamatan=mysql_fetch_array($hasil)){
                         ?>
-                            <option value="<?php echo $row['id_kecamatan']; ?>">
-                                <?php  echo $row['nama_kecamatan']; ?>
+                            <option value="<?php echo $kecamatan['id_kecamatan']; ?>">
+                                <?php  echo $kecamatan['nama_kecamatan']; ?>
                             </option>';
                         <?php
                             }
@@ -128,10 +130,10 @@
                         <?php 
                             $sql = "SELECT * FROM kelurahan INNER JOIN kecamatan ON kelurahan.id_kecamatan = kecamatan.id_kecamatan ORDER BY nama_kelurahan";
                             $hasil = mysql_query($sql);  
-                            while($row=mysql_fetch_array($hasil)){
+                            while($kelurahan=mysql_fetch_array($hasil)){
                         ?>
-                            <option value="<?php echo $row['id_kelurahan']; ?>" class="<?php echo $row['id_kecamatan']; ?>">
-                                <?php  echo $row['nama_kelurahan']; ?>
+                            <option value="<?php echo $kelurahan['id_kelurahan']; ?>" class="<?php echo $kelurahan['id_kecamatan']; ?>">
+                                <?php  echo $kelurahan['nama_kelurahan']; ?>
                             </option>';
                         <?php
                             }
@@ -139,26 +141,18 @@
                     </select>
                 </div>
 				</div>
-
-                <div class="form-group">
-                    <label for="telp" class="col-sm-3 control-label">No Telepon</label>
-                    <div class="col-sm-7">
-                        <input type="text" name="telp" class="form-control" placeholder="Nomor kuntak usaha"/>
-                    </div>
-                </div>
-					
-					
-					<div class="form-group row" >
+	
+				<div class="form-group row" >
                 <label for="skala" class="col-sm-3 control-label">Skala Usaha</label>
                 <div class="col-sm-7">          
                     <select class="form-control" name="skala" id="skala">
                         <?php 
                             $sql = "SELECT  * from skala_usaha ";
                             $hasil = mysql_query($sql);  
-                            while($row=mysql_fetch_array($hasil)){
+                            while($skala=mysql_fetch_array($hasil)){
                         ?>
-                            <option value="<?php echo $row['id_skala']; ?>">
-                                <?php  echo $row['skala'];?>
+                            <option value="<?php echo $skala['id_skala']; ?>">
+                                <?php  echo $skala['skala'];?>
                             </option>
                         <?php
                             }
@@ -174,10 +168,10 @@
                         <?php 
                             $sql = "SELECT  * from sektor_usaha ";
                             $hasil = mysql_query($sql);  
-                            while($row=mysql_fetch_array($hasil)){
+                            while($sektor=mysql_fetch_array($hasil)){
                         ?>
-                            <option value="<?php echo $row['id_sektor']; ?>">
-                                <?php  echo $row['sektor'];?>
+                            <option value="<?php echo $sektor['id_sektor']; ?>">
+                                <?php  echo $sektor['sektor'];?>
                             </option>';
                         <?php
                             }
@@ -235,18 +229,32 @@
                            <!-- <button type="clear" class="btn btn-default">Clear</button> -->
                         </div>
                     </div>
-                </form>
+           	</form>
+        </div>
+        <div class="col-xs-2 col-xs-offset-1 col-sm-6 col-md-1 col-lg-1">
+            <div class="map_canvas"></div>
+        </div><!-- end of canvas -->
+    </div>
+    <?php
+            }
+    ?>
+
+    <!-- footer -->
+        <div class="row">
+            <div class="navbar navbar-inverse navbar-fixed-bottom ">
+                <div class="container">
+                    <p class="navbar-text pull-left">Copyright &copy 2015 Maps</p>
+                </div>
             </div>
-            <div class="col-xs-2 col-xs-offset-1 col-sm-6 col-md-1 col-lg-1">
-                <div class="map_canvas"></div>
-            </div><!-- end of canvas -->
-        </div> 
-     </div>
-	<!-- javascript -->
+        </div>
+    </div> <!-- end of container -->
+     
+     </div>';
+    <!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery.chained.min.js"></script>
-    <script src="../js/jquery.geocomplete.js"></script>
+	<script src="../js/jquery.geocomplete.js"></script>
 
     <script>
             $("#kelurahan").chained("#kecamatan");	

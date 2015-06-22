@@ -67,8 +67,8 @@
                 ?>
                         <tr>
                             <!-- <form method = "post" action = "editHapusSektor.php"> -->
-                                <td> <?=$row['id_sektor'] ?><input type = "hidden" name = "id_sektor" value = "<?=$row['id_sektor']?>"></td>
-                                <td> <?=$row['sektor'] ?><input type = "hidden" name = "sektor" value = "<?=$row['sektor']?>"></td>
+                                <td> <?=$row['id_sektor'] ?></td>
+                                <td> <?=$row['sektor'] ?></td>
                                 <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
                                 <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
                             <!-- </form> -->

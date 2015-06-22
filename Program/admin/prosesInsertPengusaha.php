@@ -36,7 +36,7 @@
 		else
 		echo "Gagal Upload";
 		
-		$filektp = "gambar/".$FileUpload;
+		$filektp = "../gambar/".$FileUpload;
 		
 			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password','$status')";
 		

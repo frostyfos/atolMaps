@@ -68,10 +68,10 @@
                     {
                 ?>
                         <tr>
-                            <td><?=$row['id_kecamatan']?><input type = "hidden" name = "id_kecamatan" value = "<?=$row['id_kecamatan']?>"></td>
-                            <td><?=$row['nama_kecamatan']?><input type = "hidden" name = "nama_kecamatan" value = "<?=$row['nama_kecamatan']?>"></td>
-                            <td><?=$row['lat']?><input type = "hidden" name = "lat" value = "'. $row['lat'] .'"></td>
-                            <td><?=$row['lng']?><input type = "hidden" name = "long" value = "'. $row['lng'] .'"></td>
+                            <td><?=$row['id_kecamatan']?></td>
+                            <td><?=$row['nama_kecamatan']?></td>
+                            <td><?=$row['lat']?></td>
+                            <td><?=$row['lng']?></td>
                             <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
                             <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
                         </tr>

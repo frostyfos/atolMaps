@@ -66,8 +66,8 @@
                     {
                 ?>
                     <tr>
-                        <td><?=$row['id_skala'] ?><input type = "hidden" name = "id_skala" value = "<?=$row['id_skala']?>"></td>
-                        <td><?=$row['skala'] ?><input type = "hidden" name = "skala" value = "<?=$row['skala']?>"></td>
+                        <td><?=$row['id_skala'] ?></td>
+                        <td><?=$row['skala'] ?></td>
                         <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
                         <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
                     </tr>

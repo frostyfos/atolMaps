@@ -45,7 +45,7 @@
 	            <div class="form-group">
 	                <div class="col-sm-offset-4 col-sm-4">
 	                    <button type="submit" class="btn btn-primary">Sign In</button>
-	                    <a href="/atolMaps/program/passRequest/formRequest.php" class="btn btn-link">Lupa Password</a>
+	                    <a href="passRequest/formRequest.php" class="btn btn-link">Lupa Password</a>
 	                </div>
 	            </div>
 	        </form>	         
