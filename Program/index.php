@@ -1829,7 +1829,7 @@
         </div>
 
         <br><br><br><h2 class="text-center">Peta Usaha Bandung Barat</h2><hr>
-        <form action = "#" method = "post">
+        <form action = "" method = "post">
             <div class="col-xs-3 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1">
             <div class="input-group">
                 <select class="form-control" name="fKecamatan" id="fKecamatan">
@@ -1851,8 +1851,22 @@
             </div>
             </div>
         </form>
+        <?php 
+           $id_kecamatan = $_POST['fKecamatan'];
+           $sqlFilter = "SELECT lat,lng FROM kecamatan WHERE id_kecamatan = '$id_kecamatan'";
+           $resultFilter = mysql_query($sqlFilter);
+           $rowF = mysql_fetch_array($resultFilter);
+
+          if (isset($_POST['filter'])) {
+            $lat = $rowF['lat'];
+            $lng = $rowF['lng'];
+          }else{
+            $lat = -6.914744;
+            $lng = 107.609810;
+          }
+        ?>
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <canvas id="map-canvas"></canvas>
+            <div id="map-canvas"></div>
         </div>
 
         <!-- grafik usaha -->
@@ -1917,17 +1931,18 @@
 
     </script>
 
-    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw"></script> -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw">
+    </script>
     <script type="text/javascript">
-    //   function initialize() {
-    //     var mapOptions = {
-    //       center: { lat: -6.914744, lng: 107.609810},
-    //       zoom: 13
-    //     };
-    //     var map = new google.maps.Map(document.getElementById('map-canvas'),
-    //         mapOptions);
-    //   }
-    //   google.maps.event.addDomListener(window, 'load', initialize);
+      function initialize() {
+        var mapOptions = {
+          center: { lat: <?= $lat ?>, lng: <?= $lng ?>},
+          zoom: 13
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </body>
 </html>

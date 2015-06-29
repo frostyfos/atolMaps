@@ -154,7 +154,7 @@
                                                 <label for="password" class="control-label">Password</label>
                                                 <input type="password" name="password" class="form-control" value="<?=$row['password']?>"/>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group"><?=$row['file_ktp']?>
                                                 <label for="gambarKtp" class="control-label">Foto KTP</label>
                                                     <input type="hidden" name="fotoLama" class="form-control" value="<?=$row['file_ktp']?>"/>
                                                     <img src="<?=$row['file_ktp']?>" height="100" width="100"/>

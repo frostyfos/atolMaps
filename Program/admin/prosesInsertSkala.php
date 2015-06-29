@@ -24,7 +24,7 @@
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Pengusaha Berhasil")';
 		echo "</script>";
-		header( "refresh:0; url=admin/admin.php" );
+		header( "refresh:0; url=listSkala.php" );
 	}
 	
 ?>

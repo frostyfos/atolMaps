@@ -108,9 +108,6 @@
                                 </ul>
                             </li> 
                             <li>
-                                <a href="#" data-toggle="dropdown">Req Pass</a>
-                            </li>
-                            <li>
                                 <a href="#" data-toggle="dropdown">Report</a>
                             </li>
                         </ul>
@@ -158,4 +155,6 @@
 <?php
         }
     }
+
+
 ?>

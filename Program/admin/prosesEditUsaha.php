@@ -8,6 +8,7 @@
     connect();
     error_reporting( E_ALL );
 	//deklarasi variabel
+	$id_usaha = $_POST['id_usaha'];
 	$nama = $_POST['nama'];
 	$id_pengusaha = $_POST['id_pengusaha'];
 	$produk = $_POST['produk'];
@@ -17,14 +18,18 @@
 	$telp = $_POST['telp'];
 	$lat = $_POST['lat'];
 	$lng = $_POST['lng'];
-	$peta = $_POST['peta'];
 	$skala = $_POST['skala'];
 	$sektor = $_POST['sektor'];
 	$status = $_POST['status'];
+	$img1 = $_POST['fotoLama1'];
+	$img2 = $_POST['fotoLama2'];
+	$img3 = $_POST['fotoLama3'];
+	$img4 = $_POST['fotoLama4'];
+	$img5 = $_POST['fotoLama5'];
 
 	//insert gambar 1
 	if($_FILES['gambar1']['error']==4){
-		$UploadGambar1 = "default.jpg";
+		$UploadGambar1 = $img1;
 	}else if($_FILES['gambar1']['error']==0){
 		$namafilebaru1="../gambar/".$_FILES['gambar1']['name'];
 	
@@ -39,11 +44,11 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar1 = "../gambar/".$UploadGambar1;
+	$fileGambar1 = $UploadGambar1;
 
 	//insert gambar 2
 	if($_FILES['gambar2']['error']==4){
-		$UploadGambar2 = "default.jpg";
+		$UploadGambar2 = $img2;
 	}elseif($_FILES['gambar2']['error']==0){
 		$namafilebaru2="../gambar/".$_FILES['gambar2']['name'];
 	
@@ -58,11 +63,11 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar2 = "../gambar/".$UploadGambar2;
+	$fileGambar2 = $UploadGambar2;
 
 	//insert gambar 3
 	if($_FILES['gambar3']['error']==4){
-		$UploadGambar3 = "default.jpg";
+		$UploadGambar3 = $img3;
 	}elseif($_FILES['gambar3']['error']==0){
 		$namafilebaru3="../gambar/".$_FILES['gambar3']['name'];
 	
@@ -77,11 +82,11 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar3 = "../gambar/".$UploadGambar3;
+	$fileGambar3 = $UploadGambar3;
 
 	//insert gambar 4
 	if($_FILES['gambar4']['error']==4){
-		$UploadGambar4 = "default.jpg";
+		$UploadGambar4 = $img4;
 	}elseif($_FILES['gambar4']['error']==0){
 		$namafilebaru4="../gambar/".$_FILES['gambar4']['name'];
 	
@@ -96,11 +101,11 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar4 = "../gambar/".$UploadGambar4;
+	$fileGambar4 = $UploadGambar4;
 
 	//insert gambar 5
 	if($_FILES['gambar5']['error']==4){
-		$UploadGambar5 = "default.jpg";
+		$UploadGambar5 = $img5;
 	}elseif($_FILES['gambar5']['error']==0){
 		$namafilebaru5="../gambar/".$_FILES['gambar5']['name'];
 	
@@ -115,17 +120,19 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar5 = "../gambar/".$UploadGambar5;
+	$fileGambar5 = $UploadGambar5;
 	
-	$sql = "UPDATE usaha SET nama_usaha = $nama, id_pengusaha = '$id_pengusaha', produk_utama = '$produk',
+	$sql = "UPDATE usaha SET nama_usaha = '$nama', id_pengusaha = '$id_pengusaha', produk_utama = '$produk',
 							 alamat_usaha = '$alamat', id_kelurahan = '$kelurahan', id_kecamatan = '$kecamatan',
 							 telp = '$telp', lat = '$lat', lng = '$lng',id_skala = '$skala', id_sektor = '$sektor',
 							 gambar1 = '$fileGambar1',gambar2 = '$fileGambar2',gambar3 = '$fileGambar3',
-							 gambar4 = '$fileGambar4',gambar5 = '$fileGambar5', status_usaha = '$status' ";
+							 gambar4 = '$fileGambar4',gambar5 = '$fileGambar5', status_usaha = '$status' 
+			WHERE id_usaha = '$id_usaha'";
 		
 	//eksekusi statement insert data
 	if(!mysql_query($sql))
 	{
+		echo mysql_error();
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Pengusaha Gagal")';
 		echo '</script>';

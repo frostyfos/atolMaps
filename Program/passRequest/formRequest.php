@@ -1,9 +1,7 @@
 <!doctype html>
 <?php 
     session_start(); 
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "../lib_func.php";
-    include_once($path);
+    include("../lib_func.php");
 ?>
 
 <html>

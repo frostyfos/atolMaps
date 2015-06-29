@@ -17,7 +17,6 @@
 	$telp = $_POST['telp'];
 	$lat = $_POST['lat'];
 	$lng = $_POST['lng'];
-	$peta = $_POST['peta'];
 	$skala = $_POST['skala'];
 	$sektor = $_POST['sektor'];
 	$status = $_POST['status'];

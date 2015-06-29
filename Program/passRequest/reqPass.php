@@ -1,8 +1,6 @@
 <?php 
 	session_start();
-	$path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "../lib_func.php";
-    include_once($path);
+    include("../lib_func.php");
     //conncet to database
     connect();
 
@@ -10,6 +8,35 @@
 	$nama = $_POST['nama'];
 	$noKtp = $_POST['noKtp'];
 	$email = $_POST['email'];
+	$hash = md5( rand(0,1000) );
+	$password = rand(1000,5000);
+
+	$nama = mysql_escape_string($nama);
+	$noKtp = mysql_escape_string($noKtp);
+	$email = mysql_escape_string($email);
+	$hash = mysql_escape_string($hash);
+	$password = mysql_escape_string($password);
+
+	//sendmail
+	$to      = $email; // Send email to our user
+	$subject = 'Ganti Password | Verification'; // Give the email a subject 
+	$message = '
+	 
+	Password anda telah diubah!
+	dengan ketentuan sebagai berikut : 
+	 
+	------------------------
+	Username: '.$noKtp.'
+	Password: '.$password.'
+	------------------------
+	 
+	Please click this link to activate your account:
+	localhost/atolmaps/program/reqpass/verify.php?email='.$email.'&hash='.$hash.'
+	 
+	'; // Our message above including the link
+	                     
+	$headers = 'From:lumpiakuda@gmail.com' . "\r\n"; // Set from headers
+	mail($to, $subject, $message, $headers); // Send our email
 
 	 if (!$_POST['nama'] | !$_POST['noKtp'] | !$_POST['email'])
      {
@@ -18,7 +45,7 @@
         exit;
      }
 
-     $sql = "INSERT INTO reqPass(no_ktp,nama,email) VALUES('$noKtp','$nama','$email')";
+     $sql = "INSERT INTO reqPass(no_ktp,nama,email,hash) VALUES('$noKtp','$nama','$email','$hash')";
 
      //eksekusi statement insert
 		if(!mysql_query($sql))
@@ -31,7 +58,7 @@
 		else
 		{
 			echo '<script type="text/javascript">';
-			echo 'alert("Proses Memasukan Data Berhasil")';
+			echo 'alert("Kami sudah mengirim e-mail berisi password baru anda ke alamat email anda")';
 			echo "</script>";
 			header( "refresh:0; url=formRequestPassword.php" );
 		}

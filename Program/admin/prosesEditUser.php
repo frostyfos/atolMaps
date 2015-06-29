@@ -36,7 +36,7 @@
 	}
 	else
 	echo "Gagal Upload";
-	$filektp = "../gambar/".$UploadGambar;
+	$filektp = $UploadGambar;
 			
 	$sql = "UPDATE pengusaha SET no_ktp = '$username', nama_pengusaha = '$nama', alamat = '$alamat', ttl = '$ttl', jenis_kelamin = '$jk', file_ktp = '$filektp', email='$email', password='$password', status_akun = '$status_akun' WHERE id_pengusaha = '$id_pengusaha'";
 		

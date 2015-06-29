@@ -44,7 +44,8 @@
     <div class="row">
     	<h2 class="text-center">Edit Data Usaha</h2><hr/>
             <div class="col-xs-7 col-xs-offset-1 col-sm-6 col-md-5 col-lg-5">  
-            <form class="form-horizontal" id="formUpdate" action="prosesEditUsaha.php" method="post">
+            <form class="form-horizontal" id="formUpdate" enctype="multipart/form-data" action="prosesEditUsaha.php" method="post">
+                <input type="hidden" name="id_usaha" value="<?=$row['id_usaha']?>"/>
                 <div class="form-group">
                         <label for="nama" class="col-sm-3 control-label">Nama Usaha</label>
                         <div class="col-sm-7">
@@ -180,7 +181,8 @@
                 </div>
 				</div>
 				
-				    <div class="form-group">
+				    <div class="form-group"><?=$row['gambar1']?>
+                        <input type="hidden" name="fotoLama1" class="form-control" value="<?=$row['gambar1']?>"/>
                         <label for="gambar1" class="col-sm-3 control-label">Gambar Usaha 1</label>
                         <div class="col-sm-7">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar1" type="file" />
@@ -188,25 +190,29 @@
                     </div>
 					
 				
-				    <div class="form-group">
+				    <div class="form-group"><?=$row['gambar2']?>
+                        <input type="hidden" name="fotoLama2" class="form-control" value="<?=$row['gambar2']?>"/>
                         <label for="gambar2" class="col-sm-3 control-label">Gambar Usaha 2</label>
                         <div class="col-sm-7">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar2" type="file" />
                         </div>
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="fotoLama3" class="form-control" value="<?=$row['gambar3']?>"/>
                         <label for="gambar3" class="col-sm-3 control-label">Gambar Usaha 3</label>
                         <div class="col-sm-7">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar3" type="file" />
                         </div>
                     </div>
 					<div class="form-group">
+                        <input type="hidden" name="fotoLama4" class="form-control" value="<?=$row['gambar4']?>"/>
                         <label for="gambar4" class="col-sm-3 control-label">Gambar Usaha 4</label>
                         <div class="col-sm-7">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar4" type="file" />
                         </div>
                     </div>
 					<div class="form-group">
+                        <input type="hidden" name="fotoLama5" class="form-control" value="<?=$row['gambar5']?>"/>
                         <label for="gambar5" class="col-sm-3 control-label">Gambar Usaha 5</label>
                         <div class="col-sm-7">
                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="gambar5" type="file" />
