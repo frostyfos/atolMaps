@@ -30,6 +30,7 @@
 	//insert gambar 1
 	if($_FILES['gambar1']['error']==4){
 		$UploadGambar1 = $img1;
+		$fileGambar1 =$UploadGambar1;
 	}else if($_FILES['gambar1']['error']==0){
 		$namafilebaru1="../gambar/".$_FILES['gambar1']['name'];
 	
@@ -37,6 +38,7 @@
 			$namafilebaru1)==true){
 			$UploadGambar1 = $_FILES['gambar1']['name'];
 			echo "File telah tersimpan.";
+			$fileGambar1 = "../gambar/".$UploadGambar1;
 		}
 			else{
 				echo "Gagal menyimpan file upload";
@@ -44,11 +46,12 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar1 = $UploadGambar1;
+	
 
 	//insert gambar 2
 	if($_FILES['gambar2']['error']==4){
 		$UploadGambar2 = $img2;
+		$fileGambar2 = $UploadGambar2;
 	}elseif($_FILES['gambar2']['error']==0){
 		$namafilebaru2="../gambar/".$_FILES['gambar2']['name'];
 	
@@ -59,15 +62,17 @@
 		}
 			else{
 				echo "Gagal menyimpan file upload";
+				$fileGambar2 = "../gambar/".$UploadGambar2;
 			}
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar2 = $UploadGambar2;
+	
 
 	//insert gambar 3
 	if($_FILES['gambar3']['error']==4){
 		$UploadGambar3 = $img3;
+		$fileGambar3 = $UploadGambar3;
 	}elseif($_FILES['gambar3']['error']==0){
 		$namafilebaru3="../gambar/".$_FILES['gambar3']['name'];
 	
@@ -75,6 +80,7 @@
 			$namafilebaru3)==true){
 			$UploadGambar3 = $_FILES['gambar3']['name'];
 			echo "File telah tersimpan.";
+			$fileGambar3 = "../gambar/".$UploadGambar3;
 		}
 			else{
 				echo "Gagal menyimpan file upload";
@@ -82,11 +88,12 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar3 = $UploadGambar3;
+	
 
 	//insert gambar 4
 	if($_FILES['gambar4']['error']==4){
 		$UploadGambar4 = $img4;
+		$fileGambar4 = $UploadGambar4;
 	}elseif($_FILES['gambar4']['error']==0){
 		$namafilebaru4="../gambar/".$_FILES['gambar4']['name'];
 	
@@ -94,6 +101,7 @@
 			$namafilebaru4)==true){
 			$UploadGambar4 = $_FILES['gambar4']['name'];
 			echo "File telah tersimpan.";
+			$fileGambar4 = "../gambar/".$UploadGambar4;
 		}
 			else{
 				echo "Gagal menyimpan file upload";
@@ -101,11 +109,11 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar4 = $UploadGambar4;
 
 	//insert gambar 5
 	if($_FILES['gambar5']['error']==4){
 		$UploadGambar5 = $img5;
+		$fileGambar5 = $UploadGambar5;
 	}elseif($_FILES['gambar5']['error']==0){
 		$namafilebaru5="../gambar/".$_FILES['gambar5']['name'];
 	
@@ -113,6 +121,7 @@
 			$namafilebaru5)==true){
 			$UploadGambar5 = $_FILES['gambar5']['name'];
 			echo "File telah tersimpan.";
+			$fileGambar5 ="../gambar/".$UploadGambar5;
 		}
 			else{
 				echo "Gagal menyimpan file upload";
@@ -120,7 +129,7 @@
 	}
 	else
 	echo "Gagal Upload";
-	$fileGambar5 = $UploadGambar5;
+	
 	
 	$sql = "UPDATE usaha SET nama_usaha = '$nama', id_pengusaha = '$id_pengusaha', produk_utama = '$produk',
 							 alamat_usaha = '$alamat', id_kelurahan = '$kelurahan', id_kecamatan = '$kecamatan',
