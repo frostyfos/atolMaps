@@ -9,7 +9,10 @@
     if(!isset ($_SESSION['myusername'])){
         header(("location:../index.php.php"));
     }
-    
+    //pagination
+    $num_rec_per_page=10;
+    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
+    $start_from = ($page-1) * $num_rec_per_page; 
 ?>
 
 <html>
@@ -35,8 +38,8 @@
     <h2 class="text-center">List User yang terdaftar</h2><hr/><br>
     <!-- ============================== list navigation for tabs ==================================== -->
     <ul class="nav nav-tabs">
-                <li><a href="#dataUserAktif" data-toggle="tab"> Akun User Aktif</a></li>
-                <li><a href="#dataUserNonAktif" data-toggle="tab">Akun User Tidak Aktif</a></li>
+                <li class="active"><a href="#dataUserAktif" data-toggle="tab"> Akun User Aktif</a></li>
+                <li ><a href="#dataUserNonAktif" data-toggle="tab">Akun User Tidak Aktif</a></li>
              </ul>
 
     <!-- TAB CONTENT -->
@@ -44,7 +47,7 @@
 
     <!-- USER AKTIF -->
         <?php 
-            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'aktif'";
+            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'aktif' LIMIT $start_from, $num_rec_per_page";
             //eksekusi query
             $query = mysql_query($sqlUserAktif);
             if(!$query)
@@ -218,17 +221,40 @@
                      }
                 ?>
             </table>
+            <!-- pagination -->
+            <?php 
+                $sql = "SELECT * FROM pengusaha"; 
+                $rs_result = mysql_query($sql); //run the query
+                $total_records = mysql_num_rows($rs_result);  //count number of records
+                $total_pages = ceil($total_records / $num_rec_per_page); 
+            ?>
+            <nav class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <ul class="pagination">
+                    <li>
+                        <a href="listUser.php?page=1" aria-label="First Page">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php 
+                        for ($i=1; $i<=$total_pages; $i++) { 
+                    ?>
+                            <li><a href="listUser.php?page=<?=$i?>"><?=$i?></a></li>
+                    <?php
+                    };
+                    ?>
+                    <li>
+                        <a href="listUser.php?page=<?=$total_pages?>" aria-label="Last Page">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
         </div> <!-- end div user aktif -->
-
-
-
-
-
-
 
     <!-- USER AKTIF TIDAK AKTIF-->
         <?php 
-            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'tidak aktif'";
+            $sqlUserAktif = "SELECT * FROM pengusaha WHERE status_akun = 'tidak aktif' LIMIT $start_from, $num_rec_per_page";
             //eksekusi query
             $query = mysql_query($sqlUserAktif);
             if(!$query)
@@ -401,6 +427,34 @@
                     }
                 ?>
             </table>
+            <!-- pagination -->
+            <?php 
+                $sql = "SELECT * FROM pengusaha"; 
+                $rs_result = mysql_query($sql); //run the query
+                $total_records = mysql_num_rows($rs_result);  //count number of records
+                $total_pages = ceil($total_records / $num_rec_per_page); 
+            ?>
+            <nav class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <ul class="pagination">
+                    <li>
+                        <a href="listUser.php?page=1" aria-label="First Page">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php 
+                        for ($i=1; $i<=$total_pages; $i++) { 
+                    ?>
+                            <li><a href="listUser.php?page=<?=$i?>"><?=$i?></a></li>
+                    <?php
+                    };
+                    ?>
+                    <li>
+                        <a href="listUser.php?page=<?=$total_pages?>" aria-label="Last Page">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     <!-- footer -->
         <div class="row">
@@ -418,5 +472,4 @@
     <script>
             $('.input-group.date #ttl').datepicker({});
     </script>
-</body>
 </html>

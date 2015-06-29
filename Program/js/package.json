@@ -1,31 +1,28 @@
 {
-  "name": "geocomplete",
-  "version": "1.6.5",
-  "description": "An advanced jQuery plugin that wraps the Google Maps API's [Geocoding](https://code.google.com/apis/maps/documentation/javascript/geocoding.html) and [Places Autocomplete](https://code.google.com/apis/maps/documentation/javascript/places.html#places_autocomplete) services. You simply provide an input that lets you search for locations with a nice autocomplete dropdown. Optionally add a container to show an interactive map and a form that will be populated with the address details.",
-  "main": "jquery.geocomplete.js",
-  "directories": {
-    "example": "examples"
-  },
-  "dependencies": {
-    "docco": "^0.6.3",
-    "uglifyjs": "^2.3.6"
-  },
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-release": "^0.7.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "private": true,
+  "name": "chart.js",
+  "homepage": "http://www.chartjs.org",
+  "description": "Simple HTML5 charts using the canvas element.",
+  "version": "1.0.2",
+  "main": "Chart.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ubilabs/geocomplete.git"
+    "url": "https://github.com/nnnick/Chart.js.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ubilabs/geocomplete/issues"
+  "dependences": {},
+  "devDependencies": {
+    "gulp": "3.5.x",
+    "gulp-concat": "~2.1.x",
+    "gulp-connect": "~2.0.5",
+    "gulp-jshint": "~1.5.1",
+    "gulp-replace": "^0.4.0",
+    "gulp-size": "~0.4.0",
+    "gulp-uglify": "~0.2.x",
+    "gulp-util": "~2.2.x",
+    "gulp-html-validator": "^0.0.2",
+    "inquirer": "^0.5.1",
+    "semver": "^3.0.1"
   },
-  "homepage": "https://github.com/ubilabs/geocomplete"
+  "spm": {
+    "main": "Chart.js"
+  }
 }

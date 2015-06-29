@@ -13,6 +13,34 @@
     }
     
  ?>
+
+<?php 
+  function modalGambarUsaha(){
+?>
+    <div class="modal fade" id="myModal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
+            </div>
+            <div class="modal-body">
+            <img src="<?=$row['gambar1']?>" height="200" width="200"/>
+            <img src="<?=$row['gambar2']?>" height="200" width="200"/>
+            <img src="<?=$row['gambar3']?>" height="200" width="200"/>
+            <img src="<?=$row['gambar4']?>" height="200" width="200"/>
+            <img src="<?=$row['gambar5']?>" height="200" width="200"/>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+<?php
+  }  
+?>
+
  <?php 
     // navigation
     function nav(){
@@ -28,17 +56,28 @@
                             <span class="icon-bar"></span>
                         </button>
                         <!-- image / logo here -->
-                        <a href="admin.php"><img src="/broto/img/logo.png" id="nav-logo"></a>
+                        <a href="admin.php"><img src="../gambar/logo.png" id="nav-logo"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
-                             <li class="dropdown "><a href="#" data-toggle="dropdown">User<span class="caret"></span></a>
+                             <li class="dropdown "><a href="#" data-toggle="dropdown">User
+                                <?php connect();
+                                      $result = mysql_query("SELECT COUNT(nama_pengusaha) AS jumlah FROM pengusaha WHERE status_akun LIKE 'tidak aktif' ");
+                                      $jumlah = mysql_fetch_array($result);
+                                      if($jumlah['jumlah'] > 0){
+                                ?>         
+                                     <span class="badge"><?= $jumlah['jumlah']; ?></span>
+                                <?php
+                                        }
+                                ?>
+                                
+                                <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="listUser.php">List Pengusaha</a></li>
                                     <li><a href="InsertPengusaha.php">Insert Pemilik Usaha</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#" data-toggle="dropdown">Pengusaha<span class="caret"></span></a>
+                            <li class="dropdown"><a href="#" data-toggle="dropdown">Usaha<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="tampilUsahaBandung.php">List Usaha</a></li>
                                     <li><a href="insert_usaha.php">Insert Usaha</a></li>
@@ -69,10 +108,10 @@
                                 </ul>
                             </li> 
                             <li>
-                                <a href="#" data-toggle="dropdown">Request Password</a>
+                                <a href="#" data-toggle="dropdown">Req Pass</a>
                             </li>
                             <li>
-                                <a href="#" data-toggle="dropdown">Laporan</a>
+                                <a href="#" data-toggle="dropdown">Report</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

@@ -9,7 +9,11 @@
     if(!isset ($_SESSION['myusername'])){
         header(("location:../index.php"));
     }
-    
+
+    //pagination
+    $num_rec_per_page=10;
+    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
+    $start_from = ($page-1) * $num_rec_per_page; 
 ?>
 
 <html>
@@ -34,7 +38,9 @@
     <h2 class="text-center">List Kelurahan</h2><hr/><br>
     <!-- USER AKTIF -->
         <?php 
-            $sqlSkala = "SELECT id_kelurahan,kecamatan.id_kecamatan AS id_kecamatan,nama_kecamatan,nama_kelurahan, kelurahan.lat AS lat, kelurahan.lng AS lng FROM kelurahan, Kecamatan WHERE Kecamatan.id_kecamatan = kelurahan.id_kecamatan ORDER BY id_kelurahan";
+            $sqlSkala = "SELECT id_kelurahan,kecamatan.id_kecamatan AS id_kecamatan,nama_kecamatan,nama_kelurahan, 
+                         kelurahan.lat AS lat, kelurahan.lng AS lng FROM kelurahan, Kecamatan 
+                         WHERE Kecamatan.id_kecamatan = kelurahan.id_kecamatan ORDER BY id_kelurahan LIMIT $start_from, $num_rec_per_page";
             //eksekusi query
             $query = mysql_query($sqlSkala);
             if(!$query)
@@ -154,7 +160,37 @@
                     }
                 ?>
             </table>
-    <!-- footer -->
+
+            <!-- pagination -->
+            <?php 
+                $sql = "SELECT * FROM kelurahan"; 
+                $rs_result = mysql_query($sql); //run the query
+                $total_records = mysql_num_rows($rs_result);  //count number of records
+                $total_pages = ceil($total_records / $num_rec_per_page); 
+            ?>
+            <nav class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <ul class="pagination">
+                    <li>
+                        <a href="listKelurahan.php?page=1" aria-label="First Page">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php 
+                        for ($i=1; $i<=$total_pages; $i++) { 
+                    ?>
+                            <li><a href="listKelurahan.php?page=<?=$i?>"><?=$i?></a></li>
+                    <?php
+                    };
+                    ?>
+                    <li>
+                        <a href="listKelurahan.php?page=<?=$total_pages?>" aria-label="Last Page">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        <!-- footer -->
         <div class="row">
             <div class="navbar navbar-inverse navbar-fixed-bottom ">
                 <div class="container">

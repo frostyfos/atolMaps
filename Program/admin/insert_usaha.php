@@ -102,23 +102,23 @@
                     </div>
 					
 				<div class="form-group row" >
-                <label for="kecamatan" class="col-sm-3 control-label">Kecamatan</label>
-                <div class="col-sm-7">          
-                    <select class="form-control" name="kecamatan" id="kecamatan">
-                        <?php 
-                            $sql = "SELECT  * from kecamatan ";
-                            $hasil = mysql_query($sql);  
-                            while($row=mysql_fetch_array($hasil)){
-                        ?>
-                            <option value="<?php echo $row['id_kecamatan']; ?>">
-                                <?php  echo $row['nama_kecamatan']; ?>
-                            </option>';
-                        <?php
-                            }
-                        ?>
-                        
-                    </select>
-                </div>
+                    <label for="kecamatan" class="col-sm-3 control-label">Kecamatan</label>
+                    <div class="col-sm-7">          
+                        <select class="form-control" name="kecamatan" id="kecamatan">
+                            <?php 
+                                $sql = "SELECT  * from kecamatan ";
+                                $hasil = mysql_query($sql);  
+                                while($row=mysql_fetch_array($hasil)){
+                            ?>
+                                <option value="<?php echo $row['id_kecamatan']; ?>">
+                                    <?php  echo $row['nama_kecamatan']; ?>
+                                </option>';
+                            <?php
+                                }
+                            ?>
+                            
+                        </select>
+                    </div>
 				</div>
 
                 <div class="form-group row" >

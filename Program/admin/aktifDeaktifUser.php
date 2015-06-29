@@ -9,14 +9,13 @@
 	//deklarasi variabel
 	$id_pengusaha= $_POST['id_pengusaha'];
 	if(isset($_POST['deaktifasi'])){
-		echo "deaktifasi";
 		$sql = "UPDATE pengusaha SET status_akun = 'tidak aktif' WHERE id_pengusaha = '$id_pengusaha'";
 		
 		if(!mysql_query($sql))
 		{
 			print(mysql_error());
 			echo '<script type="text/javascript">';
-			echo 'alert("Edit Data Pengusaha Gagal")';
+			echo 'alert("Deaktifasi User Gagal")';
 			echo '</script>';
 			header( "refresh:0; url=listUser.php" );
 		}
@@ -24,19 +23,18 @@
 		{
 			print(mysql_error());
 			echo '<script type="text/javascript">';
-			echo 'alert("Edit Data Pengusaha Berhasil")';
+			echo 'alert("Deaktifasi User Berhasil")';
 			echo "</script>";
 			header( "refresh:0; url=listUser.php" );
 		}
 	}elseif(isset($_POST['aktifasi'])){ 
-		echo "aktifasi";
 		$sql = "UPDATE pengusaha SET status_akun = 'aktif' WHERE id_pengusaha = '$id_pengusaha'";
 		
 		if(!mysql_query($sql))
 		{
 			print(mysql_error());
 			echo '<script type="text/javascript">';
-			echo 'alert("Edit Data Pengusaha Gagal")';
+			echo 'alert("Aktifasi User Gagal")';
 			echo '</script>';
 			header( "refresh:0; url=listUser.php" );
 		}
@@ -44,7 +42,7 @@
 		{
 			print(mysql_error());
 			echo '<script type="text/javascript">';
-			echo 'alert("Edit Data Pengusaha Berhasil")';
+			echo 'alert("Aktifasi User Berhasil")';
 			echo "</script>";
 			header( "refresh:0; url=listUser.php" );
 		}

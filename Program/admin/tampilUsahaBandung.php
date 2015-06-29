@@ -10,6 +10,11 @@
    if(!isset ($_SESSION['myusername'])){
         header(("location:../index.php.php"));
     }
+
+    //pagination
+    $num_rec_per_page=10;
+    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
+    $start_from = ($page-1) * $num_rec_per_page; 
     
 ?>
 
@@ -39,7 +44,7 @@
 										join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
 										join skala_usaha ska on u.id_skala=ska.id_skala
 										join sektor_usaha sek on u.id_sektor=sek.id_sektor
-										";
+				LIMIT $start_from, $num_rec_per_page";
         //eksekusi query
         $query = mysql_query($sql_usaha);
         if(!$query)
@@ -311,7 +316,37 @@
     <?php
             $i++;
          }
-         echo "</table>";
+    ?>
+         </table>;
+         <!-- pagination -->
+            <?php 
+                $sql = "SELECT * FROM usaha"; 
+                $rs_result = mysql_query($sql); //run the query
+                $total_records = mysql_num_rows($rs_result);  //count number of records
+                $total_pages = ceil($total_records / $num_rec_per_page); 
+            ?>
+            <nav class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <ul class="pagination">
+                    <li>
+                        <a href="tampilUsahaBandung.php?page=1" aria-label="First Page">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php 
+                        for ($i=1; $i<=$total_pages; $i++) { 
+                    ?>
+                            <li><a href="tampilUsahaBandung.php?page=<?=$i?>"><?=$i?></a></li>
+                    <?php
+                    };
+                    ?>
+                    <li>
+                        <a href="tampilUsahaBandung.php?page=<?=$total_pages?>" aria-label="Last Page">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    <?php
     echo '</div>'; //end of tab admin
 echo '</div>'; //end of tab content
 }else{
