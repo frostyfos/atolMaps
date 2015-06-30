@@ -35,49 +35,62 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="proses_signup.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="proses_signup.php" enctype="multipart/form-data" method="post" data-toggle="validator" role="form">
 
 					
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-5">
-                            <input type="text" name="email" class="form-control" placeholder="Email pengusaha"/>
+                            <input type="text" name="email" class="form-control" placeholder="Email pengusaha" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" data-error="contoh penulisan e-mail : email@email.com" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="username" class="col-sm-4 control-label">Username/KTP</label>
+                        <label for="username" class="col-sm-4 control-label">No KTP</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" placeholder="username pengusaha"/>
+                            <input type="text" name="username" class="form-control" placeholder="username pengusaha" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
 					<div class="form-group">
                         <label for="password" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-5">
-                            <input type="password" name="password" class="form-control" placeholder="password pengusaha"/>
+                            <input type="password" name="password" class="form-control" placeholder="password pengusaha" data-minlength="6" data-error="Password minimal 6 karakter" required/>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validPassword" class="col-sm-4 control-label">Validasi Password</label>
+                        <div class="col-sm-5">
+                            <input type="password" name="validPassword" id="validPassword" data-match="#password" data-match-error="Password yang anda masukan tidak cocok" class="form-control" placeholder="Validasi password pengusaha" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="nama pengusaha"/>
+                            <input type="text" name="nama" class="form-control" placeholder="nama pengusaha" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat" class="col-sm-4 control-label">Alamat</label>
                         <div class="col-sm-5">
-                            <input type="text" name="alamat" class="form-control" placeholder="alamat pengusaha"/>
+                            <input type="text" name="alamat" class="form-control" placeholder="alamat pengusaha" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <label for="jk" class="col-sm-4 control-label">Jenis Kelamin</label>
                         <div class="col-sm-5">
                            <label class="radio-inline">
-                                <input type="radio" name="jk" value="L" />Laki-laki
+                                <input type="radio" name="jk" value="L" checked/>Laki-laki
                            </label>
                            <label class="radio-inline">
                                 <input type="radio" name="jk" value="P" />Perempuan
@@ -90,18 +103,20 @@
                         <label for="ttl" class="col-sm-4 control-label">Tanggal Lahir</label>
                         <div class="col-sm-5">
                         <div class="input-group date">
-                            <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha"/>
+                            <input type="text" name="ttl" id ="ttl" class="form-control" placeholder="tempat dan tanggal lahir pengusaha" data-error="Wajib di Isi" required/>
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-th"></i>
-                            </span>
+                            </span>            
                         </div>
+                        <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="filektp" class="col-sm-4 control-label">Foto KTP</label>
                         <div class="col-sm-5">
-                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" />
+                           <input type="hidden" name="MAX_FILE_SIZE" value="1000000" /><input name="userfile" type="file" data-error="Wajib Mengirim Foto Ktp" required/>
+                           <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -132,5 +147,6 @@
     <script>
             $('.input-group.date #ttl').datepicker({});
     </script>
+    <script src="js/validator.min.js"></script>
 </body>
 </html>

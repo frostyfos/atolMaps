@@ -12,7 +12,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Form Kecamatan</title>
+    <title>Form Insert Kecamatan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -32,19 +32,20 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Kecamatan</h2><hr/>
-                <form class="form-horizontal" action="prosesInsertKecamatan.php" method="post">
+                <form class="form-horizontal" action="prosesInsertKecamatan.php" method="post" data-toggle="validator" role="form">
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="nama kecamatan"/>
+                            <input type="text" name="nama" class="form-control" placeholder="nama kecamatan" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
                      <div class="form-group">
                         <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="lat" class="form-control" placeholder="latitude kecamatan"/>
-
+                            <input type="text" name="lat" class="form-control" placeholder="latitude kecamatan" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -52,7 +53,8 @@
 
 						<label for="long" class="col-sm-4 control-label">Longitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="long" class="form-control" placeholder="longitude kecamatan"/>
+                            <input type="text" name="long" class="form-control" placeholder="longitude kecamatan" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 					
@@ -79,7 +81,6 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
-
-
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>

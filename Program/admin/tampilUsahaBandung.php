@@ -36,10 +36,8 @@
 <div class="container">
     <?php 
         if(isset ($_SESSION['myusername'])){
-            nav();
-    
-	connect();
-	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala
+        nav();
+	      $sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala
 				 FROM usaha u join kelurahan kel on u.id_kelurahan=kel.id_kelurahan
 										join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
 										join skala_usaha ska on u.id_skala=ska.id_skala
@@ -55,24 +53,19 @@
 	
     echo '<div class="row">
 	  
-	  <div class="col-lg-6 pull-right">
-		<div class="input-group">
-		  <input type="text" class="form-control" aria-label="..." placeholder="Cari data...">
-		  <div class="input-group-btn">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari Berdasarkan... <span class="caret"></span></button>
-			<ul class="dropdown-menu dropdown-menu-right" role="menu">
-			  <li><a href="#">Nama Usaha</a></li>
-			  <li><a href="#">Sektor</a></li>
-			  <li><a href="#">Skala Usaha</a></li>
-			  <li class="divider"></li>
-			  <li><a href="#">Separated link</a></li>
-			</ul>
-		  </div><!-- /btn-group -->
-		</div><!-- /input-group -->
-	  </div><!-- /.col-lg-6 -->
+	  <form action = "hasilCariUsaha.php" method = "post">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
+        <div class="input-group">
+            <input type="text" name="dataCari" class="form-control" placeholder="Cari Nama Usaha...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Search</button>
+            </span>
+        </div>
+        </div>
+    </form><br> 
 	</div><!-- /.row -->';
         //tampil data  
-		echo '<span class="glyphicon" ></span><hr><h2 align="center">Data Usaha di Kabupaten Bandung</h2>';             
+		    echo '<span class="glyphicon" ></span><hr><h2 align="center">Data Usaha di Kabupaten Bandung</h2>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
         echo '<th>ID Usaha</th>';
@@ -80,39 +73,40 @@
         echo '<th>Id Pemilik Usaha</th>';
         echo '<th>No Telepon Usha</th>';
         echo '<th>Produk Utama</th>';
-		echo '<th>Sektor Usaha</th>';
-		echo '<th>Skala Usaha</th>';
-		echo '<th>Alamat</th>';
-		echo '<th>Kelurahan</th>';
-		echo '<th>Kecamatan</th>';
-		echo '<th>Status Usaha</th>';
-		echo '<th colspan = "3">Aksi</th>';
+		    echo '<th>Sektor Usaha</th>';
+		    echo '<th>Skala Usaha</th>';
+		    echo '<th>Alamat</th>';
+		    echo '<th>Kelurahan</th>';
+		    echo '<th>Kecamatan</th>';
+		    echo '<th>Status Usaha</th>';
+		    echo '<th colspan = "3">Aksi</th>';
         echo '</tr>';
 
         $i = 1;
         while($row = mysql_fetch_array($query))
         {
         ?>
-             <tr>
+          <tr>
              <form method = "post" action = "editUsaha.php">
-             	<input type="hidden" name="id_usaha" class="form-control" value="<?=$row['id_usaha']?>"/>
-	            <td> <?=$row['id_usaha']?></td>
-	            <td> <?=$row['nama_usaha']?></td>
-				<td> <?=$row['id_pengusaha']?></td>
-				<td> <?=$row['telp']?></td>
-				<td> <?=$row['produk_utama']?></td>
-				<td> <?=$row['skala']?></td>
-				<td> <?=$row['sektor']?></td>
-				<td> <?=$row['alamat_usaha']?></td>
-				<td> <?=$row['nama_kelurahan']?></td>
-				<td> <?=$row['nama_kecamatan']?></td>
-				<td> <?=$row['status_usaha']?></td>		
-				<td><button type="button" class="btn btn-success glyphicon glyphicon-picture" data-toggle="modal" data-target="#myModal<?=$i?>"></button></td>
-				<!-- <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td> -->
-				<td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit"></button></td>
-	            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
- 			</tr>
- 			</form>
+               	<input type="hidden" name="id_usaha" class="form-control" value="<?=$row['id_usaha']?>"/>
+  	            <td> <?=$row['id_usaha']?></td>
+  	            <td> <?=$row['nama_usaha']?></td>
+        				<td> <?=$row['id_pengusaha']?></td>
+        				<td> <?=$row['telp']?></td>
+        				<td> <?=$row['produk_utama']?></td>
+        				<td> <?=$row['skala']?></td>
+        				<td> <?=$row['sektor']?></td>
+        				<td> <?=$row['alamat_usaha']?></td>
+        				<td> <?=$row['nama_kelurahan']?></td>
+        				<td> <?=$row['nama_kecamatan']?></td>
+        				<td> <?=$row['status_usaha']?></td>		
+  				      <td><button type="button" class="btn btn-success glyphicon glyphicon-picture" data-toggle="modal" data-target="#myModal<?=$i?>"></button></td>
+  				      <!-- <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td> -->
+  				      <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit"></button></td>
+  	            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
+            </form>
+ 			  </tr>
+ 			
 			<!-- Button trigger modal -->
 			
 			<!-- modal gambar -->
@@ -137,24 +131,24 @@
 			  </div>
 			</div>
 
-             <!-- Modal Hapus -->
-             <div class="modal fade" id="Delete<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
-                 <div class="modal-dialog">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                             <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
-                         </div>
-                         <form method="POST" action="prosesHapusUsaha.php">
-                             <input type="hidden" name="id_usaha" value="<?=$row['id_usaha']?>">
-                             <div class="modal-footer">
-                                 <button type="submit" class="btn btn-danger">Hapus</button>
-                                 <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
-                             </div>
-                         </form>
-                     </div>                          
-                 </div>
-             </div><!--  End of Modal Hapus -->
+      <!-- Modal Hapus -->
+      <div class="modal fade" id="Delete<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
+                  </div>
+                  <form method="POST" action="prosesHapusUsaha.php">
+                      <input type="hidden" name="id_usaha" value="<?=$row['id_usaha']?>">
+                      <div class="modal-footer">
+                          <button type="submit" class="btn btn-danger">Hapus</button>
+                          <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                      </div>
+                  </form>
+              </div>                          
+          </div>
+      </div><!--  End of Modal Hapus -->
  
     <?php
             $i++;

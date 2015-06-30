@@ -89,21 +89,24 @@
                                     <h4 class="modal-title" id="myModalLabel">Edit Data Kecamatan</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal" action="prosesEditKecamatan.php" method="post">
+                                    <form class="form-horizontal" action="prosesEditKecamatan.php" method="post" data-toggle="validator" role="form">
                                         <input type="hidden" name="id_kecamatan" class="form-control" value="<?=$row['id_kecamatan']?>"/>
                                         <div class="form-group">
                                             <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
-                                            <input type="text" name="nama_kecamatan" class="form-control" value="<?=$row['nama_kecamatan']?>"/>
+                                            <input type="text" name="nama_kecamatan" class="form-control" value="<?=$row['nama_kecamatan']?>" data-error="Wajib di Isi" required/>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="lat" class="control-label">Latitude</label>
-                                            <input type="text" name="lat" class="form-control" value="<?=$row['lat']?>"/>
+                                            <input type="text" name="lat" class="form-control" value="<?=$row['lat']?>" data-error="Wajib di Isi" required/>
+                                            <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="long" class="control-label">Longitude</label>
-                                            <input type="text" name="long" class="form-control" value="<?=$row['lng']?>"/>                                       
+                                            <input type="text" name="long" class="form-control" value="<?=$row['lng']?>" data-error="Wajib di Isi" required/>                                       
+                                            <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="form-group">
@@ -180,5 +183,6 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>

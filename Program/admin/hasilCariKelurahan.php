@@ -33,11 +33,11 @@
     <!-- disini konten  -->
         <?php
             $dataCari = $_POST['dataCari'];  
-            $sqlSkala = "SELECT id_kelurahan,kecamatan.id_kecamatan AS id_kecamatan,nama_kecamatan,nama_kelurahan, kelurahan.lat AS lat, kelurahan.lng AS lng FROM kelurahan, Kecamatan 
+            $sqlKelurahan = "SELECT id_kelurahan,kecamatan.id_kecamatan AS id_kecamatan,nama_kecamatan,nama_kelurahan, kelurahan.lat AS lat, kelurahan.lng AS lng FROM kelurahan, Kecamatan 
             WHERE Kecamatan.id_kecamatan = kelurahan.id_kecamatan AND nama_kelurahan LIKE '%$dataCari%'
             ORDER BY id_kelurahan";
             //eksekusi query
-            $query = mysql_query($sqlSkala);
+            $query = mysql_query($sqlKelurahan);
             if(!$query)
             {
                 print(mysql_error());
@@ -48,7 +48,7 @@
             
         ?>
             <h2 class="text-center">Hasil Pencarian Data Kelurahan</h2><hr/><br>
-            <form class="form-inline" action = "hasilCariKelurahan.php" method = "post">
+            <form action = "hasilCariKelurahan.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
             <div class="input-group">
                 <input type="text" name="dataCari" class="form-control" placeholder="Cari Nama Kelurahan...">

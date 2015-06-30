@@ -13,13 +13,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Form Kelurahan</title>
+    <title>Form Insert Kelurahan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
     <link href="../css/custom.css" rel="stylesheet">
-    <link href="/broto/css/datepicker.css" rel="stylesheet">
 </head>
 
 <body>
@@ -34,12 +33,12 @@
      <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Kelurahan</h2><hr/>
-                <form class="form-horizontal" action="prosesInsertKelurahan.php" method="post">
+                <form class="form-horizontal" action="prosesInsertKelurahan.php" method="post" data-toggle="validator" role="form">
 
                 <div class="form-group row" >
                 <label for="kecamatan" class="col-sm-4 control-label">Kecamatan</label>
                 <div class="col-sm-2">          
-                    <select class="form-control" name="kecamatan" id="kecamatan">';
+                    <select class="form-control" name="kecamatan" id="kecamatan"data-error="Wajib di Isi" required>';
                         <?php
                         $sql = "SELECT  id_kecamatan,nama_kecamatan from kecamatan ";
                         $hasil = mysql_query($sql);  
@@ -48,6 +47,7 @@
                         }
                         ?>
                     </select>
+                    <div class="help-block with-errors"></div>
                 </div>
                 </div>
 
@@ -61,7 +61,8 @@
                      <div class="form-group">
                         <label for="lat" class="col-sm-4 control-label">Latitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="lat" class="form-control" placeholder="latitude kelurahan"/>
+                            <input type="text" name="lat" class="form-control" placeholder="latitude kelurahan" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -69,7 +70,8 @@
 
 						<label for="long" class="col-sm-4 control-label">Longitude</label>
                         <div class="col-sm-5">
-                            <input type="text" name="long" class="form-control" placeholder="longitude kelurahan"/>
+                            <input type="text" name="long" class="form-control" placeholder="longitude kelurahan" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 					
@@ -96,7 +98,6 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
-
-
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>
