@@ -14,6 +14,7 @@
 	$alamat = $_POST['alamat'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
+	$encrypted = md5($password);
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
 	
@@ -32,7 +33,7 @@
 		
 		$filektp = "gambar/".$_FILES['userfile']['name'];
 		
-			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password')";
+			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$encrypted')";
 		
 		//eksekusi statement insert data
 		if(!mysql_query($sql))

@@ -15,7 +15,7 @@
 	$password = $_POST['password'];
 	$email = $_POST['email'];
 	$status = $_POST['status'];
-	//$encrypted = md5($password); // Encrypting pssword using md5 algo
+	$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
 	
 		if($_FILES['userfile']['error']==4){
@@ -38,7 +38,7 @@
 		
 		$filektp = "../gambar/".$FileUpload;
 		
-			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$password','$status')";
+			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,status_akun) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$encrypted','$status')";
 		
 		//eksekusi statement insert data
 		if(!mysql_query($sql))

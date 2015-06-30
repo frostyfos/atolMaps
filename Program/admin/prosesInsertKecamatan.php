@@ -25,6 +25,6 @@
 		echo '<script type="text/javascript">';
 		echo 'alert("Tambah Data Kecamatan Berhasil")';
 		echo "</script>";
-		header( "refresh:0; url=admin.php" );
+		header( "refresh:0; url=listKecamatan.php" );
 	}	
 ?>

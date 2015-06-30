@@ -23,6 +23,7 @@
     $password = stripslashes($password);
     $username = mysql_real_escape_string($username);
     $password = mysql_real_escape_string($password);
+    $password = md5($password);
 
     if($jabatan === "admin"){
         $sql="SELECT * FROM admin WHERE BINARY username_admin='$username' and BINARY password_admin='$password'";

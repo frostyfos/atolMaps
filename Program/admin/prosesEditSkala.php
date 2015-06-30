@@ -19,7 +19,7 @@
 			echo '<script type="text/javascript">';
 			echo 'alert("Edit Data Skala Gagal")';
 			echo '</script>';
-			header( "refresh:0; url=editHapusSkala.php" );
+			header( "refresh:0; url=listSkala.php" );
 		}
 		else
 		{

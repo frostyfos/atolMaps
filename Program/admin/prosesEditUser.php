@@ -16,7 +16,7 @@
 	$password = $_POST['password'];
 	$email = $_POST['email'];
 	$status_akun = $_POST['status_akun'];
-	//$encrypted = md5($password); // Encrypting pssword using md5 algo
+	$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
 	$fotoLama = $_POST['fotoLama'];
 
@@ -38,7 +38,7 @@
 	echo "Gagal Upload";
 	$filektp = $UploadGambar;
 			
-	$sql = "UPDATE pengusaha SET no_ktp = '$username', nama_pengusaha = '$nama', alamat = '$alamat', ttl = '$ttl', jenis_kelamin = '$jk', file_ktp = '$filektp', email='$email', password='$password', status_akun = '$status_akun' WHERE id_pengusaha = '$id_pengusaha'";
+	$sql = "UPDATE pengusaha SET no_ktp = '$username', nama_pengusaha = '$nama', alamat = '$alamat', ttl = '$ttl', jenis_kelamin = '$jk', file_ktp = '$filektp', email='$email', password='$encrypted', status_akun = '$status_akun' WHERE id_pengusaha = '$id_pengusaha'";
 		
 	//eksekusi statement insert data
 	if(!mysql_query($sql))

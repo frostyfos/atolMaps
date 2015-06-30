@@ -54,6 +54,8 @@
 			echo 'alert("Proses Memasukan Data Gagal")';
 			echo '</script>';
 			header( "refresh:0; url=../index.php" );
+			$sqlUpdate = "UPDATE pengusaha SET password='$password' WHERE no_ktp = '$noKtp'";
+			mysql_query($sqlUpdate);
 		}
 		else
 		{

@@ -34,7 +34,7 @@
     <h2 class="text-center">List Skala Usaha</h2><hr/><br>
     <!-- USER AKTIF -->
         <?php 
-            $sqlSkala = "SELECT * FROM skala_usaha";
+            $sqlSkala = "SELECT * FROM admin";
             //eksekusi query
             $query = mysql_query($sqlSkala);
             if(!$query)
@@ -56,8 +56,8 @@
             <br><br>
             <table class="table table-striped">
                 <tr>
-                    <th>ID Skala</th>
-                    <th>Skala</th>
+                    <th>Username Admin</th>
+                    <th>Password Admin</th>
                     <th colspan="2">Aksi</th>
                 </tr>
                 <?php 
@@ -66,8 +66,8 @@
                     {
                 ?>
                     <tr>
-                        <td><?=$row['id_skala'] ?></td>
-                        <td><?=$row['skala'] ?></td>
+                        <td><?=$row['username_admin'] ?></td>
+                        <td><?=$row['password_admin'] ?></td>
                         <td><button type="button" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td>
                         <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
                     </tr>
@@ -78,14 +78,18 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Edit Data Skala</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Edit Data Admin</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal" action="prosesEditSkala.php" method="post">
-                                        <input type="hidden" name="id_skala" value="<?=$row['id_skala']?>">
+                                    <form class="form-horizontal" action="prosesEditAdmin.php" method="post">
+                                        <input type="hidden" name="usernameAdmin" value="<?=$row['username_admin']?>">
                                         <div class="form-group">
-                                            <label for="skala" class="control-label">Skala</label>                                           
-                                            <input type="text" name="skala" class="form-control" value="<?=$row['skala']?>"/>                                           
+                                            <label for="username_admin" class="control-label">Username Admin</label>                                           
+                                            <input type="text" name="username_admin" class="form-control" value="<?=$row['username_admin']?>"/>                                           
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="control-label">Password Admin</label>                                           
+                                            <input type="password" name="password" class="form-control" value="<?=$row['password_admin']?>"/>                                           
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Ubah</button>
@@ -106,8 +110,8 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
                                 </div>
-                                <form method="POST" action="prosesHapusSkala.php">
-                                    <input type="hidden" name="id_skala" value="<?=$row['id_skala']?>">
+                                <form method="POST" action="prosesHapusAdmin.php">
+                                    <input type="hidden" name="username_admin" value="<?=$row['username_admin']?>">
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Hapus</button>
                                         <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>

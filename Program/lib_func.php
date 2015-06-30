@@ -60,6 +60,12 @@
                     </div>
                     <div class="collapse navbar-collapse" id="collapse">
                         <ul class="nav navbar-nav">
+                            <li class="dropdown"><a href="#" data-toggle="dropdown">Admin<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="listAdmin.php">List Admin</a></li>
+                                    <li><a href="insertAdmin.php">Insert Admin</a></li>
+                                </ul>
+                            </li>
                              <li class="dropdown "><a href="#" data-toggle="dropdown">User
                                 <?php connect();
                                       $result = mysql_query("SELECT COUNT(nama_pengusaha) AS jumlah FROM pengusaha WHERE status_akun LIKE 'tidak aktif' ");

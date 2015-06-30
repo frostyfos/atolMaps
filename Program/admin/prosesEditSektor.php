@@ -19,7 +19,7 @@
 		echo '<script type="text/javascript">';
 		echo 'alert("Edit Data Sektor Gagal")';
 		echo '</script>';
-		header( "refresh:0; url=editHapusSektor.php" );
+		header( "refresh:0; url=listSektor.php" );
 	}
 	else
 	{
