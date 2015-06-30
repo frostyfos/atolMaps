@@ -47,13 +47,11 @@
             {
                 print(mysql_error());
             }
+
         ?>
-            <form class="form-inline" action = "hasilCariKelurahan.php" method = "post">
+
+            <form action = "hasilCariKelurahan.php" method = "post">
             <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
-                <select class="form-control" name="kriteria">
-                         <option value="nama_kecamatan">Nama Kecamatan</option>
-                        <option value="nama_kelurahan">Nama Kelurahan</option>
-                </select> 
             <div class="input-group">
                 <input type="text" name="dataCari" class="form-control" placeholder="Cari Nama Kelurahan...">
                 <span class="input-group-btn">
@@ -97,7 +95,7 @@
                                         <h4 class="modal-title" id="myModalLabel">Edit Data Kelurahan</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="form-horizontal" action="prosesEditKelurahan.php" method="post">
+                                        <form class="form-horizontal" action="prosesEditKelurahan.php" method="post" data-toggle="validator" role="form">
                                             <input type="hidden" name="id_kelurahan" class="form-control" value="<?=$row['id_kelurahan']?>"/>
                                             <div class="form-group">
                                                 <label for="kecamatan" class="control-label">Kecamatan</label>        
@@ -113,17 +111,20 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama_kelurahan" class="control-label">Nama Kelurahan</label>
-                                                <input type="text" name="nama_kelurahan" class="form-control" value="<?=$row['nama_kelurahan']?>"/>
+                                                <input type="text" name="nama_kelurahan" class="form-control" value="<?=$row['nama_kelurahan']?>" data-error="Wajib di Isi" required/>
+                                                <div class="help-block with-errors"></div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="lat" class="control-label">Latitude</label>
-                                                <input type="text" name="lat" class="form-control" value="<?=$row['lat']?>"/>
+                                                <input type="text" name="lat" class="form-control" value="<?=$row['lat']?>" data-error="Wajib di Isi" required/>
+                                                <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="long" class="control-label">Longitude</label>
-                                                <input type="text" name="long" class="form-control" value="<?=$row['lng']?>"/>
+                                                <input type="text" name="long" class="form-control" value="<?=$row['lng']?>" data-error="Wajib di Isi" required/>
+                                                <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="form-group">
@@ -202,5 +203,6 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>

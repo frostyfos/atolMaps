@@ -34,12 +34,13 @@
     <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Skala Usaha</h2><hr/>
-                <form class="form-horizontal" action="prosesInsertSektor.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="prosesInsertSektor.php" method="post" data-toggle="validator" role="form">
                     
                     <div class="form-group">
                         <label for="sektor" class="col-sm-4 control-label">Sektor Usaha</label>
                         <div class="col-sm-5">
-                            <input type="text" name="sektor" class="form-control" placeholder="Sektor Usaha"/>
+                            <input type="text" name="sektor" class="form-control" placeholder="Sektor Usaha" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -67,5 +68,6 @@
     <script src="../js/jquery-1.11.3.min.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>

@@ -47,11 +47,12 @@
      <div class="row">
         <h2 class="text-center">Masukan Data Usaha</h2><hr/>
             <div class="col-xs-7 col-xs-offset-1 col-sm-6 col-md-5 col-lg-5">
-                <form class="form-horizontal" action="prosesInsertUsaha.php" enctype="multipart/form-data" method="post">	
+                <form class="form-horizontal" action="prosesInsertUsaha.php" enctype="multipart/form-data" method="post" data-toggle="validator" role="form">	
                     <div class="form-group">
                         <label for="nama" class="col-sm-3 control-label">Nama Usaha</label>
                         <div class="col-sm-7">
-                            <input type="text" name="nama" class="form-control" placeholder="Nama usaha"/>
+                            <input type="text" name="nama" class="form-control" placeholder="Nama usaha" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -77,14 +78,16 @@
                     <div class="form-group">
                         <label for="produk" class="col-sm-3 control-label">Produk Utama</label>
                         <div class="col-sm-7">
-                            <input type="text" name="produk" class="form-control" placeholder="Produk Utama"/>
+                            <input type="text" name="produk" class="form-control" placeholder="Produk Utama" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
 					<div class="form-group row">
                         <label for="alamat" class="col-sm-3 control-label">Alamat</label> 
                         <div class="col-sm-7">
-                                <input type="text" name="alamat" id="geocomplete" class="form-control" placeholder="alamat usaha"/>  
+                                <input type="text" name="alamat" id="geocomplete" class="form-control" placeholder="alamat usaha" data-error="Wajib di Isi" required/>  
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -143,7 +146,8 @@
                 <div class="form-group">
                     <label for="telp" class="col-sm-3 control-label">No Telepon</label>
                     <div class="col-sm-7">
-                        <input type="text" name="telp" class="form-control" placeholder="Nomor kuntak usaha"/>
+                        <input type="text" name="telp" class="form-control" placeholder="Nomor kuntak usaha" data-error="Wajib di Isi" required/>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
 					
@@ -247,7 +251,7 @@
 	<script src="../js/bootstrap.js"></script>
     <script src="../js/jquery.chained.min.js"></script>
     <script src="../js/jquery.geocomplete.js"></script>
-
+    <script src="../js/validator.min.js"></script>
     <script>
             $("#kelurahan").chained("#kecamatan");	
     </script>
