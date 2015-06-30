@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2015 at 01:59 AM
+-- Generation Time: Jun 29, 2015 at 10:18 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -31,7 +31,7 @@ USE `bdgmaps`;
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(20) NOT NULL,
-  `password_admin` varchar(16) NOT NULL,
+  `password_admin` varchar(32) NOT NULL,
   PRIMARY KEY (`username_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`username_admin`, `password_admin`) VALUES
-('admin', 'admin');
+('adm', 'fa61db9a31f047795b62b65ac357cb14'),
+('admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -55,15 +56,16 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
   `lat` varchar(50) NOT NULL,
   `lng` varchar(50) NOT NULL,
   PRIMARY KEY (`id_kecamatan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `kecamatan`
 --
 
 INSERT INTO `kecamatan` (`id_kecamatan`, `nama_kecamatan`, `lat`, `lng`) VALUES
-(1, 'Batujajar1', '-6.9153153', '107.49777519999998'),
-(2, 'Cihampelas', '-6.123123', '107.497264999999970000');
+(1, 'Batujajar', '55.676096800000000000', '12.568337100000008000'),
+(2, 'Cihampelas', '-6.191115', '106.835983'),
+(3, 'sad', 'asda', 'asda');
 
 -- --------------------------------------------------------
 
@@ -87,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `kelurahan` (
 --
 
 INSERT INTO `kelurahan` (`id_kelurahan`, `nama_kelurahan`, `id_kecamatan`, `lat`, `lng`) VALUES
-(2, 'dari kecamatan 2', 1, '4', '4'),
+(2, 'dari kecamatan1', 1, '5', '5'),
 (3, 'dari kecamatan 2 jug', 1, '', '2'),
 (5, 'TST', 1, 'lat', 'long'),
 (6, 'Kecipluk2', 1, '1', '2'),
-(7, '232', 1, '232', '1231231');
+(7, '232', 1, '232', '2131');
 
 -- --------------------------------------------------------
 
@@ -109,18 +111,23 @@ CREATE TABLE IF NOT EXISTS `pengusaha` (
   `jenis_kelamin` varchar(10) NOT NULL,
   `file_ktp` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `password` varchar(32) NOT NULL,
   `status_akun` varchar(12) NOT NULL DEFAULT 'tidak aktif',
   PRIMARY KEY (`id_pengusaha`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `pengusaha`
 --
 
 INSERT INTO `pengusaha` (`id_pengusaha`, `no_ktp`, `nama_pengusaha`, `alamat`, `ttl`, `jenis_kelamin`, `file_ktp`, `email`, `password`, `status_akun`) VALUES
-(14, '12345', 'Gordon', 'Amerika', '2015-06-23', 'L', 'gambar/default.jpg', 'Gordon_Ramsay@HellsKitchen.com', '12345', 'aktif'),
-(15, 'tes', 'tes', 'tes', '2015-06-22', 'L', 'gambar/default.jpg', 'tes', 'tes', 'tidak aktif');
+(14, '12344', 'Gordon', 'Amerika', '2015-06-17', 'L', '../gambar/../gambar/1.jpg', 'Gordon_Ramsay@HellsKitchen.com', '12345', 'tidak aktif'),
+(15, 'tes2', 'tes', 'tes', '2015-06-22', '', '../gambar/../gambar/231.jpg', 'tes', 'tes', 'tidak aktif'),
+(16, 'ada', 'asdadasd', 'asdad', '2015-06-24', '', '../gambar/../gambar/1.jpg', 'ds', 'sdasdasd', 'aktif'),
+(17, 'asdas', 'asdadas', 'sdasd', '2015-06-16', '', '../gambar/../gambar/../gambar/', 'dasda', 'asd', 'aktif'),
+(18, 'd', 'd', 'd', '2015-07-22', '', '../gambar/default.jpg', 'dsd', 'd', 'aktif'),
+(19, 'usr1', 'asdasdsad', 'dasda', '2015-06-24', 'L', '../gambar/1.jpg', 'email@email.com', 'e10adc3949ba59abbe56e057f20f883e', 'aktif'),
+(20, 'usr2', 'sdad', 'asdad', '2015-06-23', 'L', '../gambar/231.jpg', 'email@email.com', 'e10adc3949ba59abbe56e057f20f883e', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -134,8 +141,24 @@ CREATE TABLE IF NOT EXISTS `reqpass` (
   `nama` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `status` varchar(6) NOT NULL DEFAULT 'Belum',
+  `hash` varchar(32) NOT NULL,
   PRIMARY KEY (`no_ktp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reqpass`
+--
+
+INSERT INTO `reqpass` (`no_ktp`, `nama`, `email`, `status`, `hash`) VALUES
+('123123', 'sikuda', 'winata.nando@gmail.com', 'Belum', '43fa7f58b7eac7ac872209342e62e8f1'),
+('1234', 'fernando', 'winata.nando@gmail.com', 'Belum', '9cf81d8026a9018052c429cc4e56739b'),
+('adsad', 'asdasdsad', 'winata.nando@gmail.com', 'Belum', '67c6a1e7ce56d3d6fa748ab6d9af3fd7'),
+('asdas', 'sadasdasd', 'winata.nando@gmail.com', 'Belum', 'dc6a70712a252123c40d2adba6a11d84'),
+('asdasd', 'asd', 'lumpiakuda@gmail.com', 'Belum', 'd709f38ef758b5066ef31b18039b8ce5'),
+('dasas', 'asdasdsad', 'winata.nando@gmail.com', 'Belum', '07871915a8107172b3b5dc15a6574ad3'),
+('s', 'dsasda', 'lumpiakuda@gmail.com', 'Belum', 'f9b902fc3289af4dd08de5d1de54f68f'),
+('sad', 'asd', 'winata.nando@gmail.com', 'Belum', '55a7cf9c71f1c9c495413f934dd1a158'),
+('sadasd', 'sada', 'lumpiakuda@gmail.com', 'Belum', 'a5771bce93e200c36f7cd9dfd0e5deaa');
 
 -- --------------------------------------------------------
 
@@ -171,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `skala_usaha` (
   `id_skala` int(11) NOT NULL AUTO_INCREMENT,
   `skala` varchar(10) NOT NULL,
   PRIMARY KEY (`id_skala`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `skala_usaha`
@@ -215,14 +238,18 @@ CREATE TABLE IF NOT EXISTS `usaha` (
   KEY `id_desa` (`id_kelurahan`),
   KEY `id_skala` (`id_skala`),
   KEY `id_sektor` (`id_sektor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `usaha`
 --
 
 INSERT INTO `usaha` (`id_usaha`, `nama_usaha`, `id_pengusaha`, `produk_utama`, `alamat_usaha`, `id_kelurahan`, `id_kecamatan`, `telp`, `lat`, `lng`, `peta_usaha`, `id_skala`, `id_sektor`, `gambar1`, `gambar2`, `gambar3`, `gambar4`, `gambar5`, `status_usaha`) VALUES
-(11, '123123', 14, '12312313', '1231 Jalan Kayu Putih, Sarua, Banten, Indonesia', 2, 2, 'asdasd', '-6.307506', '106.71053489999997', NULL, 2, 2, 'gambar/800px-Flag_of_Jihad.svg.png', 'gambar/600px-ShababAdmin.svg.png', 'gambar/231.jpg', 'gambar/13145_1012233985459749_8664072564', 'gambar/1.jpg', 'tidak aktif');
+(11, '1', 14, '1', '1', 7, 1, '1', '', '', NULL, 2, 2, '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', 'aktif'),
+(14, '121', 14, '1', '1', 7, 1, '1', '', '', '', 2, 2, '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', '../gambar/../gambar/../gambar/../gambar/', 'aktif'),
+(15, '123', 14, '1', '1', 7, 1, '1', '', '', '', 2, 2, '1.jpg', '231.jpg', '800px-Flag_of_Jihad.svg.png', '600px-ShababAdmin.svg.png', '208858_10151034928039274_779041448_n.jpg', 'aktif'),
+(17, 'asd22', 14, 'as', 'Antapani, West Java, Indonesia', 7, 1, 'sa', '', '', '', 2, 2, '../gambar/800px-Flag_of_Jihad.svg.png', '231.jpg', '600px-ShababAdmin.svg.png', '../gambar/default.jpg', '../gambar/default.jpg', 'aktif'),
+(18, 'sadasdsa', 14, 'asd', 'Asdar Wahyu Berkah, Bale Kambang, Special Capital ', 7, 1, 'asdsa', '', '', '', 2, 2, '../gambar/1.jpg', '../gambar/default.jpg', '../gambar/default.jpg', '../gambar/default.jpg', '../gambar/231.jpg', 'aktif');
 
 --
 -- Constraints for dumped tables
