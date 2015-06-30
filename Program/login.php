@@ -28,7 +28,7 @@
     if($jabatan === "admin"){
         $sql="SELECT * FROM admin WHERE BINARY username_admin='$username' and BINARY password_admin='$password'";
     }elseif($jabatan === "pengusaha"){
-        $sql="SELECT no_ktp,password FROM pengusaha WHERE BINARY no_ktp='$username' and BINARY password='$password'";
+        $sql="SELECT * FROM pengusaha WHERE BINARY no_ktp='$username' and BINARY password='$password' and status_akun like 'aktif'";
     }
 
     $valid=mysql_query($sql);
@@ -46,7 +46,7 @@
         $_SESSION['myjabatan'] = $jabatan;
         header("location:pengusaha/pengusaha.php");
     }else {
-        print "<script>alert('isi username dan password salah!');
+        print "<script>alert('isi username dan password salah atau akun anda belum di aktifkan!');
         javascript:history.go(-1);</script>";
         exit;
         header("location:login.php");

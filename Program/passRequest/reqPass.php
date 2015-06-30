@@ -30,12 +30,9 @@
 	Password: '.$password.'
 	------------------------
 	 
-	Please click this link to activate your account:
-	localhost/atolmaps/program/reqpass/verify.php?email='.$email.'&hash='.$hash.'
-	 
 	'; // Our message above including the link
 	                     
-	$headers = 'From:lumpiakuda@gmail.com' . "\r\n"; // Set from headers
+	$headers = 'From:adm.bdgatlmap@gmail.com' . "\r\n"; // Set from headers
 	mail($to, $subject, $message, $headers); // Send our email
 
 	 if (!$_POST['nama'] | !$_POST['noKtp'] | !$_POST['email'])

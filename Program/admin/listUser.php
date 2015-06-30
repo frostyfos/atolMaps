@@ -414,6 +414,9 @@
                                     </div>
                                     <form method="POST" action="aktifDeaktifUser.php">
                                         <input type="hidden" name="id_pengusaha" value="<?=$row['id_pengusaha']?>">
+                                        <input type="hidden" name="noKtp" value="<?=$row['no_ktp']?>">
+                                        <input type="hidden" name="password" value="<?=$row['password']?>">
+                                        <input type="hidden" name="email" value="<?=$row['email']?>">
                                         <div class="modal-footer">
                                             <button type="submit" name="aktifasi" class="btn btn-success">Aktifasi</button>
                                             <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>

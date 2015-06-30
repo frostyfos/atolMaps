@@ -53,7 +53,7 @@
 			echo '<script type="text/javascript">';
 			echo 'alert("Tambah Data Pengusaha Berhasil")';
 			echo "</script>";
-			header( "refresh:0; url=listUsaha.php" );
+			header( "refresh:0; url=listUser.php" );
 		}
 	
 ?>
