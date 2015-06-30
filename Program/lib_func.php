@@ -114,7 +114,7 @@
                                 </ul>
                             </li> 
                             <li>
-                                <a href="#" data-toggle="dropdown">Report</a>
+                                <a href="laporan.php" data-toggle="dropdown">Report</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

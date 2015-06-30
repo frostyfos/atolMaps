@@ -1,12 +1,20 @@
+
 <!doctype html>
 <?php 
     session_start(); 
     $path = "../lib_func.php";
     include_once($path);
+
+    connect();
     
    if(!isset ($_SESSION['myusername'])){
-        header(("location:../index.php.php"));
+        header(("location:../index.php"));
     }
+
+    //pagination
+    $num_rec_per_page=10;
+    if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
+    $start_from = ($page-1) * $num_rec_per_page; 
     
 ?>
 
@@ -19,6 +27,9 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- custom css -->
     <link href="../css/custom.css" rel="stylesheet">
+    <script src="../js/jquery.geocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 </head>
 
 <body>
@@ -28,12 +39,14 @@
             nav();
     
 	connect();
-	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala
-				 FROM usaha u join kelurahan kel on u.id_kelurahan=kel.id_kelurahan
-										join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
-										join skala_usaha ska on u.id_skala=ska.id_skala
-										join sektor_usaha sek on u.id_sektor=sek.id_sektor
-										";
+	$sql_usaha = "SELECT u.*,kel.nama_kelurahan,kec.nama_kecamatan,sek.sektor,ska.skala,peng.*
+         FROM usaha u join kelurahan kel on u.id_kelurahan=kel.id_kelurahan
+                    join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
+                    join skala_usaha ska on u.id_skala=ska.id_skala
+                    join sektor_usaha sek on u.id_sektor=sek.id_sektor
+                    join pengusaha peng on u.id_pengusaha=peng.id_pengusaha
+                    
+        LIMIT $start_from, $num_rec_per_page";
         //eksekusi query
         $query = mysql_query($sql_usaha);
         if(!$query)
@@ -61,12 +74,13 @@
 	  </div><!-- /.col-lg-6 -->
 	</div><!-- /.row -->';
         //tampil data  
-		echo '<span class="glyphicon" ></span><hr><center>Data Usaha di Kabupaten Bandung</center>';             
+		echo '<span class="glyphicon" ></span><hr><h2 align="center">Data Usaha di Kabupaten Bandung</h2>';             
         echo '<br><br><table class="table table-striped">';
         echo '<tr>';
-        echo '<th>NO</th>';
+        echo '<th>ID Usaha</th>';
         echo '<th>Nama Usaha</th>';
         echo '<th>Id Pemilik Usaha</th>';
+        echo '<th>No Telepon Usha</th>';
         echo '<th>Produk Utama</th>';
 		echo '<th>Sektor Usaha</th>';
 		echo '<th>Skala Usaha</th>';
@@ -74,36 +88,36 @@
 		echo '<th>Kelurahan</th>';
 		echo '<th>Kecamatan</th>';
 		echo '<th>Status Usaha</th>';
-		echo '<th>Gambar</th>';
+		echo '<th colspan = "3">Aksi</th>';
         echo '</tr>';
-        //tampil data transaksi'; '; '; '; '; '; '; '; '; '; '; '; 
+
         $i = 1;
         while($row = mysql_fetch_array($query))
         {
         ?>
              <tr>
-             <form method = "post" action = "tampilPetaUsaha.php">
-             <td> <?=$row['id_usaha']?><input type = "hidden" name = "id_usaha" value = "<?=$row['id_usaha']?>"></td>
-             <td> <?=$row['nama_usaha']?><input type = "hidden" name = "nama_usaha" value = "<?=$row['nama_usaha']?>"></td>
-			 <td> <?=$row['id_pengusaha']?><input type = "hidden" name = "id_pengusaha" value = "<?=$row['id_pengusaha']?>"></td>
-			 <td> <?=$row['produk_utama']?><input type = "hidden" name = "produk_utama" value = "<?=$row['produk_utama']?>"></td>
-			 <td> <?=$row['skala']?><input type = "hidden" name = "Skala" value = "<?=$row['skala']?>"></td>
-			 <td> <?=$row['sektor']?><input type = "hidden" name = "sektor" value = "<?=$row['sektor']?>"></td>
-			 <td> <?=$row['alamat_usaha']?><input type = "hidden" name = "alamat_usaha" value = "<?=$row['alamat_usaha']?>"></td>
-			 <td> <?=$row['nama_kelurahan']?><input type = "hidden" name = "kelurahan" value = "<?=$row['nama_kelurahan']?>"></td>
-			 <td> <?=$row['nama_kecamatan']?><input type = "hidden" name = "kecamatan" value = "<?=$row['nama_kecamatan']?>"></td>
-			 <td> <?=$row['status_usaha']?><input type = "hidden" name = "status" value = "<?=$row['status_usaha']?>"></td>
-			
-            <td><img src="../<?=$row['gambar1']?>" height="50" width="50"/>
-			<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal<?=$i?>">
-			  Lihat Gambar
-			</button>
-			</td>
-
+             <form method = "post" action = "editUsaha.php">
+             	<input type="hidden" name="id_usaha" class="form-control" value="<?=$row['id_usaha']?>"/>
+	            <td> <?=$row['id_usaha']?></td>
+	            <td> <?=$row['nama_usaha']?></td>
+				<td> <?=$row['id_pengusaha']?></td>
+				<td> <?=$row['telp']?></td>
+				<td> <?=$row['produk_utama']?></td>
+				<td> <?=$row['skala']?></td>
+				<td> <?=$row['sektor']?></td>
+				<td> <?=$row['alamat_usaha']?></td>
+				<td> <?=$row['nama_kelurahan']?></td>
+				<td> <?=$row['nama_kecamatan']?></td>
+				<td> <?=$row['status_usaha']?></td>		
+				<td><button type="button" class="btn btn-success glyphicon glyphicon-picture" data-toggle="modal" data-target="#myModal<?=$i?>"></button></td>
+				<!-- <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td> -->
+				<td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit"></button></td>
+	            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
+ 			</tr>
+ 			</form>
 			<!-- Button trigger modal -->
 			
-			
-			<!-- Modal -->
+			<!-- modal gambar -->
 			<div class="modal fade" id="myModal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 				<div class="modal-content">
@@ -112,25 +126,72 @@
 					<h4 class="modal-title" id="myModalLabel">Foto Usaha</h4>
 				  </div>
 				  <div class="modal-body">
-					<img src="../<?=$row['gambar1']?>" height="200" width="200"/>
-					<img src="../<?=$row['gambar2']?>" height="200" width="200"/>
-					<img src="../<?=$row['gambar3']?>" height="200" width="200"/>
-					<img src="../<?=$row['gambar4']?>" height="200" width="200"/>
-					<img src="../<?=$row['gambar5']?>" height="200" width="200"/>
+					<img src="<?=$row['gambar1']?>" height="200" width="200"/>
+					<img src="<?=$row['gambar2']?>" height="200" width="200"/>
+					<img src="<?=$row['gambar3']?>" height="200" width="200"/>
+					<img src="<?=$row['gambar4']?>" height="200" width="200"/>
+					<img src="<?=$row['gambar5']?>" height="200" width="200"/>
 				  </div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-					
 				  </div>
 				</div>
 			  </div>
 			</div>
-	</form>
-    </tr>
+
+             <!-- Modal Hapus -->
+             <div class="modal fade" id="Delete<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+                 <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                             <h4 class="modal-title" id="myModalLabel">Anda Yakin ingin menghapus Data?</h4>
+                         </div>
+                         <form method="POST" action="prosesHapusUsaha.php">
+                             <input type="hidden" name="id_usaha" value="<?=$row['id_usaha']?>">
+                             <div class="modal-footer">
+                                 <button type="submit" class="btn btn-danger">Hapus</button>
+                                 <button type="button" data-dismiss="modal" class="btn btn-default">Batal</button>
+                             </div>
+                         </form>
+                     </div>                          
+                 </div>
+             </div><!--  End of Modal Hapus -->
+ 
     <?php
             $i++;
          }
-         echo "</table>";
+    ?>
+         </table>;
+         <!-- pagination -->
+            <?php 
+                $sql = "SELECT * FROM usaha"; 
+                $rs_result = mysql_query($sql); //run the query
+                $total_records = mysql_num_rows($rs_result);  //count number of records
+                $total_pages = ceil($total_records / $num_rec_per_page); 
+            ?>
+            <nav class="col-xs-offset-5 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <ul class="pagination">
+                    <li>
+                        <a href="tampilUsahaBandung.php?page=1" aria-label="First Page">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php 
+                        for ($i=1; $i<=$total_pages; $i++) { 
+                    ?>
+                            <li><a href="tampilUsahaBandung.php?page=<?=$i?>"><?=$i?></a></li>
+                    <?php
+                    };
+                    ?>
+                    <li>
+                        <a href="tampilUsahaBandung.php?page=<?=$total_pages?>" aria-label="Last Page">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    <?php
     echo '</div>'; //end of tab admin
 echo '</div>'; //end of tab content
 }else{
@@ -155,5 +216,28 @@ echo '</div>'; //end of tab content
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+	<script src="../js/jquery.chained.min.js"></script>
+	<script src="../js/jquery.geocomplete.js"></script>
+
+    <script>
+            $("#kelurahan").chained("#kecamatan");	
+    </script>
+    <script>
+      $(function(){
+        var center = new google.maps.LatLng(-6.865221399999999,107.49197670000001);
+
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+          country: 'ID'
+        });
+
+        var map =  $("#geocomplete").geocomplete("map")
+
+        map.setCenter(center);
+        map.setZoom(13);
+      });
+    </script>
 </body>
 </html>
