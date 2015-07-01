@@ -56,3 +56,8 @@ body{
   background-color: red;
   border-radius: 10px;
 }
+
+.map_canvas{
+	height: 500px; 
+	width : 500px;
+}
