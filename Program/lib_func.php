@@ -114,7 +114,7 @@
                                 </ul>
                             </li> 
                             <li>
-                                <a href="laporan.php" >Report</a>
+                                <a href="buatLaporan.php" >Report</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
