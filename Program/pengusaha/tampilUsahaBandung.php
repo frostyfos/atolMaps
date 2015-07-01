@@ -111,8 +111,8 @@
 				<td> <?=$row['status_usaha']?></td>		
 				<td><button type="button" class="btn btn-success glyphicon glyphicon-picture" data-toggle="modal" data-target="#myModal<?=$i?>"></button></td>
 				<!-- <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#Update<?=$i?>"></button></td> -->
-				<td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit"></button></td>
-	            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td>
+				<!-- <td><button type="submit" class="btn btn-primary glyphicon glyphicon-edit"></button></td>
+	            <td><button class='btn btn-danger glyphicon glyphicon-trash' type="button" data-toggle="modal" data-target="#Delete<?=$i?>"></button></td> -->
  			</tr>
  			</form>
 			<!-- Button trigger modal -->

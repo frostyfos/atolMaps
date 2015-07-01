@@ -83,7 +83,7 @@
                         </tr>
                         <tr>
                             <th>Foto KTP</th>
-                            <td><img src="/atolmaps/program/'.$row['file_ktp'].'" alt="Smiley face" height="250" width="350""/></td>
+                            <td><img src="'.$row['file_ktp'].'" alt="KTP" height="250" width="350""/></td>
                         </tr>              
 					</table">
 				</div>';			

@@ -27,18 +27,7 @@
 	$sektor = $_POST['sektor'];
 	$status = $_POST['status'];
 
-	echo "nama".$nama."<br/>";
-	echo "id_pengusaha".   $id_pengusaha."<br/>";
-	echo "produk".$produk."<br/>";
-	echo "alamat".$alamat."<br/>";
-	echo "kecamatan".$kecamatan."<br/>";
-	echo "kelurahan".$kelurahan."<br/>";
-	echo "telp".$telp."<br/>";
-	echo "lat".$lat."<br/>";
-	echo "lng".$lng."<br/>";
-	echo "skala".$skala."<br/>";
-	echo "sektor".$sektor."<br/>";
-	echo "$status";
+
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	//insert gambar 1
 	if($_FILES['gambar1']['error']==4){

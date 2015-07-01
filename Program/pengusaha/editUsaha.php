@@ -44,7 +44,7 @@
     <div class="row">
     	<h2 class="text-center">Edit Data Usaha</h2><hr/>
             <div class="col-xs-7 col-xs-offset-1 col-sm-6 col-md-5 col-lg-5">  
-            <form class="form-horizontal" id="formUpdate" enctype="multipart/form-data" action="prosesEditUsaha.php" method="post">
+            <form class="form-horizontal" id="formUpdate" enctype="multipart/form-data" action="prosesEditUsaha.php" method="post" data-toggle="validator" role="form">
                 <input type="hidden" name="id_usaha" value="<?=$row['id_usaha']?>"/>
                 <div class="form-group">
                         <label for="nama" class="col-sm-3 control-label">Nama Usaha</label>
@@ -73,20 +73,20 @@
                     <div class="form-group">
 	                    <label for="telp" class="col-sm-3 control-label">No Telepon</label>
 	                    <div class="col-sm-7">
-	                        <input type="text" name="telp" class="form-control" value="<?=$row['telp']?>"/>
+	                        <input type="text" name="telp" class="form-control" value="<?=$row['telp']?>" pattern="[0-9]{9,12}" data-error="contoh penulisan no Telepon : 081212345678 , 6 sampai 12 angka" required/>
 	                    </div>
 	                </div>
                     <div class="form-group">
                         <label for="produk" class="col-sm-3 control-label">Produk Utama</label>
                         <div class="col-sm-7">
-                            <input type="text" name="produk" class="form-control" value="<?=$row['produk_utama']?>"/>
+                            <input type="text" name="produk" class="form-control" value="<?=$row['produk_utama']?>" data-error="Wajib di Isi" required/>
                         </div>
                     </div>
 
 					<div class="form-group row">
                         <label for="alamat" class="col-sm-3 control-label">Alamat</label> 
                         <div class="col-sm-7">
-                        <input type="text" name="alamat" id="geocomplete" class="form-control" value="<?=$row['alamat_usaha']?>"/> 
+                        <input type="text" name="alamat" id="geocomplete" class="form-control" value="<?=$row['alamat_usaha']?>" data-error="Wajib di Isi" required/> 
                         </div>
                     </div>
                     <div class="form-group row">
@@ -260,7 +260,7 @@
     <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery.chained.min.js"></script>
 	<script src="../js/jquery.geocomplete.js"></script>
-
+    <script src="../js/validator.min.js"></script>
     <script>
             $("#kelurahan").chained("#kecamatan");	
     </script>
