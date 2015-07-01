@@ -35,8 +35,8 @@
 
 
 ?> 
-<form class="form-horizontal" method="post" action="laporan.php">
-        <div class="form-group">
+<form class="form-horizontal" method="post" action="usaha_report_proses.php">
+        <!-- <div class="form-group">
                         
             <label for="tglAwal" class="col-sm-4 control-label">Tanggal Awal</label>
             <div class="col-sm-5">
@@ -79,12 +79,15 @@
                         ?>
                     </select>
                 </div>
-                </div>
+                </div> -->
+            <div class="form-group">
+                <span class="glyphicon" ></span><hr><h2 align="center">Pembuatan Laporan Data Usaha di Kabupaten Bandung</h2>
+            </div>
 
-        <div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-5">
-                           <button type="submit" class="btn btn-primary">Submit</button>
-                           <button type="reset" class="btn btn-default">Clear</button>
+                           <button type="submit" class="btn btn-primary" align="center">Buat dan Download Laporan</button>
+                           
                         </div>
                     </div>
     </form>
