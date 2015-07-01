@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <title>Daftar Skala Usaha</title>
+    <title>Daftar List Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     ?>
 
     <!-- disini konten  -->
-    <h2 class="text-center">List Skala Usaha</h2><hr/><br>
+    <h2 class="text-center">Daftar List Admin</h2><hr/><br>
     <!-- USER AKTIF -->
         <?php 
             $sqlSkala = "SELECT * FROM admin";

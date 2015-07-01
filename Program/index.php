@@ -9,6 +9,18 @@
     $num_rec_per_page=5;
     if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
     $start_from = ($page-1) * $num_rec_per_page; 
+	
+	$id_kecamatan = $_POST['fKecamatan'];
+           $sqlFilter = "SELECT lat,lng FROM kecamatan WHERE id_kecamatan = '$id_kecamatan'";
+           $resultFilter = mysql_query($sqlFilter);
+           $rowF = mysql_fetch_array($resultFilter);
+          if (isset($_POST['filter'])) {
+            $lat = $rowF['lat'];
+            $lng = $rowF['lng'];
+          }else {
+            $lat = -6.914744;
+            $lng = 107.609810;
+          }
 ?>
 
 <html>
@@ -22,6 +34,75 @@
     <link href="css/custom.css" rel="stylesheet">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw">
     </script>
+	<script type="text/javascript">
+    //<![CDATA[
+	var customIcons = {
+      restaurant: {
+        icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
+      },
+      bar: {
+        icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
+      }
+    };
+
+    function load() {
+      var map = new google.maps.Map(document.getElementById("map"), {
+        center: new google.maps.LatLng(<?=$lat?>, <?=$lng?>),
+        zoom: 13,
+        mapTypeId: 'roadmap'
+      });
+      var infoWindow = new google.maps.InfoWindow;
+
+      // Change this depending on the name of your PHP file
+      downloadUrl("xmlMarker.php", function(data) {
+        var xml = data.responseXML;
+        var markers = xml.documentElement.getElementsByTagName("marker");
+        for (var i = 0; i < markers.length; i++) {
+          var name = markers[i].getAttribute("name");
+          var address = markers[i].getAttribute("address");
+          var point = new google.maps.LatLng(
+              parseFloat(markers[i].getAttribute("lat")),
+              parseFloat(markers[i].getAttribute("lng")));
+          var html = "<b>" + name + "</b> <br/>" + address;
+          var icon = customIcons[name] || {};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: point,
+            icon: icon.icon
+          });
+          bindInfoWindow(marker, map, infoWindow, html);
+        }
+      });
+    }
+
+    function bindInfoWindow(marker, map, infoWindow, html) {
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(html);
+        infoWindow.open(map, marker);
+      });
+    }
+
+    function downloadUrl(url, callback) {
+      var request = window.ActiveXObject ?
+          new ActiveXObject('Microsoft.XMLHTTP') :
+          new XMLHttpRequest;
+
+      request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+          request.onreadystatechange = doNothing;
+          callback(request, request.status);
+        }
+      };
+
+      request.open('GET', url, true);
+      request.send(null);
+    }
+
+    function doNothing() {}
+
+    //]]>
+
+  </script>
     
 </head>
 
@@ -49,19 +130,6 @@
             </div>
             </div>
         </form>
-        <?php 
-           $id_kecamatan = $_POST['fKecamatan'];
-           $sqlFilter = "SELECT lat,lng FROM kecamatan WHERE id_kecamatan = '$id_kecamatan'";
-           $resultFilter = mysql_query($sqlFilter);
-           $rowF = mysql_fetch_array($resultFilter);
-          if (isset($_POST['filter'])) {
-            $lat = $rowF['lat'];
-            $lng = $rowF['lng'];
-          }else {
-            $lat = -6.914744;
-            $lng = 107.609810;
-          }
-        ?>
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div id="map"></div>
         </div><br><br>
@@ -124,7 +192,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Batujajar' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -233,7 +301,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cipongkor' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -342,7 +410,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Rongga' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -451,7 +519,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cikalongwetan' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -560,7 +628,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cisarua' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -669,7 +737,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Sindangkerta' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -778,7 +846,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cihampelas' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -887,7 +955,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Gununghalu' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -996,7 +1064,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Lembang' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1105,7 +1173,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cililin' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1214,7 +1282,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Ngamprah' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1323,7 +1391,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Saguling' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1432,7 +1500,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cipatat' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1541,7 +1609,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Padalarang' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1650,7 +1718,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Cipeundeuy' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1759,7 +1827,7 @@
                                             join kecamatan kec on u.id_kecamatan=kec.id_kecamatan
                                             join skala_usaha ska on u.id_skala=ska.id_skala
                                             join sektor_usaha sek on u.id_sektor=sek.id_sektor
-                     LIMIT $start_from, $num_rec_per_page";
+                     where kec.nama_kecamatan like 'Parongpong' LIMIT $start_from, $num_rec_per_page";
                 //eksekusi query
                 $query = mysql_query($sql_usaha);
                 if(!$query)
@@ -1893,9 +1961,9 @@
     <script>
     var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
     var barChartData = {
-        labels : ["Batujajar","Cipongkor","Rongga","Cikalongwetan","Cisarua","Sindangkerta","Cihampelas",
-                  "Gununghalu","Lembang","Cililin","Ngamprah","Saguling","Cipatat","Padalarang",
-                  "Cipeundeuy","Parongpong"
+        labels : ["Batujajar","Cipongkor","Rongga","Cikalongwetan","Sindangkerta","Cisarua","Cihampelas",
+                  "Gununghalu","Lembang","Cililin","Ngamprah","Cipatat","Padalarang",
+                  "Cipeundeuy","Parongpong","Saguling"
                  ],
         datasets : [
             {
@@ -1919,67 +1987,5 @@
             responsive : true
         });
     </script>
-    <script type="text/javascript">
-    //<![CDATA[
-    function load() {
-      var map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(<?=$lat?>, <?=$lng?>),
-        zoom: 13,
-        mapTypeId: 'roadmap'
-      });
-      var infoWindow = new google.maps.InfoWindow;
-
-      // Change this depending on the name of your PHP file
-      downloadUrl("xmlMarker.php", function(data) {
-        var xml = data.responseXML;
-        var markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markers.length; i++) {
-          var name = markers[i].getAttribute("name");
-          var address = markers[i].getAttribute("address");
-          var point = new google.maps.LatLng(
-              parseFloat(markers[i].getAttribute("lat")),
-              parseFloat(markers[i].getAttribute("lng")));
-          var html = "<b>" + name + "</b> <br/>" + address;
-          var icon = customIcons[name] || {};
-          var marker = new google.maps.Marker({
-            map: map,
-            position: point,
-            icon: icon.icon
-          });
-          bindInfoWindow(marker, map, infoWindow, html);
-        }
-      });
-    }
-
-    function bindInfoWindow(marker, map, infoWindow, html) {
-      google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent(html);
-        infoWindow.open(map, marker);
-      });
-    }
-
-    function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-          new ActiveXObject('Microsoft.XMLHTTP') :
-          new XMLHttpRequest;
-
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-        }
-      };
-
-      request.open('GET', url, true);
-      request.send(null);
-    }
-
-    function doNothing() {}
-
-    //]]>
-
-  </script>
-
-    
 </body>
 </html>
