@@ -14,6 +14,7 @@
 	$alamat = $_POST['alamat'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
+	$tmpPassword = $password;
 	$encrypted = md5($password);
 	//$encrypted = md5($password); // Encrypting pssword using md5 algo
 	$ttl = $_POST['ttl'];
@@ -33,20 +34,22 @@
 		
 		$filektp = "gambar/".$_FILES['userfile']['name'];
 		
-			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$encrypted')";
+			$sql = "INSERT INTO pengusaha(no_ktp,nama_pengusaha,alamat,ttl,jenis_kelamin,file_ktp,email,password,tmpPassword) VALUES('$username','$nama','$alamat','$ttl','$jk','$filektp','$email','$encrypted','$tmpPassword')";
 		
 		//eksekusi statement insert data
 		if(!mysql_query($sql))
 		{
 			echo '<script type="text/javascript">';
-			echo 'alert("Tambah Data Pengusaha Gagal")';
+			echo 'alert("Proses SignUp Gagal")';
 			echo '</script>';
 			header( "refresh:0; url=index.php" );
 		}
 		else
 		{
+			echo $encrypted;
+			echo md5($encrypted);
 			echo '<script type="text/javascript">';
-			echo 'alert("Tambah Data Pengusaha Berhasil")';
+			echo 'alert("Proses SignUp Berhasil")';
 			echo "</script>";
 			header( "refresh:0; url=index.php" );
 		}

@@ -34,8 +34,7 @@
         <?php
             $dataCari = $_POST['dataCari'];  
             $sqlKelurahan = "SELECT id_kelurahan,kecamatan.id_kecamatan AS id_kecamatan,nama_kecamatan,nama_kelurahan, kelurahan.lat AS lat, kelurahan.lng AS lng FROM kelurahan, Kecamatan 
-            WHERE Kecamatan.id_kecamatan = kelurahan.id_kecamatan AND nama_kelurahan LIKE '%$dataCari%'
-            ORDER BY id_kelurahan";
+            WHERE Kecamatan.id_kecamatan = kelurahan.id_kecamatan AND nama_kelurahan LIKE '%$dataCari%'";
             //eksekusi query
             $query = mysql_query($sqlKelurahan);
             if(!$query)

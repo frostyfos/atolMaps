@@ -31,6 +31,8 @@
 		$email = $_POST['email'];
 	    $noKtp = $_POST['noKtp'];
 	    $password = $_POST['password'];
+	    $tmpPassword = $_POST['tmpPassword'];
+	    
 		$sql = "UPDATE pengusaha SET status_akun = 'aktif' WHERE id_pengusaha = '$id_pengusaha'";
 
 		$to      = $email;
@@ -42,7 +44,7 @@
 		 
 		------------------------
 		Username: '.$noKtp.'
-		Password: '.$password.'
+		Password: '.$tmpPassword.'
 		------------------------
 		 
 		'; // Our message above including the link

@@ -16,6 +16,7 @@
 	$email = mysql_escape_string($email);
 	$hash = mysql_escape_string($hash);
 	$password = mysql_escape_string($password);
+	$encrypted = md5($password);
 
 	//sendmail
 	$to      = $email; // Send email to our user
@@ -51,7 +52,7 @@
 			echo 'alert("Proses Memasukan Data Gagal")';
 			echo '</script>';
 			header( "refresh:0; url=../index.php" );
-			$sqlUpdate = "UPDATE pengusaha SET password='$password' WHERE no_ktp = '$noKtp'";
+			$sqlUpdate = "UPDATE pengusaha SET password='$encrypted' WHERE no_ktp = '$noKtp'";
 			mysql_query($sqlUpdate);
 		}
 		else

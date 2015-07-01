@@ -35,7 +35,7 @@
     <!-- USER AKTIF -->
         <?php 
             $dataCari = $_POST['dataCari'];
-            $sqlSkala = "SELECT * FROM kecamatan WHERE nama_kecamatan LIKE '%$dataCari%'";
+            $sqlSkala = "SELECT * FROM kecamatan WHERE nama_kecamatan LIKE '%".$_POST['dataCari']."%'";
             //eksekusi query
             $query = mysql_query($sqlSkala);
             if(!$query)

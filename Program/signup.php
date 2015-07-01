@@ -57,7 +57,7 @@
 					<div class="form-group">
                         <label for="password" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-5">
-                            <input type="password" name="password" class="form-control" placeholder="password pengusaha" data-minlength="6" data-error="Password minimal 6 karakter" required/>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="password pengusaha" data-minlength="6" data-error="Password minimal 6 karakter" required/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

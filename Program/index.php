@@ -4,6 +4,7 @@
     $path = "lib_func.php";
     include_once($path);
     connect();
+    error_reporting(0);
     //pagination
     $num_rec_per_page=5;
     if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
@@ -21,116 +22,78 @@
     <link href="css/custom.css" rel="stylesheet">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEDx3SuCm6B1iGH23GY6FKSZuS9cQUiRw">
     </script>
-    <script type="text/javascript">
-    //<![CDATA[
-
-    var customIcons = {
-      restaurant: {
-        icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
-      },
-      bar: {
-        icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
-      }
-    };
-
-    function load() {
-      var map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(-6.9153153, 107.49777519999998),
-        zoom: 13,
-        mapTypeId: 'roadmap'
-      });
-      var infoWindow = new google.maps.InfoWindow;
-
-      // Change this depending on the name of your PHP file
-      downloadUrl("xmlMarker.php", function(data) {
-        var xml = data.responseXML;
-        var markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markers.length; i++) {
-          var name = markers[i].getAttribute("name");
-          var address = markers[i].getAttribute("address");
-          var point = new google.maps.LatLng(
-              parseFloat(markers[i].getAttribute("lat")),
-              parseFloat(markers[i].getAttribute("lng")));
-          var html = "<b>" + name + "</b> <br/>" + address;
-          var icon = customIcons[name] || {};
-          var marker = new google.maps.Marker({
-            map: map,
-            position: point,
-            icon: icon.icon
-          });
-          bindInfoWindow(marker, map, infoWindow, html);
-        }
-      });
-    }
-
-    function bindInfoWindow(marker, map, infoWindow, html) {
-      google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent(html);
-        infoWindow.open(map, marker);
-      });
-    }
-
-    function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-          new ActiveXObject('Microsoft.XMLHTTP') :
-          new XMLHttpRequest;
-
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-        }
-      };
-
-      request.open('GET', url, true);
-      request.send(null);
-    }
-
-    function doNothing() {}
-
-    //]]>
-
-  </script>
+    
 </head>
 
 <body onload="load()">
-    <div class="container">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!-- image / logo here -->
-                        <a href="admin.php"><img src="gambar/logo.png" id="nav-logo"></a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="collapse">
-                        <ul class="nav navbar-nav navbar-right" id="padding_right">
-                            <li>
-                                <a href="signup.php">Sign Up</a>
-                            </li>
-                            <li>
-                                <a href="formLogin.php">Login</a>
-                            </li>
-                        </ul>
-                    </div>  
-        </nav>
-        
-        <!-- disini konten  -->
-        <h2 class="text-center">Daftar Usaha Bandung Barat</h2><hr/><br>
-        <!-- SEARCH -->
-        <form action = "#" method = "post">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-6 col-sm-offset-6">
+    <h2 class="text-center">Peta Usaha Bandung Barat</h2><hr>
+        <form action = "" method = "post">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-xs-offset-9 col-sm-offset-9">
             <div class="input-group">
-                <input type="text" name="cariUser" class="form-control" placeholder="Cari data Usaha...">
+                <select class="form-control" name="fKecamatan" id="fKecamatan">
+                        <?php 
+                            $sqlKecamatan = "SELECT  * from kecamatan ";
+                            $filter = mysql_query($sqlKecamatan);  
+                            while($filterKec=mysql_fetch_array($filter)){
+                        ?>
+                            <option value="<?php echo $filterKec['id_kecamatan']; ?>">
+                                <?php  echo $filterKec['nama_kecamatan']; ?>
+                            </option>';
+                        <?php
+                             }
+                        ?>
+                </select>
                 <span class="input-group-btn">
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="submit" name="filter" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></button>
                 </span>
             </div>
             </div>
-        </form><br>
+        </form>
+        <?php 
+           $id_kecamatan = $_POST['fKecamatan'];
+           $sqlFilter = "SELECT lat,lng FROM kecamatan WHERE id_kecamatan = '$id_kecamatan'";
+           $resultFilter = mysql_query($sqlFilter);
+           $rowF = mysql_fetch_array($resultFilter);
+          if (isset($_POST['filter'])) {
+            $lat = $rowF['lat'];
+            $lng = $rowF['lng'];
+          }else {
+            $lat = -6.914744;
+            $lng = 107.609810;
+          }
+        ?>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div id="map"></div>
+        </div><br><br>
+
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- image / logo here -->
+                <a href="admin.php"><img src="gambar/logo.png" id="nav-logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="collapse">
+                <ul class="nav navbar-nav navbar-right" id="padding_right">
+                    <li>
+                        <a href="signup.php">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="formLogin.php">Login</a>
+                    </li>
+                </ul>
+            </div>  
+        </nav>
+        
+        <!-- disini konten  -->
+        <br><br><br>
+        <h2 class="text-center">.</h2><hr/><br>
+        <h2 class="text-center">Daftar Usaha Bandung Barat</h2><hr/><br>
         <!-- ============================== list navigation for tabs ==================================== -->
         <ul class="nav nav-tabs">
                 <li class="active"><a href="#Batujajar" data-toggle="tab">Batujajar</a></li>
@@ -1899,46 +1862,6 @@
             </div> <!-- end div Parongpong -->
         </div>
 
-        <br><br><br><h2 class="text-center">Peta Usaha Bandung Barat</h2><hr>
-        <form action = "" method = "post">
-            <div class="col-xs-3 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1">
-            <div class="input-group">
-                <select class="form-control" name="fKecamatan" id="fKecamatan">
-                        <?php 
-                            $sqlKecamatan = "SELECT  * from kecamatan ";
-                            $filter = mysql_query($sqlKecamatan);  
-                            while($filterKec=mysql_fetch_array($filter)){
-                        ?>
-                            <option value="<?php echo $filterKec['id_kecamatan']; ?>">
-                                <?php  echo $filterKec['nama_kecamatan']; ?>
-                            </option>';
-                        <?php
-                             }
-                        ?>
-                </select>
-                <span class="input-group-btn">
-                    <button type="submit" name="filter" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></button>
-                </span>
-            </div>
-            </div>
-        </form>
-        <?php 
-           $id_kecamatan = $_POST['fKecamatan'];
-           $sqlFilter = "SELECT lat,lng FROM kecamatan WHERE id_kecamatan = '$id_kecamatan'";
-           $resultFilter = mysql_query($sqlFilter);
-           $rowF = mysql_fetch_array($resultFilter);
-          if (isset($_POST['filter'])) {
-            $lat = $rowF['lat'];
-            $lng = $rowF['lng'];
-          }else{
-            $lat = -6.914744;
-            $lng = 107.609810;
-          }
-        ?>
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div id="map"></div>
-        </div>
-
         <!-- grafik usaha -->
         <br><br><br><h2 class="text-center">Grafik Usaha Bandung Barat</h2><hr>
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -1996,6 +1919,66 @@
             responsive : true
         });
     </script>
+    <script type="text/javascript">
+    //<![CDATA[
+    function load() {
+      var map = new google.maps.Map(document.getElementById("map"), {
+        center: new google.maps.LatLng(<?=$lat?>, <?=$lng?>),
+        zoom: 13,
+        mapTypeId: 'roadmap'
+      });
+      var infoWindow = new google.maps.InfoWindow;
+
+      // Change this depending on the name of your PHP file
+      downloadUrl("xmlMarker.php", function(data) {
+        var xml = data.responseXML;
+        var markers = xml.documentElement.getElementsByTagName("marker");
+        for (var i = 0; i < markers.length; i++) {
+          var name = markers[i].getAttribute("name");
+          var address = markers[i].getAttribute("address");
+          var point = new google.maps.LatLng(
+              parseFloat(markers[i].getAttribute("lat")),
+              parseFloat(markers[i].getAttribute("lng")));
+          var html = "<b>" + name + "</b> <br/>" + address;
+          var icon = customIcons[name] || {};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: point,
+            icon: icon.icon
+          });
+          bindInfoWindow(marker, map, infoWindow, html);
+        }
+      });
+    }
+
+    function bindInfoWindow(marker, map, infoWindow, html) {
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(html);
+        infoWindow.open(map, marker);
+      });
+    }
+
+    function downloadUrl(url, callback) {
+      var request = window.ActiveXObject ?
+          new ActiveXObject('Microsoft.XMLHTTP') :
+          new XMLHttpRequest;
+
+      request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+          request.onreadystatechange = doNothing;
+          callback(request, request.status);
+        }
+      };
+
+      request.open('GET', url, true);
+      request.send(null);
+    }
+
+    function doNothing() {}
+
+    //]]>
+
+  </script>
 
     
 </body>

@@ -32,26 +32,29 @@
     <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Masukan Data Untuk Meminta Password Baru</h2><hr/>
-                <form class="form-horizontal" action="reqPass.php" method="post">
+                <form class="form-horizontal" action="reqPass.php" method="post" data-toggle="validator" role="form">
 
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Anda"/>
+                            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Anda" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat" class="col-sm-4 control-label">No KTP</label>
                         <div class="col-sm-5">
-                            <input type="text" name="noKtp" class="form-control" placeholder="Masukan No KTP Anda"/>
+                            <input type="text" name="noKtp" class="form-control" placeholder="Masukan No KTP Anda" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="username" class="col-sm-4 control-label">E - mail</label>
                         <div class="col-sm-5">
-                            <input type="text" name="email" class="form-control" placeholder="Masukan E-mail Anda"/>
+                            <input type="text" name="email" class="form-control" placeholder="Masukan E-mail Anda" data-error="Wajib di Isi" required/>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -78,5 +81,6 @@
 	<!-- javascript -->
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
+    <script src="../js/validator.min.js"></script>
 </body>
 </html>
