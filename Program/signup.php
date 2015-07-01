@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="username" class="col-sm-4 control-label">No KTP</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" placeholder="username pengusaha" data-error="Wajib di Isi" required/>
+                            <input type="text" name="username" class="form-control" placeholder="username pengusaha" pattern="[0-9]{9,17}" data-error="Masukkan No KTP" required/>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>

@@ -54,20 +54,20 @@
 	 echo '<div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <h2 class="text-center">Edit Data Pengusaha</h2><hr/>
-                <form class="form-horizontal" action="proses_edit_profil.php" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="proses_edit_profil.php" enctype="multipart/form-data" method="post" data-toggle="validator" role="form">
 
-					<input type="hidden" name="id_pengusaha" class="form-control" value="'.$row['id_pengusaha'].'"/>
+					<input type="hidden" name="id_pengusaha" class="form-control" value="'.$row['id_pengusaha'].'" readonly/>
                     <div class="form-group">
                         <label for="email" class="col-sm-4 control-label">Email</label>
                         <div class="col-sm-5">
-                            <input type="text" name="email" class="form-control" value="'.$row['email'].'"/>
+                            <input type="text" name="email" class="form-control" value="'.$row['email'].'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" data-error="contoh penulisan e-mail : email@email.com" required/>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="username" class="col-sm-4 control-label">Username/KTP</label>
                         <div class="col-sm-5">
-                            <input type="text" name="username" class="form-control" value="'.$row['no_ktp'].'"/>
+                            <input type="text" name="username" class="form-control" value="'.$row['no_ktp'].'" pattern="[0-9]{9,17}" data-error="Masukan nomor KTP" required/>
                         </div>
                     </div>
 
@@ -81,14 +81,14 @@
                     <div class="form-group">
                         <label for="nama" class="col-sm-4 control-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" name="nama" class="form-control" value="'.$row['nama_pengusaha'].'"/>
+                            <input type="text" name="nama" class="form-control" value="'.$row['nama_pengusaha'].'" data-error="Wajib di Isi" required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat" class="col-sm-4 control-label">Alamat</label>
                         <div class="col-sm-5">
-                            <input type="text" name="alamat" class="form-control" value="'.$row['alamat'].'"/>
+                            <input type="text" name="alamat" class="form-control" value="'.$row['alamat'].'" data-error="Wajib di Isi" required/>
                         </div>
                     </div>
 
@@ -150,7 +150,7 @@
     <script src="../js/jquery-1.11.3.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
-
+    <script src="../js/validator.min.js"></script>
     <script>
             $('.input-group.date #ttl').datepicker({});
     </script>

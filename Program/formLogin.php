@@ -30,14 +30,14 @@
 	            <div class="form-group">
 	                <label for="myusername" class="col-sm-4 control-label">Username</label>
 	                <div class="col-sm-4">
-	                    <input type="text" name="myusername" title="cuma 0-8"class="form-control" placeholder="username petugas"/>
+	                    <input type="text" name="myusername" title="cuma 0-8"class="form-control" placeholder="masukkan username"/>
 	                </div>
 	            </div>
 
 	            <div class="form-group">
 	                <label for="mypassword" class="col-sm-4 control-label">Password</label>
 	                <div class="col-sm-4">
-	                    <input type="password" required name="mypassword" id="mypassword" class="form-control" placeholder="password petugas"/>
+	                    <input type="password" required name="mypassword" id="mypassword" class="form-control" placeholder="masukkan password"/>
 	                </div>
 	            </div>
 	            
